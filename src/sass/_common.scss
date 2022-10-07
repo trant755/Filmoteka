@@ -1,1 +1,79 @@
 @import '~node_modules/modern-normalize/modern-normalize.css';
+
+
+html {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+p {
+    margin: 0;
+}
+
+.container {
+    width: 100%;
+    min-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-right: 20px;
+    padding-left: 20px;
+
+    @media screen and (min-width: 320px) {
+        width: 320px;
+    }
+
+    @media screen and (min-width: 768px) {
+        width: 768px;
+        padding-right: 32px;
+        padding-left: 32px;
+    }
+
+    @media screen and (min-width: 1280px) {
+        width: 1280px;
+        padding-right: 32px;
+        padding-left: 32px;
+    }
+}
+
+img {
+    display: block;
+
+    height: auto;
+}
+
+a {
+    text-decoration: none;
+    transition: color var(--duration) var(--timing-function);
+}
+
+ul,
+ol {
+    list-style: none;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+}
+
+button {
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin-top: 0;
+    margin-bottom: 0;
+}
