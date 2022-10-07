@@ -52,6 +52,7 @@ export default class MovieApiService {
       .catch(error => {
         console.log('Error on try...catch', error);
       });
+    return response;
   }
 
   addMoviesPage(number) {
@@ -62,11 +63,11 @@ export default class MovieApiService {
     this.page = 1;
   }
 
-  get needToFind() {
+  get query() {
     return this.needToFind;
   }
 
-  set needToFind(newQuery) {
+  set query(newQuery) {
     this.needToFind = newQuery;
   }
 }
