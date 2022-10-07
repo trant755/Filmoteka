@@ -15,11 +15,12 @@ export default class MovieApiService {
         if (!responceGenres.ok) {
           throw new Error(responceGenres.status);
         }
-        return response.json();
+        return responceGenres.json();
       })
       .catch(error => {
         error;
       });
+    return responceGenres;
   }
 
   fetchTrending() {
@@ -30,30 +31,27 @@ export default class MovieApiService {
         if (!responceTrending.ok) {
           throw new Error(responceTrending.status);
         }
-        return response.json();
+        return responceTrending.json();
       })
       .catch(error => {
         error;
       });
+    return responceTrending;
   }
 
   fetchMovies() {
-    try {
-      const response = fetch(
-        `${API_WEB}/search/movie?${API_KEY}&query=${this.needToFind}&page=${this.page}`
-      ).then(response => {
+    const response = fetch(
+      `${API_WEB}/search/movie?${API_KEY}&query=${this.needToFind}&page=${this.page}`
+    )
+      .then(response => {
         if (!response.ok) {
           throw new Error(response.status);
         }
         return response.json();
+      })
+      .catch(error => {
+        console.log('Error on try...catch', error);
       });
-
-      const data = response.data;
-
-      return data;
-    } catch (error) {
-      console.log('Error on try...catch', error);
-    }
   }
 
   addMoviesPage(number) {
@@ -64,11 +62,11 @@ export default class MovieApiService {
     this.page = 1;
   }
 
-  get query() {
+  get needToFind() {
     return this.needToFind;
   }
 
-  set query(newQuery) {
+  set needToFind(newQuery) {
     this.needToFind = newQuery;
   }
 }
