@@ -74,6 +74,3 @@ class MovieApiService {
 }
 
 const MovieApi = new MovieApiService();
-MovieApi.fetchMovies();
-MovieApi.fetchTrending();
-MovieApi.fetchGenres();
