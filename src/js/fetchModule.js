@@ -52,6 +52,7 @@ export default class MovieApiService {
       .catch(error => {
         console.log('Error on try...catch', error);
       });
+    return response;
   }
 
   addMoviesPage(number) {
