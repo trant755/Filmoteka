@@ -39,7 +39,7 @@ class MovieApiService {
 
   fetchMovies() {
     try {
-      const responce = fetch(
+      const response = fetch(
         `${API_WEB}/search/movie?${API_KEY}&query=${this.needToFind}&page=${this.page}`
       ).then(response => {
         if (!response.ok) {
@@ -48,7 +48,7 @@ class MovieApiService {
         return response.json();
       });
 
-      const data = responce.data;
+      const data = response.data;
 
       return data;
     } catch (error) {
@@ -72,5 +72,3 @@ class MovieApiService {
     this.needToFind = newQuery;
   }
 }
-
-const MovieApi = new MovieApiService();
