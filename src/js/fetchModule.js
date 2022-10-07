@@ -63,11 +63,11 @@ export default class MovieApiService {
     this.page = 1;
   }
 
-  get needToFind() {
+  get query() {
     return this.needToFind;
   }
 
-  set needToFind(newQuery) {
+  set query(newQuery) {
     this.needToFind = newQuery;
   }
 }
