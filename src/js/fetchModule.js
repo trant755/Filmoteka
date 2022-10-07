@@ -1,7 +1,7 @@
 const API_WEB = 'https://api.themoviedb.org/3';
 const API_KEY = 'api_key=8a38092ae2d24fc685ebce0502669b7c';
 
-class MovieApiService {
+export default class MovieApiService {
   constructor() {
     this.needToFind = '';
     this.page = 1;
