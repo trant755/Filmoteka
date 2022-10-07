@@ -1,1 +1,1 @@
-import './generateTrandingCard';
+import './js/generateTrandingCard';

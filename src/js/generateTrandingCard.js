@@ -1,28 +1,4 @@
-import MovieApiService from './api';
-
-let test = [
-  {
-    adult: false,
-    backdrop_path: '/sbS8e0XBqSeNhJi3Ej1phqVnGCy.jpg',
-    genre_ids: [53, 18],
-    id: 723419,
-    media_type: 'movie',
-    original_language: 'en',
-    original_title: "Mr. Harrigan's Phone",
-    overview:
-      'Craig, a young boy living in a small town befriends an older, reclusive billionaire, Mr. Harrigan. The two form a bond over books and an iPhone, but when the man passes away the boy discovers that not everything dead is gone.',
-    popularity: 147.519,
-    poster_path: '/gPn9e8eP7TeKQU4IeWAMzOajR40.jpg',
-    release_date: '2022-10-05',
-    title: "Mr. Harrigan's Phone",
-    video: false,
-    vote_average: 6.61,
-    vote_count: 82,
-  },
-];
-
-onMarkupGallery(test);
-// viewPage();
+import MovieApiService from './fetchModule';
 
 let test2 = [
   { id: 28, name: 'Action' },
@@ -50,10 +26,12 @@ const API = new MovieApiService();
 
 localStorage.setItem('savedGenresId', JSON.stringify(test2));
 
-function viewPage(films) {
-  API.fetchMovies().then(responce => {
-    console.log(responce);
-    console.log(API.fetchMovies());
+createTrendingFilms();
+
+function createTrendingFilms() {
+  API.fetchTrending().then(({ results }) => {
+    console.log(results);
+    onMarkupGallery(results);
   });
 }
 
