@@ -35,12 +35,13 @@ function createTrendingFilms() {
   });
 }
 
-function onMarkupGallery(data) {
-  const markup = data
+function onMarkupGallery(films) {
+  const markup = films
     .map(film => {
       let year = film.release_date.slice(0, 4);
       console.log(year);
-
+      console.log(films);
+      console.log(film);
       const savedGenresId = localStorage.getItem('savedGenresId');
 
       let genres = film.genre_ids
@@ -48,14 +49,14 @@ function onMarkupGallery(data) {
           let genresArray = JSON.parse(savedGenresId).find(
             obj => obj.id === id
           );
+
           return genresArray.name;
         })
         .join(', ');
       console.log(genres);
+
       //   hbs(film);
     })
     .join('');
   // refs.galleryContainer.insertAdjacentHTML('beforeend', markup);
-
-  // API.incrementPage()
 }
