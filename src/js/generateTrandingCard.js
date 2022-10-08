@@ -1,4 +1,5 @@
 import MovieApiService from './fetchModule';
+import { onMarkupCards } from './onMarkupCards';
 
 let test2 = [
   { id: 28, name: 'Action' },
@@ -26,37 +27,13 @@ const API = new MovieApiService();
 
 localStorage.setItem('savedGenresId', JSON.stringify(test2));
 
-createTrendingFilms();
+generateTrendingFilms();
 
-function createTrendingFilms() {
+function generateTrendingFilms() {
   API.fetchTrending().then(({ results }) => {
-    console.log(results);
-    onMarkupGallery(results);
+    // console.log(results);
+    const trandingContainer = document.querySelector('.film__list');
+    console.log(trandingContainer);
+    onMarkupCards(results, trandingContainer);
   });
-}
-
-function onMarkupGallery(films) {
-  const markup = films
-    .map(film => {
-      let year = film.release_date.slice(0, 4);
-      console.log(year);
-      console.log(films);
-      console.log(film);
-      const savedGenresId = localStorage.getItem('savedGenresId');
-
-      let genres = film.genre_ids
-        .map(id => {
-          let genresArray = JSON.parse(savedGenresId).find(
-            obj => obj.id === id
-          );
-
-          return genresArray.name;
-        })
-        .join(', ');
-      console.log(genres);
-
-      //   hbs(film);
-    })
-    .join('');
-  // refs.galleryContainer.insertAdjacentHTML('beforeend', markup);
 }
