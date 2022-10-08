@@ -31,9 +31,7 @@ generateTrendingFilms();
 
 function generateTrendingFilms() {
   API.fetchTrending().then(({ results }) => {
-    // console.log(results);
     const trandingContainer = document.querySelector('.film__list');
-    console.log(trandingContainer);
     onMarkupCards(results, trandingContainer);
   });
 }

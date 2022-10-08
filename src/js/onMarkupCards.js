@@ -19,12 +19,10 @@ export const onMarkupCards = function (films, container) {
           return genresArray.name;
         })
         .join(', ');
-      console.log(obje);
-      console.log(film);
+
       return filmCardTpl(obje);
     })
     .join('');
-  console.log(markup);
 
   container.insertAdjacentHTML('beforeend', markup);
 };
