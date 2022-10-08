@@ -1,10 +1,13 @@
-<li class='film__item'>
-  <a href='#' class='film__link' data-modal='open' data-id='{{id}}'>
-    <img src='{{poster_path}}' alt='{{title}}' class='film__item' />
-    <p class='film__title'>{{title}}</p>
-    <p class='film__info'>
-      {{genre_ids}}
-      <span class='film__year'>|{{release_date}}</span>
-    </p>
+<li class='movie__item'>
+  <a href='#' class='movie__link' data-modal='open' data-id='{{id}}'>
+    <img src='{{poster_path}}' alt='{{title}}' class='movie__image' />
+    <div class='movie__description'>
+      <p class='movie__title'>{{title}}</p>
+      <p class='movie__info'>
+        {{genre_ids}}
+        <span class='movie__year'>|{{release_date}}</span>
+        <span class='movie__raiting'>{{vote_average}}</span>
+      </p>
+    </div>
   </a>
 </li>;
