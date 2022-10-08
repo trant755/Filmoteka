@@ -1,5 +1,6 @@
-@import './vars';
-@import './common';
+@import './base/vars';
+@import './base/common';
+@import './base/container';
 
-@import './header-film.scss';
-@import './header-library.scss';
+@import './components/header-film.scss';
+@import './components/header-library.scss';
