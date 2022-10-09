@@ -54,6 +54,8 @@ function searchFilm(ev) {
   API.query = ev.currentTarget.elements.searchQuery.value;
 
   if (API.query === '') return;
+
+  pagination.reset();
   API.resetMoviesPage();
   fetchSearchFilms();
 }
@@ -65,8 +67,6 @@ async function fetchSearchFilms() {
     refs.SearchErrMessage.classList.remove('is-hidden');
     return;
   }
-
-  pagination.reset();
 
   pagination.setTotalItems(data.total_results);
   clearGallery();
