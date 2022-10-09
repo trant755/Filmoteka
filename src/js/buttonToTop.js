@@ -18,8 +18,10 @@ function scrollFunction() {
   ) {
     toTopBtn.style.visibility = 'visible';
     svgIcon.style.opacity = 1;
+    toTopBtn.style.opacity = 1;
   } else {
     toTopBtn.style.visibility = 'hiden';
     svgIcon.style.opacity = 0;
+    toTopBtn.style.opacity = 0;
   }
 }
