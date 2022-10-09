@@ -6,32 +6,8 @@ import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 import { options } from './options-of-pagination';
 
-// let test2 = [
-//   { id: 28, name: 'Action' },
-//   { id: 12, name: 'Adventure' },
-//   { id: 16, name: 'Animation' },
-//   { id: 35, name: 'Comedy' },
-//   { id: 80, name: 'Crime' },
-//   { id: 99, name: 'Documentary' },
-//   { id: 18, name: 'Drama' },
-//   { id: 10751, name: 'Family' },
-//   { id: 14, name: 'Fantasy' },
-//   { id: 36, name: 'History' },
-//   { id: 27, name: 'Horror' },
-//   { id: 10402, name: 'Music' },
-//   { id: 9648, name: 'Mystery' },
-//   { id: 10749, name: 'Romance' },
-//   { id: 878, name: 'Science Fiction' },
-//   { id: 10770, name: 'TV Movie' },
-//   { id: 53, name: 'Thriller' },
-//   { id: 10752, name: 'War' },
-//   { id: 37, name: 'Western' },
-// ];
-
 const API = new MovieApiService();
 const LS_API = new localStorageAPI();
-
-// localStorage.setItem('savedGenresId', JSON.stringify(test2));
 
 const pagination = new Pagination(refs.paginationContainer, options);
 
@@ -46,15 +22,18 @@ function generateTrendingFilms() {
   });
 }
 
-refs.paginationContainer.addEventListener('click', renderNewPageOfTrendingFilms);
+refs.paginationContainer.addEventListener(
+  'click',
+  renderNewPageOfTrendingFilms
+);
 
 async function renderNewPageOfTrendingFilms() {
   clearGallery();
-  
+
   const newCurrentPage = pagination.getCurrentPage();
   API.addMoviesPage(newCurrentPage);
-    
-  generateTrendingFilms()
+
+  generateTrendingFilms();
 }
 
 function clearGallery() {

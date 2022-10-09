@@ -3,8 +3,6 @@ import LocalStorageAPI from './local-storage-api/local-storage-api';
 
 const localStorageAPI = new LocalStorageAPI();
 
-console.log(localStorageAPI.getGeneresLS());
-
 export const onMarkupCards = function (films, container, rating) {
   const markup = films
     .map(film => {
@@ -21,7 +19,9 @@ export const onMarkupCards = function (films, container, rating) {
         obje.vote_average = film.vote_average;
       }
       let genres = film.genre_ids.map(id => {
-        let genresArray = localStorageAPI.getGeneresLS().genres.find(obj => obj.id === id);
+        let genresArray = localStorageAPI
+          .getGeneresLS()
+          .genres.find(obj => obj.id === id);
 
         return genresArray.name;
       });
