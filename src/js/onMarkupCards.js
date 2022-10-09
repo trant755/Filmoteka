@@ -1,10 +1,13 @@
 import filmCards from '../templates/filmCards.hbs';
+import LocalStorageAPI from './local-storage-api/local-storage-api';
+
+const localStorageAPI = new LocalStorageAPI();
+
+console.log(localStorageAPI.getGeneresLS());
 
 export const onMarkupCards = function (films, container, rating) {
   const markup = films
     .map(film => {
-      const savedGenresId = localStorage.getItem('savedGenresId');
-
       const obje = {};
       obje.id = film.id;
       if (film.release_date.length > 0) {
@@ -18,7 +21,7 @@ export const onMarkupCards = function (films, container, rating) {
         obje.vote_average = film.vote_average;
       }
       let genres = film.genre_ids.map(id => {
-        let genresArray = JSON.parse(savedGenresId).find(obj => obj.id === id);
+        let genresArray = localStorageAPI.getGeneresLS().genres.find(obj => obj.id === id);
 
         return genresArray.name;
       });
