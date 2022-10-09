@@ -8,7 +8,7 @@ export const onMarkupCards = function (films, container, rating) {
     .map(film => {
       const obje = {};
       obje.id = film.id;
-      if (film.release_date.length === null || film.release_date.length > 0) {
+      if (film.release_date.length > 0) {
         obje.release_date = film.release_date.slice(0, 4);
       }
       if (film.poster_path === null || film.poster_path.length > 0) {
