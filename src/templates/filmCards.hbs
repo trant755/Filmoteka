@@ -4,9 +4,23 @@
     <div class='movie__description'>
       <p class='movie__title'>{{title}}</p>
       <p class='movie__info'>
-        {{genres}}
-        <span class='movie__year'>|{{release_date}}</span>
-        <span class='movie__raiting'>{{vote_average}}</span>
+        {{#if genres}}
+          {{genres}}
+        {{/if}}
+        {{!-- {{#if genres.length >=2}}
+          {{genres}}
+        {{else}}
+          {{genres[0]}},{{genres[1]}}, Other
+        {{/if}} --}}
+
+        {{#if release_date}}
+          <span class='movie__year'>| {{release_date}}</span>
+        {{/if}}
+
+        {{#if vote_average}}
+          <span class='movie__raiting'>{{vote_average}}</span>
+        {{/if}}
+
       </p>
     </div>
   </a>
