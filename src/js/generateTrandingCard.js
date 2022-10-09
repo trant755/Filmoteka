@@ -41,12 +41,6 @@ function renderNewPageOfTrendingFilms() {
   }
 }
 
-// function renderNewPageOfSearchfilms() {
-//   clearGallery()
-
-//   const
-// }
-
 function clearGallery() {
   refs.trandingContainer.innerHTML = '';
 }
@@ -60,7 +54,7 @@ function searchFilm(ev) {
   API.query = ev.currentTarget.elements.searchQuery.value;
 
   if (API.query === '') return;
-
+  API.resetMoviesPage();
   fetchSearchFilms();
 }
 

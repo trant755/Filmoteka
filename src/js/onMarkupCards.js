@@ -8,10 +8,10 @@ export const onMarkupCards = function (films, container, rating) {
     .map(film => {
       const obje = {};
       obje.id = film.id;
-      if (film.release_date.length > 0) {
+      if (film.release_date.length === null || film.release_date.length > 0) {
         obje.release_date = film.release_date.slice(0, 4);
       }
-      if (film.poster_path.length > 0) {
+      if (film.poster_path === null || film.poster_path.length > 0) {
         obje.poster_path = '//image.tmdb.org/t/p/w400' + film.poster_path;
       }
       obje.title = film.title;
@@ -19,6 +19,8 @@ export const onMarkupCards = function (films, container, rating) {
         obje.vote_average = film.vote_average;
       }
       let genres = film.genre_ids.map(id => {
+        console.log(film.genre_ids);
+        if (film.genre_ids.length === 0) return;
         let genresArray = localStorageAPI
           .getGeneresLS()
           .genres.find(obj => obj.id === id);
