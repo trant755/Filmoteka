@@ -1,12 +1,7 @@
-import MovieApiService from './fetchModule';
 import Pagination from 'tui-pagination';
-import onMarkupCards from './onMarkupCards';
-import generateTrendingFilms from './generateTrandingCard';
 import 'tui-pagination/dist/tui-pagination.css';
 
 const paginationContainer = document.querySelector('.tui-pagination');
-
-const movieApiService = new MovieApiService();
 
 const options = {
     totalItems: 100,
@@ -37,11 +32,4 @@ const options = {
   
 const pagination = new Pagination(paginationContainer, options);
 
-async function initialPage() {
-    const { data } = await movieApiService.fetchTrending();
-    
-    pagination.setTotalItems(data.totalHits);
-    
-    generateTrendingFilms;
-}
-
+export { paginationContainer, pagination };

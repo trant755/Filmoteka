@@ -1,5 +1,6 @@
 import MovieApiService from './fetchModule';
 import { onMarkupCards } from './onMarkupCards';
+// import  { paginationContainer, pagination } from './pagination';
 
 let test2 = [
   { id: 28, name: 'Action' },
