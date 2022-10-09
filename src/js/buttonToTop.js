@@ -1,4 +1,6 @@
 const toTopBtn = document.querySelector('.button-to-top');
+const svgIcon = document.querySelector('.to-top-icon');
+
 toTopBtn.addEventListener('click', onButtonClick);
 
 function onButtonClick() {
@@ -14,9 +16,10 @@ function scrollFunction() {
     document.body.scrollTop > 700 ||
     document.documentElement.scrollTop > 700
   ) {
-    toTopBtn.style.display = 'block';
-    toTopBtn.style.opacity = 1;
+    toTopBtn.style.visibility = 'visible';
+    svgIcon.style.opacity = 1;
   } else {
-    toTopBtn.style.display = 'none';
+    toTopBtn.style.visibility = 'hiden';
+    svgIcon.style.opacity = 0;
   }
 }
