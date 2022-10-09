@@ -19,7 +19,6 @@ export const onMarkupCards = function (films, container, rating) {
         obje.vote_average = film.vote_average;
       }
       let genres = film.genre_ids.map(id => {
-        console.log(film.genre_ids);
         if (film.genre_ids.length === 0) return;
         let genresArray = localStorageAPI
           .getGeneresLS()
