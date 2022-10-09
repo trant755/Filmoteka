@@ -1,4 +1,4 @@
-import filmCardTpl from '../templates/filmCards.hbs';
+import filmCards from '../templates/filmCards.hbs';
 
 export const onMarkupCards = function (films, container) {
   const markup = films
@@ -10,6 +10,7 @@ export const onMarkupCards = function (films, container) {
       obje.id = film.id;
       obje.poster_path = '//image.tmdb.org/t/p/w400' + film.poster_path;
       obje.title = film.title;
+      // obje.vote_average = '';
       obje.genres = film.genre_ids
         .map(id => {
           let genresArray = JSON.parse(savedGenresId).find(
@@ -19,10 +20,8 @@ export const onMarkupCards = function (films, container) {
           return genresArray.name;
         })
         .join(', ');
-
-      return filmCardTpl(obje);
+      return filmCards(obje);
     })
     .join('');
-
   container.insertAdjacentHTML('beforeend', markup);
 };
