@@ -9,6 +9,8 @@ import { options } from './options-of-pagination';
 const API = new MovieApiService();
 const LS_API = new localStorageAPI();
 
+refs.searchInput.addEventListener('submit', searchFilm);
+
 const pagination = new Pagination(refs.paginationContainer, options);
 
 generateTrendingFilms();
@@ -27,15 +29,53 @@ refs.paginationContainer.addEventListener(
   renderNewPageOfTrendingFilms
 );
 
-async function renderNewPageOfTrendingFilms() {
+function renderNewPageOfTrendingFilms() {
   clearGallery();
 
   const newCurrentPage = pagination.getCurrentPage();
   API.addMoviesPage(newCurrentPage);
-
-  generateTrendingFilms();
+  if (API.query === '') {
+    generateTrendingFilms();
+  } else if (API.query !== '') {
+    fetchSearchFilms();
+  }
 }
+
+// function renderNewPageOfSearchfilms() {
+//   clearGallery()
+
+//   const
+// }
 
 function clearGallery() {
   refs.trandingContainer.innerHTML = '';
+}
+
+function searchFilm(ev) {
+  ev.preventDefault();
+
+  if (!refs.SearchErrMessage.classList.contains('is-hidden')) {
+    refs.SearchErrMessage.classList.add('is-hidden');
+  }
+  API.query = ev.currentTarget.elements.searchQuery.value;
+
+  if (API.query === '') return;
+
+  fetchSearchFilms();
+}
+
+async function fetchSearchFilms() {
+  const data = await API.fetchMovies();
+
+  if (data.results.length === 0) {
+    refs.SearchErrMessage.classList.remove('is-hidden');
+    return;
+  }
+
+  pagination.reset();
+
+  pagination.setTotalItems(data.total_results);
+  clearGallery();
+  API.resetMoviesPage();
+  onMarkupCards(data.results, refs.trandingContainer);
 }
