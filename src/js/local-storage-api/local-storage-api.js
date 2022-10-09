@@ -3,15 +3,16 @@ const TRENDING_KEY = 'savedTrendingCurentPage';
 const WATCHED_KEY = 'savedWatched';
 const QUEUE_KEY = 'savedQueue';
 
-class localStorageAPI {
+export default class localStorageAPI {
   constructor() {}
 
   // ======= GENERS =====
-  saveGenersLS(json) {
+  saveGenersLS(data) {
     let genersJSON = localStorage.getItem(GENERS_KEY);
 
     if (!genersJSON) {
-      localStorage.setItem(GENERS_KEY, json);
+      let genres = JSON.stringify(data);
+      localStorage.setItem(GENERS_KEY, genres);
     }
   }
 
@@ -28,8 +29,9 @@ class localStorageAPI {
 
   // ======= TRENDING =======
 
-  saveTrendingCurentPage(json) {
-    localStorage.setItem(TRENDING_KEY, json);
+  saveTrendingCurentPage(data) {
+    let currentTrending = JSON.stringify(data);
+    localStorage.setItem(TRENDING_KEY, currentTrending);
   }
 
   getTrendingCurentPage() {
