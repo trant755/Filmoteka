@@ -11,10 +11,11 @@ window.onscroll = function () {
 
 function scrollFunction() {
   if (
-    document.body.scrollTop > 500 ||
-    document.documentElement.scrollTop > 500
+    document.body.scrollTop > 700 ||
+    document.documentElement.scrollTop > 700
   ) {
     toTopBtn.style.display = 'block';
+    toTopBtn.style.opacity = 1;
   } else {
     toTopBtn.style.display = 'none';
   }
