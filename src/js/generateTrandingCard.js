@@ -1,6 +1,9 @@
+import { refs } from './refs';
 import MovieApiService from './fetchModule';
 import { onMarkupCards } from './onMarkupCards';
-// import  { paginationContainer, pagination } from './pagination';
+import Pagination from 'tui-pagination';
+import 'tui-pagination/dist/tui-pagination.css';
+import { options } from './options-of-pagination';
 
 let test2 = [
   { id: 28, name: 'Action' },
@@ -28,11 +31,45 @@ const API = new MovieApiService();
 
 localStorage.setItem('savedGenresId', JSON.stringify(test2));
 
+const pagination = new Pagination(refs.paginationContainer, options);
+
+// PAGINATION WORK ON DEFAULT FETCH TRANDS FILMS ==============================
 generateTrendingFilms();
 
 function generateTrendingFilms() {
-  API.fetchTrending().then(({ results }) => {
-    const trandingContainer = document.querySelector('#movie-container');
-    onMarkupCards(results, trandingContainer);
+  API.fetchTrending().then(({ results, total_results }) => {
+    pagination.setTotalItems(total_results);
+    onMarkupCards(results, refs.trandingContainer);
   });
+}
+
+// PAGINATION WORK ON PAGE NUMBER CLICK ==============================
+refs.paginationContainer.addEventListener('click', renderNewPageOfTrendingFilms);
+
+async function renderNewPageOfTrendingFilms() {
+    if(API.needToFind === '') {
+      clearGallery();
+      // localStorage.clear();
+  
+      const newCurrentPage = pagination.getCurrentPage();
+      API.addMoviesPage(newCurrentPage);
+    
+      // localStorage.setItem("arrayOfImages", JSON.stringify(data));
+
+      generateTrendingFilms()
+    } else {
+      clearGallery();
+      // localStorage.clear();
+
+      const newCurrentPage = pagination.getCurrentPage();
+      API.addMoviesPage(newCurrentPage);
+
+      // localStorage.setItem("arrayOfImages", JSON.stringify(data));
+
+      generateTrendingFilms()
+    }
+}
+
+function clearGallery() {
+  refs.trandingContainer.innerHTML = '';
 }
