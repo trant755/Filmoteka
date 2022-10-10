@@ -5,6 +5,8 @@ import { onMarkupCards } from './onMarkupCards';
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 import { options } from './options-of-pagination';
+// import openModal from'./modalWindow';
+
 
 const API = new MovieApiService();
 const LS_API = new localStorageAPI();
@@ -21,6 +23,7 @@ function generateTrendingFilms() {
     API.fetchGenres().then(LS_API.saveGenersLS);
     onMarkupCards(results, refs.trandingContainer);
     LS_API.saveTrendingCurentPage(results);
+    ;
   });
 }
 
@@ -58,6 +61,8 @@ function searchFilm(ev) {
   pagination.reset();
   API.resetMoviesPage();
   fetchSearchFilms();
+  // console.log('openModal(): ', openModal());
+  // openModal();
 }
 
 async function fetchSearchFilms() {

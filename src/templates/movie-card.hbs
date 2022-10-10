@@ -1,41 +1,38 @@
-{{!-- <div class="modal-window"> --}}
-    {{!-- <div class="modal-window__close">
-        <svg viewBox="0 0 320 512" width="14" heigth="14">
-            <path
-                d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z" />
-        </svg>
-    </div> --}}
+    
     <div class="movie-card">
         <div class="movie-card__poster">
-            <img src="http://image.tmdb.org/t/p/w400/e0vrbTmTf2ZcW5CIS9qJ8FDbsU9.jpg" alt="">
+            <img src="//image.tmdb.org/t/p/w400{{poster_path}}" alt="{{title}}">
         </div>
         <div class="movie-card__info">
-            <h2 class="movie-card__title">A FISTFUL OF LEAD</h2>
+            <h2 class="movie-card__title">{{title}} </h2>
+
             <div class="movie-card__rait">
-                <p class="movie-card__votes">
-                    Vote / Votes<span>{{vote}}</span>/<span>{{votes}}</span>
-                </p>
-                <p class="movie-card__popularity">
-                    Popularity<span>{{popular}}</span>
-                </p>
-                <p class="movie-card__origin-title">
-                    Original Title<span>{{origTitle}}</span>
-                </p>
-                <p class="movie-card__genres">Genre<span>{{genres}}</span></p>
+                <div class="movie-card__categories">
+                    <p class="movie-card__votes">Vote / Votes</p>
+                    <p class="movie-card__popularity">Popularity</p>
+                    <p class="movie-card__origin-title">Original Title</p>
+                    <p class="movie-card__genres">Genre</p>
+                </div>
+           
+                <div class="movie-card__raits">
+                    <p class="movie-card__votes-rait"><span>{{vote_average}}</span><span>/</span><span>{{vote_count
+                        }}</span></p>
+                    <p class="movie-card__popularity">{{popularity}}</p>
+                    <p class="movie-card__origin-title-rait">{{original_title}}</p>
+                    <p class="movie-card__genres">{{#if genres}}
+                    {{genres}}
+                    {{/if}}</p>
+                </div>
             </div>
+
             <article class="movie-card__descript">
                 <h3 class="movie-card__descript-title">About</h3>
-                <p class="movie-card__text">Four of the West’s most infamous outlaws assemble to steal a huge stash of gold from the most corrupt settlement of the
-                gold rush towns. But not all goes to plan one is killed and the other three escapes with bags of gold hide out in the
-                abandoned gold mine where they happen across another gang of three – who themselves were planning to hit the very same
-                bank! As tensions rise, things go from bad to worse as they realise the bags of gold are filled with lead... they’ve
-                been double crossed – but by who and how?</p>
+                <p class="movie-card__text">{{overview}}</p>
             </article>
             <div class="movie-card__controls">
-                <button class="movie-card__btn">add to Watched</button>
-                <button class="movie-card__btn">add to queue</button>
+                <button class="movie-card__btn movie-card__btn--watched">add to Watched</button>
+                <button class="movie-card__btn movie-card__btn--queue">add to queue</button>
             </div>
         </div>
     </div>
-{{!-- </div> --}}
 
