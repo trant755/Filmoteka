@@ -22,7 +22,7 @@ export const onMarkupCards = function (films, container, rating) {
         if (film.genre_ids?.length === 0) return;
         let genresArray = localStorageAPI
           .getGeneresLS()
-          .genres.find(obj => obj.id === id);
+          .genres?.find(obj => obj.id === id);
 
         return genresArray.name;
       });
