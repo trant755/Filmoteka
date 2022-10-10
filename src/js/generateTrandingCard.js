@@ -13,12 +13,18 @@ refs.searchInput.addEventListener('submit', searchFilm);
 
 const pagination = new Pagination(refs.paginationContainer, options);
 
-generateTrendingFilms();
+generateHomePage();
+
+function generateHomePage() {
+  if (!LS_API.getGeneresLS()) {
+    API.fetchGenres().then(LS_API.saveGenersLS);
+  }
+  generateTrendingFilms();
+}
 
 function generateTrendingFilms() {
   API.fetchTrending().then(({ results, total_results }) => {
     pagination.setTotalItems(total_results);
-    API.fetchGenres().then(LS_API.saveGenersLS);
     onMarkupCards(results, refs.trandingContainer);
     LS_API.saveTrendingCurentPage(results);
   });
