@@ -1,37 +1,75 @@
+import { refs } from './refs';
 import MovieApiService from './fetchModule';
+import localStorageAPI from './local-storage-api/local-storage-api';
 import { onMarkupCards } from './onMarkupCards';
-
-let test2 = [
-  { id: 28, name: 'Action' },
-  { id: 12, name: 'Adventure' },
-  { id: 16, name: 'Animation' },
-  { id: 35, name: 'Comedy' },
-  { id: 80, name: 'Crime' },
-  { id: 99, name: 'Documentary' },
-  { id: 18, name: 'Drama' },
-  { id: 10751, name: 'Family' },
-  { id: 14, name: 'Fantasy' },
-  { id: 36, name: 'History' },
-  { id: 27, name: 'Horror' },
-  { id: 10402, name: 'Music' },
-  { id: 9648, name: 'Mystery' },
-  { id: 10749, name: 'Romance' },
-  { id: 878, name: 'Science Fiction' },
-  { id: 10770, name: 'TV Movie' },
-  { id: 53, name: 'Thriller' },
-  { id: 10752, name: 'War' },
-  { id: 37, name: 'Western' },
-];
+import Pagination from 'tui-pagination';
+import 'tui-pagination/dist/tui-pagination.css';
+import { options } from './options-of-pagination';
 
 const API = new MovieApiService();
+const LS_API = new localStorageAPI();
 
-localStorage.setItem('savedGenresId', JSON.stringify(test2));
+refs.searchInput.addEventListener('submit', searchFilm);
+
+const pagination = new Pagination(refs.paginationContainer, options);
 
 generateTrendingFilms();
 
 function generateTrendingFilms() {
-  API.fetchTrending().then(({ results }) => {
-    const trandingContainer = document.querySelector('.film__list');
-    onMarkupCards(results, trandingContainer);
+  API.fetchTrending().then(({ results, total_results }) => {
+    pagination.setTotalItems(total_results);
+    API.fetchGenres().then(LS_API.saveGenersLS);
+    onMarkupCards(results, refs.trandingContainer);
+    LS_API.saveTrendingCurentPage(results);
   });
+}
+
+refs.paginationContainer.addEventListener(
+  'click',
+  renderNewPageOfTrendingFilms
+);
+
+function renderNewPageOfTrendingFilms() {
+  clearGallery();
+
+  const newCurrentPage = pagination.getCurrentPage();
+  API.addMoviesPage(newCurrentPage);
+  if (API.query === '') {
+    generateTrendingFilms();
+  } else if (API.query !== '') {
+    fetchSearchFilms();
+  }
+}
+
+function clearGallery() {
+  refs.trandingContainer.innerHTML = '';
+}
+
+function searchFilm(ev) {
+  ev.preventDefault();
+
+  if (!refs.SearchErrMessage.classList.contains('is-hidden')) {
+    refs.SearchErrMessage.classList.add('is-hidden');
+  }
+  API.query = ev.currentTarget.elements.searchQuery.value;
+
+  if (API.query === '') return;
+
+  pagination.reset();
+  API.resetMoviesPage();
+  fetchSearchFilms();
+}
+
+async function fetchSearchFilms() {
+  const data = await API.fetchMovies();
+
+  if (data.results.length === 0) {
+    refs.SearchErrMessage.classList.remove('is-hidden');
+    return;
+  }
+
+  pagination.setTotalItems(data.total_results);
+  clearGallery();
+  API.resetMoviesPage();
+  onMarkupCards(data.results, refs.trandingContainer);
 }
