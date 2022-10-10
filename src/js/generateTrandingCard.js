@@ -51,7 +51,7 @@ function clearGallery() {
   refs.trandingContainer.innerHTML = '';
 }
 
-function searchFilm(ev) {
+async function searchFilm(ev) {
   ev.preventDefault();
 
   if (!refs.SearchErrMessage.classList.contains('is-hidden')) {
@@ -61,9 +61,9 @@ function searchFilm(ev) {
 
   if (API.query === '') return;
 
-  pagination.reset();
   API.resetMoviesPage();
-  fetchSearchFilms();
+  await fetchSearchFilms();
+  pagination.reset();
 }
 
 async function fetchSearchFilms() {

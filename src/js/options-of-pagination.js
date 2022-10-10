@@ -1,7 +1,7 @@
 export const options = {
-    totalItems: 100,
-    itemsPerPage: 40,
-    visiblePages: 10,
+    totalItems: 20000,
+    itemsPerPage: 20,
+    visiblePages: 5,
     page: 1,
     centerAlign: true,
     firstItemClassName: 'tui-first-child',
