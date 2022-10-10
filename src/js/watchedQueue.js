@@ -5,9 +5,11 @@ watched.addEventListener('click', onClickWatched);
 queue.addEventListener('click', onClickQueue);
 
 function onClickWatched() {
-  console.log('press watched');
+  watched.classList.add('library--btn--active');
+  queue.classList.remove('library--btn--active');
 }
 
 function onClickQueue() {
-  console.log('press queue');
+  watched.classList.remove('library--btn--active');
+  queue.classList.add('library--btn--active');
 }
