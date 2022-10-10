@@ -5,4 +5,5 @@ export const refs = {
   SearchErrMessage: document.querySelector('.header-message'),
   watched: document.querySelector('.library--btn__watched'),
   queue: document.querySelector('.library--btn__queue'),
+  movieContentBlock: document.querySelector('.no-movie'),
 };
