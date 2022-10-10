@@ -11,7 +11,7 @@ function onClickWatched() {
   refs.watched.classList.add('library--btn--active');
   refs.queue.classList.remove('library--btn--active');
 
-  if (!LS_API.getFilmsFromWatched() && LS_API.getFilmsFromWatched.length > 0) {
+  if (LS_API.getFilmsFromWatched() && LS_API.getFilmsFromWatched.length > 0) {
     clearMoviesContainer();
     refs.movieContentBlock.styles.display = 'none';
   }
