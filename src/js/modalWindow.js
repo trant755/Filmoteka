@@ -34,6 +34,7 @@ function closeModal() {
         if (target.closest('.modal-window__close') || target.matches('.modal-window')) {
             refs.modalWindow.close();
             scrollLock();
+            escListener();
         }
     });
 }
@@ -64,12 +65,15 @@ function scrollLock() {
 
 function escListener() {
     document.addEventListener('keydown', function escScrollLock(event) {
-                           console.log('event.key: ', event.key);
+        console.log('event.key: ', event.key);
             if (event.key === 'Escape') {
                 console.log('event.key: ', event.key);
                 refs.body.style.overflow = "visible";
                 document.removeEventListener('keydown', escScrollLock);
-    }
+            }
+            if (!refs.modalWindow.hasAttribute('open')) {
+                document.removeEventListener('keydown', escScrollLock);
+            }
       });
 }
     openModal();

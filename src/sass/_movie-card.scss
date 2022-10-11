@@ -19,19 +19,11 @@
         padding-bottom: 40px;
     }
     &__poster{
-        // outline: 1px firebrick solid;
         width: 375px;
         height: 478px;
         border-radius:5px;
         overflow: hidden;
-        // align-content: start;
         object-fit: fill;
-        // & img {
-            // width: 100%;
-            // height: auto;
-            // height: 100%;
-            // width: auto;
-        // }
             @media screen and (max-width: 768px) {
             width: 264px;
             height: 373px;
@@ -41,6 +33,10 @@
             height: 357px;
             margin-bottom: 20px;
         }
+    }
+    &__no-image{
+        // display: flex;
+        width: 100%;
     }
     &__info{
         // border: 1px rgb(97, 189, 238) solid;
@@ -80,6 +76,9 @@
     &__categories{
         color: #8C8C8C;
         margin-right: 85px;
+        @media screen and (max-width: 768px) {
+            margin-right: 40px;
+        }
     }
     &__raits{
         color: #000000;
