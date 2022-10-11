@@ -57,7 +57,7 @@ export default class localStorageAPI {
       !watchedLs || watchedLs.length === 0 ? [] : JSON.parse(watchedLs);
     if (!data) return console.log('нима data');
 
-    watched.push(data);
+    watched.unshift(data);
     localStorage.setItem(WATCHED_KEY, JSON.stringify(watched));
   }
 
@@ -93,7 +93,7 @@ export default class localStorageAPI {
     let queue = !queueLs || queueLs.length === 0 ? [] : JSON.parse(queueLs);
     if (!data) return console.log('нима data');
 
-    queue.push(data);
+    queue.unshift(data);
     localStorage.setItem(QUEUE_KEY, JSON.stringify(queue));
   }
 
