@@ -6,7 +6,7 @@ import { refs } from './refs';
 
 export default function generateLibraryFilm(method, newPage) {
   // console.log(method);
-  // console.log(newPage);
+  console.log('asd', newPage);
   let RR = method();
   const watchF = refs.trandingContainer;
 
@@ -17,4 +17,5 @@ export default function generateLibraryFilm(method, newPage) {
   const resultEL = RR.slice(firstEl, lastEl);
 
   onMarkupCards(resultEL, watchF, true);
+  return resultEL;
 }

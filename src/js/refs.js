@@ -16,5 +16,5 @@ export const refs = {
   filmList: document.querySelector('#movie-container'),
   modalWindow: document.querySelector('.modal-window'),
   modalWindowWrap: document.querySelector('.modal-window__wrapper'),
-  body: document.querySelector('body')
+  body: document.querySelector('body'),
 };
