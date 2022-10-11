@@ -9,15 +9,16 @@ import 'tui-pagination/dist/tui-pagination.css';
 export const currentLibraryPageEL = document.querySelector(
   '.library-header--list__link--active'
 );
-// console.log(currentLibraryPageEL);
 
 export let currentPage = '';
 
 if (!refs.watched && !refs.queue) return;
 
-const paginationLib = new Pagination(refs.paginationLibContainer, options);
+export const paginationLib = new Pagination(
+  refs.paginationLibContainer,
+  options
+);
 
-// export let currentPaginationPage = paginationLib.getCurrentPage();
 export let currentPaginationPage = 1;
 
 console.log(currentPaginationPage);
@@ -72,11 +73,16 @@ function renderNewPageOfLibraryFilms() {
   currentPaginationPage = paginationLib.getCurrentPage();
   const newCurrentPage = paginationLib.getCurrentPage();
   // console.log(newCurrentPage);
-  if ((currentPage = 'watched')) {
+  console.log(currentPage);
+  if (currentPage === 'watched') {
     generateLibraryContainer(LS_API.getFilmsFromWatched, newCurrentPage);
-  } else if ((currentPage = 'queue')) {
+    paginationLib.setTotalItems(LS_API.getFilmsFromWatched().length);
+  } else if (currentPage === 'queue') {
     generateLibraryContainer(LS_API.getFilmsFromQueue, newCurrentPage);
+    paginationLib.setTotalItems(LS_API.getFilmsFromQueue().length);
   }
+  // paginationLib.reset();
+  paginationLib.movePageTo(paginationLib.getCurrentPage());
 }
 
 function clearMoviesContainer() {
