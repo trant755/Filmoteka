@@ -6,12 +6,14 @@ import Pagination from 'tui-pagination';
 import { options } from './pagination-lib-options';
 import 'tui-pagination/dist/tui-pagination.css';
 
-export const currentLibraryPageEL = document.querySelector('.library-header--list__link--active');
+export const currentLibraryPageEL = document.querySelector(
+  '.library-header--list__link--active'
+);
 // console.log(currentLibraryPageEL);
 
 export let currentPage = '';
 
-if(!refs.watched && !refs.queue) return;
+if (!refs.watched && !refs.queue) return;
 
 const paginationLib = new Pagination(refs.paginationLibContainer, options);
 
@@ -29,13 +31,13 @@ function onClickWatched() {
   refs.watched.classList.add('library--btn--active');
   refs.queue.classList.remove('library--btn--active');
 
-  // clearMoviesContainer();
+  clearMoviesContainer();
 
   if (LS_API.getFilmsFromWatched() && LS_API.getFilmsFromWatched().length > 0) {
-      clearMoviesContainer();
+    clearMoviesContainer();
 
-      paginationLib.setTotalItems(LS_API.getFilmsFromWatched().length);
-      paginationLib.reset();
+    paginationLib.setTotalItems(LS_API.getFilmsFromWatched().length);
+    paginationLib.reset();
     refs.movieContentBlock.classList.add('none');
     generateLibraryContainer(LS_API.getFilmsFromWatched, 1);
   } else {
@@ -48,7 +50,7 @@ function onClickQueue() {
   refs.watched.classList.remove('library--btn--active');
   refs.queue.classList.add('library--btn--active');
 
-  // clearMoviesContainer();
+  clearMoviesContainer();
 
   if (LS_API.getFilmsFromQueue() && LS_API.getFilmsFromQueue().length > 0) {
     clearMoviesContainer();
@@ -62,10 +64,7 @@ function onClickQueue() {
   }
 }
 
-refs.paginationContainer.addEventListener(
-  'click',
-  renderNewPageOfLibraryFilms
-);
+refs.paginationContainer.addEventListener('click', renderNewPageOfLibraryFilms);
 
 function renderNewPageOfLibraryFilms() {
   clearMoviesContainer();
@@ -73,9 +72,9 @@ function renderNewPageOfLibraryFilms() {
   currentPaginationPage = paginationLib.getCurrentPage();
   const newCurrentPage = paginationLib.getCurrentPage();
   // console.log(newCurrentPage);
-  if (currentPage = 'watched') {
+  if ((currentPage = 'watched')) {
     generateLibraryContainer(LS_API.getFilmsFromWatched, newCurrentPage);
-  } else if (currentPage = 'queue') {
+  } else if ((currentPage = 'queue')) {
     generateLibraryContainer(LS_API.getFilmsFromQueue, newCurrentPage);
   }
 }

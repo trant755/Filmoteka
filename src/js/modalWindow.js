@@ -1,5 +1,9 @@
 import modalFilmCard from '../templates/movie-card.hbs';
-import { currentLibraryPageEL, currentPage, currentPaginationPage} from './watchedQueue';
+import {
+  currentLibraryPageEL,
+  currentPage,
+  currentPaginationPage,
+} from './watchedQueue';
 import generateLibraryContainer from './libraryCard';
 import localStorageAPI from './local-storage-api/local-storage-api';
 import { refs } from './refs';
@@ -19,7 +23,7 @@ function openModal() {
     if (target.closest('.movie__link')) {
       refs.modalWindow.showModal();
       refs.body.style.overflow = 'hidden';
-    
+
       getMovieID(target);
     }
   });
@@ -38,27 +42,29 @@ function closeModal() {
 
     if (currentLibraryPageEL) {
       if (currentPage === 'queue') {
-        if (
-          API.getFilmsFromQueue() &&
-          API.getFilmsFromQueue().length > 0
-        ) {
+        if (API.getFilmsFromQueue().length > 0) {
           clearMoviesContainer();
-          refs.movieContentBlock.classList.add('none')
+          refs.movieContentBlock.classList.add('none');
           console.log(currentPaginationPage);
-          generateLibraryContainer(API.getFilmsFromQueue, currentPaginationPage);
+          generateLibraryContainer(
+            API.getFilmsFromQueue,
+            currentPaginationPage
+          );
         } else {
+          clearMoviesContainer();
           refs.movieContentBlock.classList.remove('none');
         }
       }
       if (currentPage === 'watched') {
-        if (
-          API.getFilmsFromWatched() &&
-          API.getFilmsFromWatched().length > 0
-        ) {
+        if (API.getFilmsFromWatched().length > 0) {
           clearMoviesContainer();
           refs.movieContentBlock.classList.add('none');
-          generateLibraryContainer(API.getFilmsFromWatched, currentPaginationPage);
+          generateLibraryContainer(
+            API.getFilmsFromWatched,
+            currentPaginationPage
+          );
         } else {
+          clearMoviesContainer();
           refs.movieContentBlock.classList.remove('none');
         }
       }
@@ -67,7 +73,7 @@ function closeModal() {
 }
 
 function getMovieID(element) {
-    let id = Number(element.closest('a[data-modal]').getAttribute('data-id'));
+  let id = Number(element.closest('a[data-modal]').getAttribute('data-id'));
   getMovieById(id);
 }
 
@@ -76,18 +82,18 @@ function getMovieID(element) {
 // }
 
 function getMovieById(id) {
-    let film = null;
-    
-    if (!currentLibraryPageEL) {
-        film = API.getTrendingFilmById(id);
-      } else {
-        if(currentPage === 'watched') {
-            film = API.getFilmFromWathedById(id);
-        }
-        if(currentPage === 'queue') {
-            film = API.getFilmFromQueueById(id);
-        }
+  let film = null;
+
+  if (!currentLibraryPageEL) {
+    film = API.getTrendingFilmById(id);
+  } else {
+    if (currentPage === 'watched') {
+      film = API.getFilmFromWathedById(id);
     }
+    if (currentPage === 'queue') {
+      film = API.getFilmFromQueueById(id);
+    }
+  }
 
   let genres = film.genre_ids.map(id => {
     if (film.genre_ids?.length === 0) return;
