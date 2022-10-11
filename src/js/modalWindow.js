@@ -3,10 +3,12 @@ import {
   currentLibraryPageEL,
   currentPage,
   currentPaginationPage,
+  paginationLib,
 } from './watchedQueue';
 import generateLibraryContainer from './libraryCard';
 import localStorageAPI from './local-storage-api/local-storage-api';
 import { refs } from './refs';
+import { options } from './options-of-pagination';
 // import Pagination from 'tui-pagination';
 // import { options } from './options-of-pagination';
 
@@ -28,7 +30,6 @@ function openModal() {
     }
   });
 }
-
 function closeModal() {
   refs.modalWindow.addEventListener('click', event => {
     let target = event.target;
@@ -45,10 +46,9 @@ function closeModal() {
         if (API.getFilmsFromQueue().length > 0) {
           clearMoviesContainer();
           refs.movieContentBlock.classList.add('none');
-          console.log(currentPaginationPage);
           generateLibraryContainer(
             API.getFilmsFromQueue,
-            currentPaginationPage
+            paginationLib.getCurrentPage()
           );
         } else {
           clearMoviesContainer();
@@ -61,7 +61,7 @@ function closeModal() {
           refs.movieContentBlock.classList.add('none');
           generateLibraryContainer(
             API.getFilmsFromWatched,
-            currentPaginationPage
+            paginationLib.getCurrentPage()
           );
         } else {
           clearMoviesContainer();
@@ -145,6 +145,16 @@ function onBtnClickFunction(addToWatched, addToQueue, id, data) {
   function onWatchedClick() {
     if (watchedStorageInclude) {
       API.removeFilmFromWatched(id);
+      if (
+        generateLibraryContainer(API.getFilmsFromWatched, currentPaginationPage)
+          .length === 0
+      ) {
+        paginationLib.setTotalItems(API.getFilmsFromWatched().length);
+
+        paginationLib.reset();
+
+        paginationLib.movePageTo(currentPaginationPage - 1);
+      }
     }
 
     if (!watchedStorageInclude) {
@@ -160,6 +170,16 @@ function onBtnClickFunction(addToWatched, addToQueue, id, data) {
   function onQueueClick() {
     if (queueStorageInclude) {
       API.removeFilmFromQueue(id);
+      if (
+        generateLibraryContainer(API.getFilmsFromQueue, currentPaginationPage)
+          .length === 0
+      ) {
+        paginationLib.setTotalItems(API.getFilmsFromQueue().length);
+
+        paginationLib.reset();
+
+        paginationLib.movePageTo(currentPaginationPage - 1);
+      }
     }
     if (!queueStorageInclude) {
       API.saveFilmToQueue(data);
