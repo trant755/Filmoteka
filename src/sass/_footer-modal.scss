@@ -25,7 +25,8 @@
 }
 
 .modal__header {
-    display: flex;
+    width: auto;
+    
 }
 
 .modal__close {
@@ -39,6 +40,7 @@
     // box-sizing: border-box;
     right: 10px;
     top: 10px;
+    margin-right: 10px;
 
     &:hover,
     &:focus {
@@ -60,8 +62,17 @@ flex-wrap: wrap;
 }
 
 .team__card {
-    padding-right: 20px;
-    padding-bottom: 15px;
+    margin-right: 20px;
+    margin-bottom: 15px;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+            0px 2px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 0px 0px 4px 4px;
+}
+
+.team__info {
+    padding-top: 7px;
+    padding-left: 10px;
+
 }
 
 .modal__h1 {
