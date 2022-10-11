@@ -5,6 +5,7 @@ import { onMarkupCards } from './onMarkupCards';
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 import { options } from './options-of-pagination';
+// import openModal from'./modalWindow';
 
 const API = new MovieApiService();
 const LS_API = new localStorageAPI();
@@ -62,6 +63,7 @@ async function searchFilm(ev) {
   if (API.query === '') return;
 
   API.resetMoviesPage();
+
   await fetchSearchFilms();
   pagination.reset();
 }

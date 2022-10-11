@@ -42,6 +42,7 @@ export default class localStorageAPI {
   getTrendingFilmById(id) {
     let trendingCurentPage = this.getTrendingCurentPage();
     return trendingCurentPage?.find(film => film.id === id);
+    console.log('film: ', film);
   }
 
   removeTrendingCurentPage() {
