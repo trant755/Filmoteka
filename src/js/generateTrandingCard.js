@@ -40,6 +40,7 @@ function renderNewPageOfTrendingFilms() {
   clearGallery();
 
   const newCurrentPage = pagination.getCurrentPage();
+  console.log(newCurrentPage);
   API.addMoviesPage(newCurrentPage);
   if (API.query === '') {
     generateTrendingFilms();
@@ -80,4 +81,6 @@ async function fetchSearchFilms() {
   clearGallery();
   API.resetMoviesPage();
   onMarkupCards(data.results, refs.trandingContainer);
+  LS_API.saveTrendingCurentPage(data.results);
+  console.log(data.results);
 }
