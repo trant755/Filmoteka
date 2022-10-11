@@ -13,19 +13,17 @@ const refs = {
 const API = new localStorageAPI();
 
 
-
  function openModal() {
   
-    
      refs.filmList.addEventListener('click', (event) => {
          event.preventDefault();
         let target = event.target;
         if (target.closest('.movie__link')) {
             refs.modalWindow.showModal();
-            refs.body.style.overflow = "hidden";
             getMovieID(target);
-
-        }
+            scrollLock();   
+            escListener();
+         }
      });
     }
 
@@ -34,7 +32,7 @@ function closeModal() {
         let target = event.target;
         if (target.closest('.modal-window__close') || target.matches('.modal-window')) {
             refs.modalWindow.close();
-            refs.body.style.overflow = "visible";
+            scrollLock();
         }
     });
 }
@@ -53,12 +51,32 @@ function getMovieById(id) {
           
         return genresArray.name;
     });
-    film.genres = genres.length > 3 ? genres.slice(0, 3).join(', ') : genres.join(', ');
+    film.genres = genres.length > 3 ? genres.slice(0,( genres.length - 1)  ).join(', ') : genres.join(', ');
+    console.log('film.genres: ', film.genres);
     let markup = modalFilmCard(film);
     refs.modalWindowWrap.innerHTML = markup;
 }
 
-openModal();
-closeModal();
+function scrollLock() {
+    refs.modalWindow.hasAttribute('open') ?  refs.body.style.overflow = "hidden" : refs.body.style.overflow = "visible";
+}
+
+function escListener() {
+    document.addEventListener('keydown', function escScrollLock(event) {
+                           console.log('event.key: ', event.key);
+            if (event.key === 'Escape') {
+                console.log('event.key: ', event.key);
+                refs.body.style.overflow = "visible";
+                document.removeEventListener('keydown', escScrollLock);
+    }
+      });
+}
+// function escScrollLock(event) {
+
+            
+// }
+
+    openModal();
+    closeModal();
 
 
