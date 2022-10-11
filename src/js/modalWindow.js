@@ -7,7 +7,8 @@ const refs = {
     filmList: document.querySelector('#movie-container'),
     modalWindow: document.querySelector('.modal-window'),
     modalWindowWrap: document.querySelector('.modal-window__wrapper'),
-    body: document.querySelector('body')
+    body: document.querySelector('body'),
+    controls: document.querySelector('.movie-card__controls')
 }
 
 const API = new localStorageAPI();
@@ -71,11 +72,6 @@ function escListener() {
     }
       });
 }
-// function escScrollLock(event) {
-
-            
-// }
-
     openModal();
     closeModal();
 
