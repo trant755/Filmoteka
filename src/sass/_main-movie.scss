@@ -38,7 +38,11 @@
   color: #ff6b08;
 }
 
-.movie__raiting {
+.movie__year {
+  margin-right: 8px;
+}
+
+.movie__rating {
   font-size: 12px;
   line-height: 14px;
   padding: 1px 6px;
@@ -135,7 +139,16 @@
     margin-top: 12px;
   }
 
-  .movie__raiting {
+  .movie__info {
+    display: flex;
+    align-items: center;
+  }
+
+  .movie__breacker {
+    margin: 0 6px 0 6px;
+  }
+
+  .movie__rating {
     padding: 3px 8px;
   }
 }
