@@ -3,6 +3,10 @@
   margin-bottom: 40px;
 }
 
+.movie__wrap {
+  height: 200px;
+}
+
 .movie__item {
   max-width: 280px;
 }
@@ -111,6 +115,10 @@
 }
 
 @media (min-width: 1280px) {
+  .movie__wrap {
+    height: 170px;
+  }
+
   .movie__list {
     display: flex;
     flex-wrap: wrap;
