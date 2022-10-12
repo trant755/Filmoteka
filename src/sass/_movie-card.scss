@@ -28,13 +28,13 @@
         height: 478px;
         border-radius:5px;
         overflow: hidden;
-                    object-fit: cover;
-            object-position: 50% 50%;
         & img{
+            object-fit: cover;
+            object-position: 50% 50%;
 
             display: block;
             width: 100%;
-            height: auto;
+            height: 100%;
 
         }
         @media screen and (max-width: 850px) {
