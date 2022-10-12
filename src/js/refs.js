@@ -17,4 +17,5 @@ export const refs = {
   modalWindow: document.querySelector('.modal-window'),
   modalWindowWrap: document.querySelector('.modal-window__wrapper'),
   body: document.querySelector('body'),
+  controls: document.querySelector('.movie-card__controls'),
 };

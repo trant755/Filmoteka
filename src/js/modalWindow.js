@@ -7,13 +7,10 @@ import {
 } from './watchedQueue';
 import generateLibraryContainer from './libraryCard';
 import localStorageAPI from './local-storage-api/local-storage-api';
+
 import { refs } from './refs';
-import { options } from './options-of-pagination';
-// import Pagination from 'tui-pagination';
-// import { options } from './options-of-pagination';
 
 const API = new localStorageAPI();
-// const pagination = new Pagination(refs.paginationContainer, options);
 
 export let watchedStorageInclude = false;
 export let queueStorageInclude = false;
@@ -24,9 +21,10 @@ function openModal() {
     let target = event.target;
     if (target.closest('.movie__link')) {
       refs.modalWindow.showModal();
-      refs.body.style.overflow = 'hidden';
 
       getMovieID(target);
+      scrollLock();
+      escListener();
     }
   });
 }
@@ -38,7 +36,8 @@ function closeModal() {
       target.matches('.modal-window')
     ) {
       refs.modalWindow.close();
-      refs.body.style.overflow = 'visible';
+      scrollLock();
+      escListener();
     }
 
     if (currentLibraryPageEL) {
@@ -103,11 +102,32 @@ function getMovieById(id) {
   });
 
   film.genres =
-    genres.length > 3 ? genres.slice(0, 3).join(', ') : genres.join(', ');
-
+    genres.length > 3
+      ? genres.slice(0, genres.length - 1).join(', ')
+      : genres.join(', ');
+  console.log('film.genres: ', film.genres);
   let markup = modalFilmCard(film);
-
   refs.modalWindowWrap.innerHTML = markup;
+
+  function scrollLock() {
+    refs.modalWindow.hasAttribute('open')
+      ? (refs.body.style.overflow = 'hidden')
+      : (refs.body.style.overflow = 'visible');
+  }
+
+  function escListener() {
+    document.addEventListener('keydown', function escScrollLock(event) {
+      console.log('event.key: ', event.key);
+      if (event.key === 'Escape') {
+        console.log('event.key: ', event.key);
+        refs.body.style.overflow = 'visible';
+        document.removeEventListener('keydown', escScrollLock);
+      }
+      if (!refs.modalWindow.hasAttribute('open')) {
+        document.removeEventListener('keydown', escScrollLock);
+      }
+    });
+  }
 
   const addToWatched = document.querySelector('#btn-add-to-watched');
   const addToQueue = document.querySelector('#btn-add-to-queue');
