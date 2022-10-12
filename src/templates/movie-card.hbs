@@ -2,9 +2,9 @@
     <div class="movie-card">
         <div class="movie-card__poster">
             {{#if poster_path}}
-            <img src="//image.tmdb.org/t/p/w400{{poster_path}}" alt="{{title}}">
+            <img class="movie-card__poster-img" src="//image.tmdb.org/t/p/w400{{poster_path}}" alt="{{title}}">
             {{else}}
-            <img class="movie-card__no-image movie-card__poster-img" src="https://www.ncenet.com/wp-content/uploads/2020/04/no-image-png-2.png">      
+            <img class="movie-card__no-image " src="https://www.ncenet.com/wp-content/uploads/2020/04/no-image-png-2.png">      
             {{/if}}
 
         </div>
