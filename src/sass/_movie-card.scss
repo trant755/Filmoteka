@@ -100,6 +100,9 @@
         // outline: 1px teal solid;
         color: #8C8C8C;
         margin-right: 85px;
+        & p{
+            white-space: nowrap;
+        }
         @media screen and (max-width: 850px) {
             margin-right: 40px;
         }
@@ -127,6 +130,12 @@
     }
     &__origin-title-rait{
         text-transform: uppercase;
+        @media screen and (max-width: 650px) {
+            text-overflow: ellipsis;
+            // display: block;
+            // white-space: nowrap;
+            // max-width: 120px;
+         }
     }
     &__descript{
         color: #000000;
@@ -145,6 +154,7 @@
         font-size: 12px;
         line-height: 16px;
         margin: 0 0 8px;
+        overflow: hidden;
     }
     &__text {
         text-justify: auto;
@@ -175,21 +185,25 @@
         border-radius: 5px;
         padding: 14px 0;
         width: 136px;
-        &--watched{
-            background-color:#FF6B01;
-            color:#ffffff;
-            &:hover{
-                border: 1px solid #000000;
-            }
-        }
-        &--queue{
-            background: inherit;
-            border: 1px solid #000000;
-            color:#000000;
-             &:hover{
+        background: inherit;
+        border: 1px solid #000000;
+        color:#000000;
+        &:hover{
             border: 1px solid #FF6B01;
         }
-        }
+        // &--watched{
+        //     background-color:#FF6B01;
+        //     color:#ffffff;
+        //     &:hover{
+        //         border: 1px solid #000000;
+        //     }
+        // }
+        // &--queue{
+        //     background: inherit;
+        //     border: 1px solid #000000;
+        //     color:#000000;
+         
+        // }
        
         
         @media screen and (max-width: 850px) {
