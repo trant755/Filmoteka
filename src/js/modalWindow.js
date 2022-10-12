@@ -15,30 +15,30 @@ const API = new localStorageAPI();
 export let watchedStorageInclude = false;
 export let queueStorageInclude = false;
 
-function openModal() {
+ function openModal() {
   refs.filmList.addEventListener('click', event => {
-    event.preventDefault();
-    let target = event.target;
-    if (target.closest('.movie__link')) {
-      refs.modalWindow.showModal();
+         event.preventDefault();
+        let target = event.target;
+        if (target.closest('.movie__link')) {
+            refs.modalWindow.showModal();
 
-      getMovieID(target);
-      scrollLock();
-      escListener();
+            getMovieID(target);
+            scrollLock();   
+            escListener();
+         }
+     });
     }
-  });
-}
 function closeModal() {
   refs.modalWindow.addEventListener('click', event => {
-    let target = event.target;
+        let target = event.target;
     if (
       target.closest('.modal-window__close') ||
       target.matches('.modal-window')
     ) {
-      refs.modalWindow.close();
-      scrollLock();
-      escListener();
-    }
+            refs.modalWindow.close();
+            scrollLock();
+            escListener();
+        }
 
     if (currentLibraryPageEL) {
       if (currentPage === 'queue') {
@@ -68,46 +68,8 @@ function closeModal() {
         }
       }
     }
-  });
+    });
 }
-
-function getMovieID(element) {
-  let id = Number(element.closest('a[data-modal]').getAttribute('data-id'));
-  getMovieById(id);
-}
-
-// function getMovieIdLib() {
-
-// }
-
-function getMovieById(id) {
-  let film = null;
-
-  if (!currentLibraryPageEL) {
-    film = API.getTrendingFilmById(id);
-  } else {
-    if (currentPage === 'watched') {
-      film = API.getFilmFromWathedById(id);
-    }
-    if (currentPage === 'queue') {
-      film = API.getFilmFromQueueById(id);
-    }
-  }
-
-  let genres = film.genre_ids.map(id => {
-    if (film.genre_ids?.length === 0) return;
-    let genresArray = API.getGeneresLS().genres?.find(obj => obj.id === id);
-
-    return genresArray.name;
-  });
-
-  film.genres =
-    genres.length > 3
-      ? genres.slice(0, genres.length - 1).join(', ')
-      : genres.join(', ');
-  console.log('film.genres: ', film.genres);
-  let markup = modalFilmCard(film);
-  refs.modalWindowWrap.innerHTML = markup;
 
   function scrollLock() {
     refs.modalWindow.hasAttribute('open')
@@ -129,6 +91,45 @@ function getMovieById(id) {
     });
   }
 
+
+function getMovieID(element) {
+    let id = Number(element.closest('a[data-modal]').getAttribute('data-id'));
+    getMovieById(id);
+}
+
+// function getMovieIdLib() {
+
+// }
+
+function getMovieById(id) {
+  let film = null;
+
+  if (!currentLibraryPageEL) {
+    film = API.getTrendingFilmById(id);
+  } else {
+    if (currentPage === 'watched') {
+      film = API.getFilmFromWathedById(id);
+    }
+    if (currentPage === 'queue') {
+      film = API.getFilmFromQueueById(id);
+    }
+  }
+    
+     let genres = film.genre_ids.map(id => {
+         if (film.genre_ids?.length === 0) return;
+    let genresArray = API.getGeneresLS().genres?.find(obj => obj.id === id);
+          
+        return genresArray.name;
+    });
+    
+  film.genres =
+    genres.length > 3
+      ? genres.slice(0, genres.length - 1).join(', ')
+      : genres.join(', ');
+    console.log('film.genres: ', film.genres);
+    let markup = modalFilmCard(film);
+    refs.modalWindowWrap.innerHTML = markup;
+
   const addToWatched = document.querySelector('#btn-add-to-watched');
   const addToQueue = document.querySelector('#btn-add-to-queue');
 
@@ -149,14 +150,14 @@ function includeTest(id) {
     queueStorageInclude = true;
   } else {
     queueStorageInclude = false;
-  }
+}
 
   if (API.getFilmFromWathedById(id)) {
     watchedStorageInclude = true;
   } else {
     watchedStorageInclude = false;
-  }
-}
+            }
+            }
 
 function onBtnClickFunction(addToWatched, addToQueue, id, data) {
   addToWatched.addEventListener('click', onWatchedClick);
@@ -179,7 +180,7 @@ function onBtnClickFunction(addToWatched, addToQueue, id, data) {
 
     if (!watchedStorageInclude) {
       API.saveFilmToWathched(data);
-    }
+}
 
     watchedStorageInclude = watchedStorageInclude ? false : true;
     addToWatched.textContent = watchedStorageInclude
