@@ -1,21 +1,21 @@
-import localStorageAPI from './local-storage-api/local-storage-api';
+// import localStorageAPI from './local-storage-api/local-storage-api';
 import { onMarkupCards } from './onMarkupCards';
 import { refs } from './refs';
 
-const LS_API = new localStorageAPI();
+// const LS_API = new localStorageAPI();
 
-generateLibraryFilm(LS_API.getFilmsFromWatched);
-generateLibraryFilm(LS_API.getFilmsFromQueue);
-
-function generateLibraryFilm(method) {
+export default function generateLibraryFilm(method, newPage) {
+  // console.log(method);
+  console.log('asd', newPage);
   let RR = method();
   const watchF = refs.trandingContainer;
 
-  let page = 1;
-  let ElParePage = 20;
-  let lastEl = ElParePage * page;
-  let firstEl = lastEl - ElParePage;
+  let page = newPage;
+  let ElPerPage = 2;
+  let lastEl = ElPerPage * page;
+  let firstEl = lastEl - ElPerPage;
   const resultEL = RR.slice(firstEl, lastEl);
 
   onMarkupCards(resultEL, watchF, true);
+  return resultEL;
 }

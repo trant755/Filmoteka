@@ -1,172 +1,213 @@
-.movie-card{
-    padding: 40px 12px;
-    display: flex;
-    justify-content: space-between;
+.movie-card {
+  padding: 40px 12px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  @media screen and (max-width: 768px) {
+    // padding: 40px 36px;
+    padding-left: 36px;
+    padding-right: 72px;
+  }
+  @media screen and (max-width: 480px) {
+    width: 280px;
+    height: auto;
+    flex-direction: column;
+    padding-top: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 40px;
+  }
+  &__poster {
+    // outline: 1px firebrick solid;
+    width: 375px;
+    height: 478px;
+    border-radius: 5px;
+    overflow: hidden;
+    // align-content: start;
+    object-fit: fill;
+    // & img {
+    // width: 100%;
+    // height: auto;
+    // height: 100%;
+    // width: auto;
+    // }
+    @media screen and (max-width: 768px) {
+      width: 264px;
+      height: 373px;
+    }
+    @media screen and (max-width: 480px) {
+      width: 240px;
+      height: 357px;
+      margin-bottom: 20px;
+    }
+  }
+  &__poster-img {
+    object-fit: cover;
     width: 100%;
     height: 100%;
-        @media screen and (max-width: 768px) {
-            // padding: 40px 36px;
-            padding-left: 36px;
-            padding-right: 72px;
-        } 
+  }
+  &__info {
+    // border: 1px rgb(97, 189, 238) solid;
+    width: 391px;
+    height: 160px;
+    @media screen and (max-width: 768px) {
+      width: 270px;
+    }
     @media screen and (max-width: 480px) {
-        width: 280px;
-        height: auto;
-        flex-direction: column;
-        padding-top: 50px;
-        padding-left: 20px;
-        padding-right: 20px;
-        padding-bottom: 40px;
+      width: 244px;
     }
-    &__poster{
-        width: 375px;
-        height: 478px;
-        border-radius:5px;
-        overflow: hidden;
-        object-fit: fill;
-            @media screen and (max-width: 768px) {
-            width: 264px;
-            height: 373px;
-        }
-        @media screen and (max-width: 480px) {
-            width: 240px;
-            height: 357px;
-            margin-bottom: 20px;
-        }
+  }
+  &__poster {
+    width: 375px;
+    height: 478px;
+    border-radius: 5px;
+    overflow: hidden;
+    object-fit: fill;
+    @media screen and (max-width: 768px) {
+      width: 264px;
+      height: 373px;
     }
-    &__no-image{
-        // display: flex;
-        width: 100%;
+    @media screen and (max-width: 480px) {
+      width: 240px;
+      height: 357px;
+      margin-bottom: 20px;
     }
-    &__info{
-        // border: 1px rgb(97, 189, 238) solid;
-        width: 391px;
-        height: 160px;
-        @media screen and (max-width: 768px) {
-            width: 270px;
-        }     
-           @media screen and (max-width: 480px) {
-            width: 244px;
-        }   
+  }
+  &__no-image {
+    // display: flex;
+    width: 100%;
+  }
+  &__info {
+    // border: 1px rgb(97, 189, 238) solid;
+    width: 391px;
+    height: 160px;
+    @media screen and (max-width: 768px) {
+      width: 270px;
     }
-    &__title{
-        font-weight: 500;
-        font-size: 30px;
-        line-height: 35px;    
-        color: #000000;
-        text-transform: uppercase;
-        margin:0 0 20px;
-        @media screen and (max-width: 768px) {
-            font-weight: 500;
-            font-size: 20px;
-            line-height: 23px;
-        } 
+    @media screen and (max-width: 480px) {
+      width: 244px;
+    }
+  }
+  &__title {
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 35px;
+    color: #000000;
+    text-transform: uppercase;
+    margin: 0 0 20px;
+    @media screen and (max-width: 768px) {
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 23px;
+    }
+  }
+
+  &__rait {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    margin-bottom: 20px;
+    display: flex;
+    & p:not(:last-child) {
+      margin: 0 0 10px;
+    }
+  }
+  &__categories {
+    color: #8c8c8c;
+    margin-right: 85px;
+  }
+  &__raits {
+    color: #000000;
+  }
+  &__votes-rait {
+    & span:not(:last-child) {
+      margin-right: 7.5px;
+    }
+    & span:first-child {
+      background-color: #ff6b01;
+      color: #ffffff;
+      border-radius: 5px;
+      padding: 1px 5px;
+    }
+    & span:last-child {
+      background-color: #f7f7f7;
+      color: #000000;
+      border-radius: 5px;
+      padding: 1px 5px;
+    }
+  }
+  &__origin-title-rait {
+    text-transform: uppercase;
+  }
+  &__descript {
+    color: #000000;
+    margin-bottom: 20px;
+  }
+  &__descript-title {
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    margin: 0 0 8px;
+  }
+  &__text {
+    text-justify: auto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 20px;
+  }
+  &__controls {
+    display: flex;
+    justify-content: space-between;
+    width: 288px;
+    @media screen and (max-width: 768px) {
+      width: 264px;
+    }
+    @media screen and (max-width: 480px) {
+      width: 240px;
+    }
+  }
+  &__btn {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    align-items: center;
+    text-align: center;
+    text-transform: uppercase;
+    border-radius: 5px;
+    padding: 14px 0;
+    width: 136px;
+    &--watched {
+      background-color: #ff6b01;
+      color: #ffffff;
+      &:hover {
+        border: 1px solid #000000;
+      }
+    }
+    &--queue {
+      background: inherit;
+      border: 1px solid #000000;
+      color: #000000;
+      &:hover {
+        border: 1px solid #ff6b01;
+      }
     }
 
-    &__rait{
-        font-weight: 500;
-        font-size: 12px;
-        line-height: 16px;
-        margin-bottom: 20px;
-        display: flex;
-        & p:not(:last-child){
-            margin: 0 0 10px;
-        }
+    @media screen and (max-width: 768px) {
+      width: 125px;
     }
-    &__categories{
-        color: #8C8C8C;
-        margin-right: 85px;
-        @media screen and (max-width: 768px) {
-            margin-right: 40px;
-        }
+    &__categories {
+      color: #8c8c8c;
+      margin-right: 85px;
+      @media screen and (max-width: 768px) {
+        margin-right: 40px;
+      }
+      @media screen and (max-width: 480px) {
+        width: 110px;
+      }
     }
-    &__raits{
-        color: #000000;
-    }
-    &__votes-rait{
-        & span:not(:last-child){
-            margin-right: 7.5px;
-        }
-        & span:first-child{
-            background-color: #FF6B01;
-            color:#ffffff;
-            border-radius: 5px;
-            padding:1px 5px;
-        }
-        & span:last-child{
-            background-color: #F7F7F7;
-            color:#000000;
-            border-radius: 5px;
-            padding:1px 5px;
-        }
-    }
-    &__origin-title-rait{
-        text-transform: uppercase;
-    }
-    &__descript{
-        color: #000000;
-        margin-bottom: 20px;
-    }
-    &__descript-title{
-        text-transform: uppercase;
-        font-weight: 500;
-        font-size: 12px;
-        line-height: 16px;
-        margin: 0 0 8px;
-    }
-    &__text {
-        text-justify: auto;
-        font-style: normal;
-        font-weight: 500;
-        font-size: 12px;
-        line-height: 20px;
-    }
-    &__controls {
-        display: flex;
-        justify-content: space-between;
-        width: 288px;
-        @media screen and (max-width: 768px) {
-            width: 264px;
-        } 
-        @media screen and (max-width: 480px) {
-            width: 240px;
-        }
-    }
-    &__btn{
-        font-style: normal;
-        font-weight: 500;
-        font-size: 12px;
-        line-height: 16px;    
-        align-items: center;
-        text-align: center;
-        text-transform: uppercase;
-        border-radius: 5px;
-        padding: 14px 0;
-        width: 136px;
-        &--watched{
-            background-color:#FF6B01;
-            color:#ffffff;
-            &:hover{
-                border: 1px solid #000000;
-            }
-        }
-        &--queue{
-            background: inherit;
-            border: 1px solid #000000;
-            color:#000000;
-             &:hover{
-            border: 1px solid #FF6B01;
-        }
-        }
-       
-        
-        @media screen and (max-width: 768px) {
-            width: 125px;
-        } 
-           @media screen and (max-width: 480px) {
-            width: 110px;
-        }
-       
-    }
-       
+  }
 }

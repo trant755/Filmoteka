@@ -4,8 +4,9 @@
             {{#if poster_path}}
             <img src="//image.tmdb.org/t/p/w400{{poster_path}}" alt="{{title}}">
             {{else}}
-            <img class="movie-card__no-image" src="https://www.ncenet.com/wp-content/uploads/2020/04/no-image-png-2.png">      
+            <img class="movie-card__no-image movie-card__poster-img" src="https://www.ncenet.com/wp-content/uploads/2020/04/no-image-png-2.png">      
             {{/if}}
+
         </div>
         <div class="movie-card__info">
             <h2 class="movie-card__title">{{title}} </h2>
@@ -38,8 +39,8 @@
                 {{/if}}
             </article>
             <div class="movie-card__controls">
-                <button class="movie-card__btn movie-card__btn--watched">add to Watched</button>
-                <button class="movie-card__btn movie-card__btn--queue">add to queue</button>
+                <button data-status='add' data-id={{id}} id="btn-add-to-watched" class="movie-card__btn movie-card__btn--watched">add to Watched</button>
+                <button data-status='add' data-id={{id}} id="btn-add-to-queue" class="movie-card__btn movie-card__btn--queue">add to Queue</button>
             </div>
         </div>
     </div>
