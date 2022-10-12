@@ -10,24 +10,30 @@
         <div class="movie-card__info">
             <h2 class="movie-card__title">{{title}} </h2>
 
-            <div class="movie-card__rait">
-                <div class="movie-card__categories">
-                    <p class="movie-card__votes">Vote / Votes</p>
-                    <p class="movie-card__popularity">Popularity</p>
-                    <p class="movie-card__origin-title">Original Title</p>
-                    <p class="movie-card__genres">Genre</p>
-                </div>
-           
-                <div class="movie-card__raits">
-                    <p class="movie-card__votes-rait"><span>{{vote_average}}</span><span>/</span><span>{{vote_count
-                        }}</span></p>
-                    <p class="movie-card__popularity">{{popularity}}</p>
-                    <p class="movie-card__origin-title-rait">{{original_title}}</p>
-                    <p class="movie-card__genres">{{#if genres}}
-                    {{genres}}
-                    {{/if}}</p>
-                </div>
-            </div>
+                <ul class="movie-card__categories">
+                    <li class="movie-card__categories-item">
+                        <p>Vote / Votes</p>
+                        <p class="movie-card__votes">
+                            <span>{{vote_average}}</span>
+                            <span>/</span>
+                            <span>{{vote_count}}</span>
+                        </p>
+                    </li>
+                    <li class="movie-card__categories-item">
+                        <p>Popularity</p>
+                        <p>{{popularity}}</p>
+                    </li>
+                    <li class="movie-card__categories-item">
+                        <p>Original Title</p>
+                        <p class="movie-card__origin-title">{{original_title}}</p>
+                    </li>
+                    <li class="movie-card__categories-item">
+                        <p>Genre</p>
+                        <p>{{#if genres}}
+                        {{genres}}
+                        {{/if}}</p>
+                    </li>
+                </ul>
 
             <article class="movie-card__descript">
                 <h3 class="movie-card__descript-title">About</h3>

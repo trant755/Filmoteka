@@ -5,7 +5,6 @@
     width: 100%;
     height: auto;
     @media screen and (max-width: 768px) {
-        // padding: 40px 36px;
         padding-left: 36px;
         padding-right: 72px;
     } 
@@ -14,14 +13,12 @@
     }
     @media screen and (max-width: 650px) {
         width: 280px;
-        // height: auto;
         flex-direction: column;
         padding-top: 50px;
         padding-left: 20px;
         padding-right: 20px;
         padding-bottom: 40px;
         border:none;
-        margin:auto 0 ;
     }
     @media screen and (max-width: 480px) {
 
@@ -58,7 +55,6 @@
         width: 100%;
     }
     &__info{
-        // border: 1px rgb(97, 189, 238) solid;
         width: 391px;
         height: auto;
         @media screen and (max-width: 850px) {
@@ -85,33 +81,26 @@
         } 
     }
 
-    &__rait{
-        // outline: 1px firebrick solid;
+    &__categories{
+        display: grid;
+        color: #8C8C8C;
         font-weight: 500;
         font-size: 12px;
         line-height: 16px;
         margin-bottom: 20px;
-        display: flex;
-        & p:not(:last-child){
+    }
+    &__categories-item{
+        display: grid;
+        grid-template-columns: 150px 1fr;
             margin: 0 0 10px;
+            & p:not(:first-child){
+                color:#000000;
+        }
+            @media screen and (max-width: 850px) {
+                grid-template-columns: 110px 1fr;
         }
     }
-    &__categories{
-        // outline: 1px teal solid;
-        color: #8C8C8C;
-        margin-right: 85px;
-        & p{
-            white-space: nowrap;
-        }
-        @media screen and (max-width: 850px) {
-            margin-right: 40px;
-        }
-    }
-    &__raits{
-        // outline: 1px midnightblue solid;
-        color: #000000;
-    }
-    &__votes-rait{
+    &__votes{
         & span:not(:last-child){
             margin-right: 7.5px;
         }
@@ -128,14 +117,8 @@
             padding:1px 5px;
         }
     }
-    &__origin-title-rait{
+    &__origin-title{
         text-transform: uppercase;
-        @media screen and (max-width: 650px) {
-            text-overflow: ellipsis;
-            // display: block;
-            // white-space: nowrap;
-            // max-width: 120px;
-         }
     }
     &__descript{
         color: #000000;
@@ -191,28 +174,11 @@
         &:hover{
             border: 1px solid #FF6B01;
         }
-        // &--watched{
-        //     background-color:#FF6B01;
-        //     color:#ffffff;
-        //     &:hover{
-        //         border: 1px solid #000000;
-        //     }
-        // }
-        // &--queue{
-        //     background: inherit;
-        //     border: 1px solid #000000;
-        //     color:#000000;
-         
-        // }
-       
-        
         @media screen and (max-width: 850px) {
             width: 125px;
         } 
            @media screen and (max-width: 650px) {
             width: 110px;
-        }
-       
-    }
-       
+        }  
+    }     
 }
