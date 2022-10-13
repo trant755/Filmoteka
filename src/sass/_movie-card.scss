@@ -214,7 +214,7 @@
             width: 240px;
         }
     }
-    &__btn{
+ &__btn{
         font-style: normal;
         font-weight: 500;
         font-size: 12px;
@@ -223,33 +223,21 @@
         text-align: center;
         text-transform: uppercase;
         border-radius: 5px;
-        padding: 14px 0;
         width: 136px;
-        &--watched{
-            background-color:#FF6B01;
-            color:#ffffff;
-            &:hover{
-                border: 1px solid #000000;
-            }
-        }
-        &--queue{
-            background: inherit;
-            border: 1px solid #000000;
-            color:#000000;
-             &:hover{
+        height: 44px;
+        background: inherit;
+        border: 1px solid #000000;
+        color:#000000;
+        &:hover{
             border: 1px solid #FF6B01;
         }
-        }
-       
-        
         @media screen and (max-width: 850px) {
             width: 125px;
         } 
            @media screen and (max-width: 650px) {
             width: 110px;
-        }
-       
-    }
+        }  
+    } 
 }
        
 

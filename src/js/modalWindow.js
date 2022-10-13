@@ -12,6 +12,9 @@ import { options } from './options-of-pagination';
 // import Pagination from 'tui-pagination';
 // import { options } from './options-of-pagination';
 
+console.log('refs.watched: ', refs.watched);
+console.log('refs.queue: ', refs.queue);
+
 const API = new localStorageAPI();
 // const pagination = new Pagination(refs.paginationContainer, options);
 
