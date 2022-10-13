@@ -1,10 +1,12 @@
 import localStorageApi from './local-storage-api/local-storage-api';
 import generateLibraryContainer from './libraryCard';
-const LS_API = new localStorageApi();
 import { refs } from './refs';
+import { closeModal } from './modalWindow';
 import Pagination from 'tui-pagination';
 import { options } from './pagination-lib-options';
 import 'tui-pagination/dist/tui-pagination.css';
+
+const LS_API = new localStorageApi();
 
 export const currentLibraryPageEL = document.querySelector(
   '.library-header--list__link--active'
@@ -13,6 +15,8 @@ export const currentLibraryPageEL = document.querySelector(
 export let currentPage = '';
 
 if (!refs.watched && !refs.queue) return;
+
+closeModal();
 
 export const paginationLib = new Pagination(
   refs.paginationLibContainer,
