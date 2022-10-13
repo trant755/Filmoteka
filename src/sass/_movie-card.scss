@@ -3,58 +3,65 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
-  height: 100%;
+  height: auto;
   @media screen and (max-width: 768px) {
-    // padding: 40px 36px;
     padding-left: 36px;
     padding-right: 72px;
   }
-  @media screen and (max-width: 480px) {
+  @media screen and (max-width: 690px) {
+    padding-right: 36px;
+  }
+  @media screen and (max-width: 650px) {
     width: 280px;
-    height: auto;
     flex-direction: column;
     padding-top: 50px;
     padding-left: 20px;
     padding-right: 20px;
     padding-bottom: 40px;
+    border: none;
+  }
+  @media screen and (max-width: 480px) {
   }
   &__poster {
-    // outline: 1px firebrick solid;
     width: 375px;
     height: 478px;
     border-radius: 5px;
     overflow: hidden;
-    // align-content: start;
-    object-fit: fill;
-    // & img {
-    // width: 100%;
-    // height: auto;
-    // height: 100%;
-    // width: auto;
-    // }
+    & img {
+      object-fit: cover;
+      object-position: 50% 50%;
+
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+    @media screen and (max-width: 850px) {
+      width: 320px;
+      height: 410px;
+    }
     @media screen and (max-width: 768px) {
       width: 264px;
       height: 373px;
     }
-    @media screen and (max-width: 480px) {
+    @media screen and (max-width: 650px) {
       width: 240px;
       height: 357px;
       margin-bottom: 20px;
     }
   }
-  &__poster-img {
-    object-fit: cover;
+  &__no-image {
     width: 100%;
-    height: 100%;
   }
   &__info {
-    // border: 1px rgb(97, 189, 238) solid;
     width: 391px;
-    height: 160px;
+    height: auto;
+    @media screen and (max-width: 850px) {
+      width: 340px;
+    }
     @media screen and (max-width: 768px) {
       width: 270px;
     }
-    @media screen and (max-width: 480px) {
+    @media screen and (max-width: 650px) {
       width: 244px;
     }
   }
@@ -72,24 +79,26 @@
     }
   }
 
-  &__rait {
+  &__categories {
+    display: grid;
+    color: #8c8c8c;
     font-weight: 500;
     font-size: 12px;
     line-height: 16px;
     margin-bottom: 20px;
-    display: flex;
-    & p:not(:last-child) {
-      margin: 0 0 10px;
+  }
+  &__categories-item {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    margin: 0 0 10px;
+    & p:not(:first-child) {
+      color: #000000;
+    }
+    @media screen and (max-width: 850px) {
+      grid-template-columns: 110px 1fr;
     }
   }
-  &__categories {
-    color: #8c8c8c;
-    margin-right: 85px;
-  }
-  &__raits {
-    color: #000000;
-  }
-  &__votes-rait {
+  &__votes {
     & span:not(:last-child) {
       margin-right: 7.5px;
     }
@@ -106,12 +115,19 @@
       padding: 1px 5px;
     }
   }
-  &__origin-title-rait {
+  &__origin-title {
     text-transform: uppercase;
   }
   &__descript {
     color: #000000;
     margin-bottom: 20px;
+    width: 390px;
+    @media screen and (max-width: 850px) {
+      width: 264px;
+    }
+    @media screen and (max-width: 650px) {
+      width: 240px;
+    }
   }
   &__descript-title {
     text-transform: uppercase;
@@ -119,6 +135,7 @@
     font-size: 12px;
     line-height: 16px;
     margin: 0 0 8px;
+    overflow: hidden;
   }
   &__text {
     text-justify: auto;
@@ -131,10 +148,10 @@
     display: flex;
     justify-content: space-between;
     width: 288px;
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 850px) {
       width: 264px;
     }
-    @media screen and (max-width: 480px) {
+    @media screen and (max-width: 650px) {
       width: 240px;
     }
   }
@@ -149,26 +166,23 @@
     border-radius: 5px;
     padding: 14px 0;
     width: 136px;
-    &--watched {
+    background: inherit;
+    border: 1px solid #000000;
+    color: #000000;
+
+    &--active {
+      border: 1px solid #ff6b01;
       background-color: #ff6b01;
-      color: #ffffff;
-      &:hover {
-        border: 1px solid #000000;
-      }
-    }
-    &--queue {
-      background: inherit;
-      border: 1px solid #000000;
-      color: #000000;
-      &:hover {
-        border: 1px solid #ff6b01;
-      }
+      color: white;
     }
 
-    @media screen and (max-width: 768px) {
+    &:hover {
+      border: 1px solid #ff6b01;
+    }
+    @media screen and (max-width: 850px) {
       width: 125px;
     }
-    @media screen and (max-width: 480px) {
+    @media screen and (max-width: 650px) {
       width: 110px;
     }
   }

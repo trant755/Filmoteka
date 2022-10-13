@@ -4,25 +4,28 @@ import { currentLibraryPageEL, currentPage } from './watchedQueue';
 import localStorageAPI from './local-storage-api/local-storage-api';
 import { refs } from './refs';
 
+console.log('refs.watched: ', refs.watched);
+console.log('refs.queue: ', refs.queue);
+
 const API = new localStorageAPI();
 
 export let watchedStorageInclude = false;
 export let queueStorageInclude = false;
 
-export function openModal() {
+function openModal() {
   refs.filmList.addEventListener('click', event => {
     event.preventDefault();
     let target = event.target;
     if (target.closest('.movie__link')) {
       refs.modalWindow.showModal();
-      refs.body.style.overflow = 'hidden';
-      console.log(1);
+
       getMovieID(target);
+      scrollLock();
+      escListener();
     }
   });
 }
-
-export const closeModal = function () {
+function closeModal() {
   refs.modalWindow.addEventListener('click', event => {
     let target = event.target;
     if (
@@ -30,11 +33,29 @@ export const closeModal = function () {
       target.matches('.modal-window')
     ) {
       refs.modalWindow.close();
-      refs.body.style.overflow = 'visible';
+      scrollLock();
+      escListener();
     }
-    console.log(1);
   });
-};
+}
+
+function scrollLock() {
+  refs.modalWindow.hasAttribute('open')
+    ? (refs.body.style.overflow = 'hidden')
+    : (refs.body.style.overflow = 'visible');
+}
+
+function escListener() {
+  document.addEventListener('keydown', function escScrollLock(event) {
+    if (event.key === 'Escape') {
+      refs.body.style.overflow = 'visible';
+      document.removeEventListener('keydown', escScrollLock);
+    }
+    if (!refs.modalWindow.hasAttribute('open')) {
+      document.removeEventListener('keydown', escScrollLock);
+    }
+  });
+}
 
 function getMovieID(element) {
   let id = Number(element.closest('a[data-modal]').getAttribute('data-id'));
@@ -63,10 +84,10 @@ function getMovieById(id) {
   });
 
   film.genres =
-    genres.length > 3 ? genres.slice(0, 3).join(', ') : genres.join(', ');
-
+    genres.length > 3
+      ? genres.slice(0, genres.length - 1).join(', ')
+      : genres.join(', ');
   let markup = modalFilmCard(film);
-
   refs.modalWindowWrap.innerHTML = markup;
 
   const addToWatched = document.querySelector('#btn-add-to-watched');
@@ -80,7 +101,16 @@ function getMovieById(id) {
   addToQueue.textContent = queueStorageInclude
     ? 'Remove from queue'
     : 'Add to queue';
-
+  if (watchedStorageInclude) {
+    addToWatched.classList.remove('movie-card__btn--active');
+  } else {
+    addToWatched.classList.add('movie-card__btn--active');
+  }
+  if (queueStorageInclude) {
+    addToQueue.classList.remove('movie-card__btn--active');
+  } else {
+    addToQueue.classList.add('movie-card__btn--active');
+  }
   onBtnClickFunction(addToWatched, addToQueue, id, film);
 }
 
@@ -115,6 +145,11 @@ function onBtnClickFunction(addToWatched, addToQueue, id, data) {
     addToWatched.textContent = watchedStorageInclude
       ? 'Remove from watched'
       : 'Add to watched';
+    if (watchedStorageInclude) {
+      addToWatched.classList.remove('movie-card__btn--active');
+    } else {
+      addToWatched.classList.add('movie-card__btn--active');
+    }
   }
 
   function onQueueClick() {
@@ -129,6 +164,11 @@ function onBtnClickFunction(addToWatched, addToQueue, id, data) {
     addToQueue.textContent = queueStorageInclude
       ? 'Remove from queue'
       : 'Add to queue';
+    if (queueStorageInclude) {
+      addToQueue.classList.remove('movie-card__btn--active');
+    } else {
+      addToQueue.classList.add('movie-card__btn--active');
+    }
   }
 }
 
