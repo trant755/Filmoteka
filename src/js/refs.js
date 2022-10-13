@@ -7,6 +7,7 @@ export const refs = {
   watched: document.querySelector('.library--btn__watched'),
   queue: document.querySelector('.library--btn__queue'),
   movieContentBlock: document.querySelector('.no-movie'),
+  loader: document.querySelector('.loader-container'),
 
   // For add-to-library.js
   // addToQueue: document.querySelector('#btn-add-to-queue'),

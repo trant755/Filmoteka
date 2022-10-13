@@ -1,24 +1,24 @@
-(() => {
-  const refs = {
-    openModalBtn: document.querySelector('[footer-modal-open]'),
-    closeModalBtn: document.querySelector('[footer-modal-close]'),
-    modal: document.querySelector('[footer-modal]'),
-  };
+// (() => {
+//   const refs = {
+//     openModalBtn: document.querySelector('[footer-modal-open]'),
+//     closeModalBtn: document.querySelector('[footer-modal-close]'),
+//     modal: document.querySelector('[footer-modal]'),
+//   };
 
-  refs.openModalBtn.addEventListener('click', toggleModal);
-  refs.closeModalBtn.addEventListener('click', toggleModal);
-  window.addEventListener("keydown", onPressKeyESC);
+//   refs.openModalBtn.addEventListener('click', toggleModal);
+//   refs.closeModalBtn.addEventListener('click', toggleModal);
+//   window.addEventListener("keydown", onPressKeyESC);
 
-    function onPressKeyESC(evt) {
-      if (evt.code === "Escape") {
-        toggleModal();
-      }
-    }
+//     function onPressKeyESC(evt) {
+//       if (evt.code === "Escape") {
+//         toggleModal();
+//       }
+//     }
 
-  function toggleModal() {
-    refs.modal.classList.toggle('is-hidden');
-  }
-})();
+//   function toggleModal() {
+//     refs.modal.classList.toggle('is-hidden');
+//   }
+// })();
 
 // ========================onPressKeyESC====================
 
