@@ -4,6 +4,9 @@ import { currentLibraryPageEL, currentPage } from './watchedQueue';
 import localStorageAPI from './local-storage-api/local-storage-api';
 import { refs } from './refs';
 
+console.log('refs.watched: ', refs.watched);
+console.log('refs.queue: ', refs.queue);
+
 const API = new localStorageAPI();
 
 export let watchedStorageInclude = false;
@@ -98,7 +101,16 @@ function getMovieById(id) {
   addToQueue.textContent = queueStorageInclude
     ? 'Remove from queue'
     : 'Add to queue';
-
+  if (watchedStorageInclude) {
+    addToWatched.classList.remove('movie-card__btn--active');
+  } else {
+    addToWatched.classList.add('movie-card__btn--active');
+  }
+  if (queueStorageInclude) {
+    addToQueue.classList.remove('movie-card__btn--active');
+  } else {
+    addToQueue.classList.add('movie-card__btn--active');
+  }
   onBtnClickFunction(addToWatched, addToQueue, id, film);
 }
 
@@ -133,6 +145,11 @@ function onBtnClickFunction(addToWatched, addToQueue, id, data) {
     addToWatched.textContent = watchedStorageInclude
       ? 'Remove from watched'
       : 'Add to watched';
+    if (watchedStorageInclude) {
+      addToWatched.classList.remove('movie-card__btn--active');
+    } else {
+      addToWatched.classList.add('movie-card__btn--active');
+    }
   }
 
   function onQueueClick() {
@@ -147,6 +164,11 @@ function onBtnClickFunction(addToWatched, addToQueue, id, data) {
     addToQueue.textContent = queueStorageInclude
       ? 'Remove from queue'
       : 'Add to queue';
+    if (queueStorageInclude) {
+      addToQueue.classList.remove('movie-card__btn--active');
+    } else {
+      addToQueue.classList.add('movie-card__btn--active');
+    }
   }
 }
 
