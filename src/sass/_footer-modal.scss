@@ -1,4 +1,27 @@
 .backdrop {
+    width: 100%;
+        
+        margin-left: auto;
+        margin-right: auto;
+        padding-right: 20px;
+        padding-left: 20px;
+    
+        @media screen and (min-width: 320px) {
+            width: 320px;
+        }
+    
+        @media screen and (min-width: 768px) {
+            width: 768px;
+            padding-right: 32px;
+            padding-left: 32px;
+        }
+    
+        @media screen and (min-width: 1280px) {
+            width: 1280px;
+            padding-right: 32px;
+            padding-left: 32px;
+        }
+    
     position: fixed;
     top: 0;
     width: 100vw;
@@ -9,8 +32,8 @@
 
 .modal {
     position: relative;
-    width: 90vw;
-    height: 90vh;
+    width: 100vw;
+    height: 100vh;
     background: #ffffff;
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
         0px 2px 1px rgba(0, 0, 0, 0.2);
@@ -54,19 +77,25 @@
     visibility: hidden;
 }
 
+.modal-img {
+  min-width: 300px;
+  min-height: 300px;
+}
+
 .team__list {
 display: flex;
 flex-wrap: wrap;
+justify-content: center;
 }
 
 .team__card {
-    margin-right: 20px;
+    width: 300px;
+    height: 400px;
+    margin-bottom: 15px;
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
             0px 2px 1px rgba(0, 0, 0, 0.2);
     border-radius: 0px 0px 4px 4px;
-    &:not(:last-child) {
-            margin-bottom: 15px;
-        }
+    
 }
 
 .team__info {
@@ -86,14 +115,53 @@ flex-wrap: wrap;
         font-size: 24px;
         line-height: 1.2;
         color: #FF6B08;
-        justify-content: center;
+        text-align: center;
         padding-bottom: 10px;
         padding-top: 10px;
 }
 
+
+@media (min-width: 768px) {
+    .team__card {
+        width: 300px;
+            height: 400px;
+        &:not(:nth-child(2n + 2)) {
+            margin-right: 30px;
+        }
+        &:nth-child(-n + 8) {
+            margin-bottom: 30px;
+        }
+    }
+
+}
+
 @media (min-width: 1280px) {
-.team__info {
-    
-    font-size: 16px;
+    .team__card {
+        width: 300px;
+            height: 400px;
+        display: flex;
+            flex-wrap: wrap;
+        &:not(:nth-child(2n + 2)) {
+            margin-right: 0;
+        }
+        &:not(:nth-child(3n + 3)) {
+            margin-right: 30px;
+        }    
+        &:nth-child(-n + 8) {
+            margin-bottom: 0;
+        }
+        &:nth-child(-n + 6) {
+             margin-bottom: 30px;
+        }
+    }
+    .team__info {
+        font-size: 20px;
+    }
+
 }
-}
+
+
+
+// &:not(:last-child) {
+//     margin-bottom: 15px;
+// }
