@@ -171,6 +171,16 @@
     }
 }
 
+.header-search-form__input:focus,
+.header-search-form__input:hover {
+    border-bottom: 0.5px solid #ff6b01;
+
+    &::placeholder {
+        color: #ff6b01;
+    }
+}
+
+
 .header-search-form__btn {
     width: 12px;
     height: 12px;
