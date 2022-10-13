@@ -1,13 +1,19 @@
-import modalFilmCard from '../templates/movie-card.hbs';
-import { currentLibraryPageEL, currentPage } from './watchedQueue';
+// import modalFilmCard from '../templates/movie-card.hbs';
+// import {
+//   currentLibraryPageEL,
+//   currentPage,
+//   currentPaginationPage,
+//   paginationLib,
+// } from './watchedQueue';
 // import generateLibraryContainer from './libraryCard';
-import localStorageAPI from './local-storage-api/local-storage-api';
-import { refs } from './refs';
-
-console.log('refs.watched: ', refs.watched);
-console.log('refs.queue: ', refs.queue);
+// import localStorageAPI from './local-storage-api/local-storage-api';
+// import { refs } from './refs';
+// import { options } from './options-of-pagination';
+// import Pagination from 'tui-pagination';
+// import { options } from './options-of-pagination';
 
 const API = new localStorageAPI();
+// const pagination = new Pagination(refs.paginationContainer, options);
 
 export let watchedStorageInclude = false;
 export let queueStorageInclude = false;
@@ -18,10 +24,9 @@ function openModal() {
     let target = event.target;
     if (target.closest('.movie__link')) {
       refs.modalWindow.showModal();
+      refs.body.style.overflow = 'hidden';
 
       getMovieID(target);
-      scrollLock();
-      escListener();
     }
   });
 }
@@ -33,26 +38,36 @@ function closeModal() {
       target.matches('.modal-window')
     ) {
       refs.modalWindow.close();
-      scrollLock();
-      escListener();
-    }
-  });
-}
-
-function scrollLock() {
-  refs.modalWindow.hasAttribute('open')
-    ? (refs.body.style.overflow = 'hidden')
-    : (refs.body.style.overflow = 'visible');
-}
-
-function escListener() {
-  document.addEventListener('keydown', function escScrollLock(event) {
-    if (event.key === 'Escape') {
       refs.body.style.overflow = 'visible';
-      document.removeEventListener('keydown', escScrollLock);
     }
-    if (!refs.modalWindow.hasAttribute('open')) {
-      document.removeEventListener('keydown', escScrollLock);
+
+    if (currentLibraryPageEL) {
+      if (currentPage === 'queue') {
+        if (API.getFilmsFromQueue().length > 0) {
+          clearMoviesContainer();
+          refs.movieContentBlock.classList.add('none');
+          generateLibraryContainer(
+            API.getFilmsFromQueue,
+            paginationLib.getCurrentPage()
+          );
+        } else {
+          clearMoviesContainer();
+          refs.movieContentBlock.classList.remove('none');
+        }
+      }
+      if (currentPage === 'watched') {
+        if (API.getFilmsFromWatched().length > 0) {
+          clearMoviesContainer();
+          refs.movieContentBlock.classList.add('none');
+          generateLibraryContainer(
+            API.getFilmsFromWatched,
+            paginationLib.getCurrentPage()
+          );
+        } else {
+          clearMoviesContainer();
+          refs.movieContentBlock.classList.remove('none');
+        }
+      }
     }
   });
 }
@@ -61,6 +76,10 @@ function getMovieID(element) {
   let id = Number(element.closest('a[data-modal]').getAttribute('data-id'));
   getMovieById(id);
 }
+
+// function getMovieIdLib() {
+
+// }
 
 function getMovieById(id) {
   let film = null;
@@ -84,10 +103,10 @@ function getMovieById(id) {
   });
 
   film.genres =
-    genres.length > 3
-      ? genres.slice(0, genres.length - 1).join(', ')
-      : genres.join(', ');
+    genres.length > 3 ? genres.slice(0, 3).join(', ') : genres.join(', ');
+
   let markup = modalFilmCard(film);
+
   refs.modalWindowWrap.innerHTML = markup;
 
   const addToWatched = document.querySelector('#btn-add-to-watched');
@@ -126,6 +145,16 @@ function onBtnClickFunction(addToWatched, addToQueue, id, data) {
   function onWatchedClick() {
     if (watchedStorageInclude) {
       API.removeFilmFromWatched(id);
+      if (
+        generateLibraryContainer(API.getFilmsFromWatched, currentPaginationPage)
+          .length === 0
+      ) {
+        paginationLib.setTotalItems(API.getFilmsFromWatched().length);
+
+        paginationLib.reset();
+
+        paginationLib.movePageTo(currentPaginationPage - 1);
+      }
     }
 
     if (!watchedStorageInclude) {
@@ -141,6 +170,16 @@ function onBtnClickFunction(addToWatched, addToQueue, id, data) {
   function onQueueClick() {
     if (queueStorageInclude) {
       API.removeFilmFromQueue(id);
+      if (
+        generateLibraryContainer(API.getFilmsFromQueue, currentPaginationPage)
+          .length === 0
+      ) {
+        paginationLib.setTotalItems(API.getFilmsFromQueue().length);
+
+        paginationLib.reset();
+
+        paginationLib.movePageTo(currentPaginationPage - 1);
+      }
     }
     if (!queueStorageInclude) {
       API.saveFilmToQueue(data);
@@ -151,6 +190,10 @@ function onBtnClickFunction(addToWatched, addToQueue, id, data) {
       ? 'Remove from queue'
       : 'Add to queue';
   }
+}
+
+function clearMoviesContainer() {
+  refs.trandingContainer.innerHTML = '';
 }
 
 openModal();
