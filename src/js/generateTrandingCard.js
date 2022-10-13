@@ -85,4 +85,14 @@ async function fetchSearchFilms() {
   API.resetMoviesPage();
   onMarkupCards(data.results, refs.trandingContainer);
   LS_API.saveTrendingCurentPage(data.results);
+
+  hidePaginationForSearch(data);
+}
+
+function hidePaginationForSearch(data) {
+  if(data.total_pages === 1) {
+    refs.paginationContainer.style.display = 'none';
+  } else if(refs.paginationContainer.style.display === 'none') {
+    refs.paginationContainer.removeAttribute('style');
+  }
 }
