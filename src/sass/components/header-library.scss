@@ -1,6 +1,6 @@
 .library-header {
   padding-top: 40px;
-  padding-bottom: 62px;
+  padding-bottom: 56px;
 
   background: rgba(0, 0, 0, 0.56);
   background-image: linear-gradient(
@@ -170,6 +170,7 @@
 .library--btn__container {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   margin-left: auto;
   margin-right: auto;
 
@@ -204,15 +205,23 @@
 }
 
 .library--btn__watched {
-  padding: 14px 36px;
+  padding: 13px 36px;
+
+  @media screen and (min-width: 768px) {
+    padding: 13px 46px;
+  }
 }
 
 .library--btn__queue {
-  padding: 14px 42px;
+  padding: 13px 36px;
+  
+  @media screen and (min-width: 768px) {
+    padding: 13px 57px;
+  }
 }
 
-.library--btn:first-child {
-  margin-right: 16px;
+.library--btn:nth-child(-n+2) {
+  margin-right: 20px;
 
   @media screen and (min-width: 768px) {
     margin-right: 32px;
@@ -271,4 +280,15 @@
 .library-header--list__link:hover::before {
   background: var(--white-color);
   top: 20px;
+}
+
+
+.library--btn.library-input {
+  color: var(--secondary-orange-color);
+  padding: 13px 13px;
+  margin-top: 20px;
+
+  @media screen and (min-width: 768px) {
+      margin-top: 0px;
+}
 }
