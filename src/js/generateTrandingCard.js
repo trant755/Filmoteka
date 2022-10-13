@@ -37,9 +37,14 @@ refs.paginationContainer.addEventListener(
   renderNewPageOfTrendingFilms
 );
 
-function renderNewPageOfTrendingFilms() {
+function renderNewPageOfTrendingFilms(e) {
+  if (
+    !e.target.classList.contains('tui-page-btn') ||
+    e.target.classList.contains('tui-is-selected') ||
+    e.target.classList.contains('tui-is-disabled')
+  )
+    return;
   clearGallery();
-
   const newCurrentPage = pagination.getCurrentPage();
 
   API.addMoviesPage(newCurrentPage);
@@ -90,9 +95,9 @@ async function fetchSearchFilms() {
 }
 
 function hidePaginationForSearch(data) {
-  if(data.total_pages === 1) {
+  if (data.total_pages === 1) {
     refs.paginationContainer.style.display = 'none';
-  } else if(refs.paginationContainer.style.display === 'none') {
+  } else if (refs.paginationContainer.style.display === 'none') {
     refs.paginationContainer.removeAttribute('style');
   }
 }
