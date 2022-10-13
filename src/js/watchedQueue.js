@@ -16,7 +16,8 @@ export let currentPage = '';
 
 if (!refs.watched && !refs.queue) return;
 
-// closeModal();
+let itemPerPage = 4;
+options.itemsPerPage = itemPerPage;
 
 export const paginationLib = new Pagination(
   refs.paginationLibContainer,
@@ -24,8 +25,6 @@ export const paginationLib = new Pagination(
 );
 
 export let currentPaginationPage = 1;
-
-console.log(currentPaginationPage);
 
 refs.watched.addEventListener('click', onClickWatched);
 refs.queue.addEventListener('click', onClickQueue);
@@ -45,12 +44,12 @@ function onClickWatched() {
     paginationLib.setTotalItems(LS_API.getFilmsFromWatched().length);
     paginationLib.reset();
     refs.movieContentBlock.classList.add('none');
-    generateLibraryContainer(LS_API.getFilmsFromWatched, 1);
+    generateLibraryContainer(LS_API.getFilmsFromWatched, 1, itemPerPage);
   } else {
     refs.movieContentBlock.classList.remove('none');
   }
 
-    hidePaginationForWatched();
+  hidePaginationForWatched();
 }
 
 function onClickQueue() {
@@ -66,7 +65,7 @@ function onClickQueue() {
     paginationLib.setTotalItems(LS_API.getFilmsFromQueue().length);
     paginationLib.reset();
     refs.movieContentBlock.classList.add('none');
-    generateLibraryContainer(LS_API.getFilmsFromQueue, 1);
+    generateLibraryContainer(LS_API.getFilmsFromQueue, 1, itemPerPage);
   } else {
     refs.movieContentBlock.classList.remove('none');
   }
@@ -81,13 +80,19 @@ function renderNewPageOfLibraryFilms() {
 
   currentPaginationPage = paginationLib.getCurrentPage();
   const newCurrentPage = paginationLib.getCurrentPage();
-  // console.log(newCurrentPage);
-  console.log(currentPage);
   if (currentPage === 'watched') {
-    generateLibraryContainer(LS_API.getFilmsFromWatched, newCurrentPage);
+    generateLibraryContainer(
+      LS_API.getFilmsFromWatched,
+      newCurrentPage,
+      itemPerPage
+    );
     paginationLib.setTotalItems(LS_API.getFilmsFromWatched().length);
   } else if (currentPage === 'queue') {
-    generateLibraryContainer(LS_API.getFilmsFromQueue, newCurrentPage);
+    generateLibraryContainer(
+      LS_API.getFilmsFromQueue,
+      newCurrentPage,
+      itemPerPage
+    );
     paginationLib.setTotalItems(LS_API.getFilmsFromQueue().length);
   }
   // paginationLib.reset();
@@ -107,80 +112,91 @@ const closeModalInLib = function () {
     ) {
       refs.modalWindow.close();
       refs.body.style.overflow = 'visible';
-          console.log('ok');
-          if (currentPage === 'watched') {
-            refreshWatchedPage();
-          } else if (currentPage === 'queue') {
-            refreshQueuePage()
-          }
+      if (currentPage === 'watched') {
+        refreshWatchedPage();
+      } else if (currentPage === 'queue') {
+        refreshQueuePage();
+      }
     }
-
   });
 };
 
 closeModalInLib();
 
 function refreshWatchedPage() {
-  console.log(paginationLib.getCurrentPage());
   clearMoviesContainer();
-  if(logicLib(LS_API.getFilmsFromWatched, paginationLib.getCurrentPage()).length > 0) {
-    generateLibraryContainer(LS_API.getFilmsFromWatched, paginationLib.getCurrentPage());
-    console.log(11);
+  if (
+    logicLib(LS_API.getFilmsFromWatched, paginationLib.getCurrentPage())
+      .length > 0
+  ) {
+    generateLibraryContainer(
+      LS_API.getFilmsFromWatched,
+      paginationLib.getCurrentPage(),
+      itemPerPage
+    );
   }
 
   if (
     logicLib(LS_API.getFilmsFromWatched, paginationLib.getCurrentPage())
       .length === 0
   ) {
-    console.log(22);
-
     paginationLib.setTotalItems(LS_API.getFilmsFromWatched().length);
 
     paginationLib.movePageTo(paginationLib.getCurrentPage() - 1);
 
-    generateLibraryContainer(LS_API.getFilmsFromWatched, paginationLib.getCurrentPage());
-
+    generateLibraryContainer(
+      LS_API.getFilmsFromWatched,
+      paginationLib.getCurrentPage(),
+      itemPerPage
+    );
   }
 
   hidePaginationForWatched();
 }
 
 function refreshQueuePage() {
-  console.log(paginationLib.getCurrentPage());
   clearMoviesContainer();
-  if(logicLib(LS_API.getFilmsFromQueue, paginationLib.getCurrentPage()).length > 0) {
-    generateLibraryContainer(LS_API.getFilmsFromQueue, paginationLib.getCurrentPage());
-    console.log(11);
+  if (
+    logicLib(LS_API.getFilmsFromQueue, paginationLib.getCurrentPage()).length >
+    0
+  ) {
+    generateLibraryContainer(
+      LS_API.getFilmsFromQueue,
+      paginationLib.getCurrentPage(),
+      itemPerPage
+    );
   }
 
   if (
     logicLib(LS_API.getFilmsFromQueue, paginationLib.getCurrentPage())
       .length === 0
   ) {
-    console.log(22);
-
     paginationLib.setTotalItems(LS_API.getFilmsFromQueue().length);
 
     paginationLib.movePageTo(paginationLib.getCurrentPage() - 1);
 
-    generateLibraryContainer(LS_API.getFilmsFromQueue, paginationLib.getCurrentPage());
+    generateLibraryContainer(
+      LS_API.getFilmsFromQueue,
+      paginationLib.getCurrentPage(),
+      itemPerPage
+    );
   }
 
   hidePaginationForQueue();
 }
 
 function hidePaginationForWatched() {
-  if(LS_API.getFilmsFromWatched().length < 3) {
+  if (LS_API.getFilmsFromWatched().length < 3) {
     refs.paginationLibContainer.style.display = 'none';
-  } else if(refs.paginationLibContainer.style.display === 'none') {
+  } else if (refs.paginationLibContainer.style.display === 'none') {
     refs.paginationLibContainer.removeAttribute('style');
   }
 }
 
 function hidePaginationForQueue() {
-  if(LS_API.getFilmsFromQueue().length < 3) {
+  if (LS_API.getFilmsFromQueue().length < 3) {
     refs.paginationLibContainer.style.display = 'none';
-  } else if(refs.paginationLibContainer.style.display === 'none') {
+  } else if (refs.paginationLibContainer.style.display === 'none') {
     refs.paginationLibContainer.removeAttribute('style');
   }
 }
