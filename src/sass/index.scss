@@ -1,3 +1,8 @@
+
+// @import './common';
+@import './modal-window';
+@import './movie-card';
+
 @import './base/vars';
 @import './base/common';
 @import './base/container';
@@ -6,7 +11,7 @@
 @import './components/header-film.scss';
 @import './components/header-library.scss';
 
-@import './main-section.scss';
+@import './main-movie.scss';
 @import './button-to-top.scss';
 @import './footer';
 @import './footer-modal'

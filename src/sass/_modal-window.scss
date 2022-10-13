@@ -1,0 +1,30 @@
+
+.modal-window{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 806px    ;
+    height: 558px;
+    border:none;
+    padding: 0;
+    background: #FFFFFF;
+    &__close{ 
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        cursor: pointer;
+    }
+
+      @media screen and (max-width: 768px) {
+        width: 704px;
+        height: 552px;
+    }
+
+     @media screen and (max-width: 480px) {
+        width: 280px;
+        height: auto;
+    }
+
+}

@@ -1,12 +1,7 @@
-import Pagination from 'tui-pagination';
-import 'tui-pagination/dist/tui-pagination.css';
-
-const paginationContainer = document.querySelector('.tui-pagination');
-
-const options = {
-    totalItems: 100,
-    itemsPerPage: 40,
-    visiblePages: 10,
+export const options = {
+    totalItems: 20000,
+    itemsPerPage: 2,
+    visiblePages: 5,
     page: 1,
     centerAlign: true,
     firstItemClassName: 'tui-first-child',
@@ -28,8 +23,4 @@ const options = {
         '<span class="tui-ico-ellip">...</span>' +
         '</a>'
     }
-};
-  
-const pagination = new Pagination(paginationContainer, options);
-
-export { paginationContainer, pagination };
+  };
