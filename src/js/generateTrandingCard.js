@@ -3,17 +3,19 @@ import MovieApiService from './fetchModule';
 import localStorageAPI from './local-storage-api/local-storage-api';
 import { onMarkupCards } from './onMarkupCards';
 import Pagination from 'tui-pagination';
-import 'tui-pagination/dist/tui-pagination.css';
 import { options } from './options-of-pagination';
 // import openModal from'./modalWindow';
 
 const API = new MovieApiService();
 const LS_API = new localStorageAPI();
+
 let oldQuery = '';
 
 refs.searchInput.addEventListener('submit', searchFilm);
 
 const pagination = new Pagination(refs.paginationContainer, options);
+
+refs.loader.classList.remove('is-hidden');
 
 generateHomePage();
 
@@ -29,6 +31,8 @@ function generateTrendingFilms() {
     pagination.setTotalItems(total_results);
     onMarkupCards(results, refs.trandingContainer);
     LS_API.saveTrendingCurentPage(results);
+
+    refs.loader.classList.add('is-hidden');
   });
 }
 
@@ -61,16 +65,21 @@ function clearGallery() {
 
 async function searchFilm(ev) {
   ev.preventDefault();
+
   API.query = ev.currentTarget.elements.searchQuery.value;
 
   if (API.query === '') return;
 
   API.resetMoviesPage();
 
+  refs.loader.classList.remove('is-hidden');
+
   await fetchSearchFilms();
   if (refs.SearchErrMessage.classList.contains('is-hidden')) {
     pagination.reset();
   }
+
+  refs.loader.classList.add('is-hidden');
 }
 
 async function fetchSearchFilms() {
@@ -101,3 +110,10 @@ function hidePaginationForSearch(data) {
     refs.paginationContainer.removeAttribute('style');
   }
 }
+
+// function showLoader() {
+//   refs.loader.classList.remove('is-hidden');
+//   refs.loader.classList.add('is-hidden');
+// }
+
+// setTimeout(showLoader, 1000);
