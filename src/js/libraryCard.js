@@ -9,9 +9,6 @@ export const generateLibraryContainer = function (
   newPage,
   ItemPerPage
 ) {
-  // console.log(method);
-  console.log('asd', newPage);
-
   let RR = method();
   const watchF = refs.trandingContainer;
 
@@ -25,12 +22,12 @@ export const generateLibraryContainer = function (
   return resultEL;
 };
 
-export const logicLib = function (method, newPage) {
+export const logicLib = function (method, newPage, ItemPerPage) {
   let RR = method();
   const watchF = refs.trandingContainer;
 
   let page = newPage;
-  let ElPerPage = 2;
+  let ElPerPage = ItemPerPage;
   let lastEl = ElPerPage * page;
   let firstEl = lastEl - ElPerPage;
   const resultEL = RR.slice(firstEl, lastEl);

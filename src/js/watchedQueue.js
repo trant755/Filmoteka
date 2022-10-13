@@ -126,8 +126,11 @@ closeModalInLib();
 function refreshWatchedPage() {
   clearMoviesContainer();
   if (
-    logicLib(LS_API.getFilmsFromWatched, paginationLib.getCurrentPage())
-      .length > 0
+    logicLib(
+      LS_API.getFilmsFromWatched,
+      paginationLib.getCurrentPage(),
+      itemPerPage
+    ).length > 0
   ) {
     generateLibraryContainer(
       LS_API.getFilmsFromWatched,
@@ -137,8 +140,11 @@ function refreshWatchedPage() {
   }
 
   if (
-    logicLib(LS_API.getFilmsFromWatched, paginationLib.getCurrentPage())
-      .length === 0
+    logicLib(
+      LS_API.getFilmsFromWatched,
+      paginationLib.getCurrentPage(),
+      itemPerPage
+    ).length === 0
   ) {
     paginationLib.setTotalItems(LS_API.getFilmsFromWatched().length);
 
@@ -157,8 +163,11 @@ function refreshWatchedPage() {
 function refreshQueuePage() {
   clearMoviesContainer();
   if (
-    logicLib(LS_API.getFilmsFromQueue, paginationLib.getCurrentPage()).length >
-    0
+    logicLib(
+      LS_API.getFilmsFromQueue,
+      paginationLib.getCurrentPage(),
+      itemPerPage
+    ).length > 0
   ) {
     generateLibraryContainer(
       LS_API.getFilmsFromQueue,
@@ -168,8 +177,11 @@ function refreshQueuePage() {
   }
 
   if (
-    logicLib(LS_API.getFilmsFromQueue, paginationLib.getCurrentPage())
-      .length === 0
+    logicLib(
+      LS_API.getFilmsFromQueue,
+      paginationLib.getCurrentPage(),
+      itemPerPage
+    ).length === 0
   ) {
     paginationLib.setTotalItems(LS_API.getFilmsFromQueue().length);
 
