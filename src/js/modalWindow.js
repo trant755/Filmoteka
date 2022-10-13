@@ -9,7 +9,7 @@ const API = new localStorageAPI();
 export let watchedStorageInclude = false;
 export let queueStorageInclude = false;
 
-function openModal() {
+export function openModal() {
   refs.filmList.addEventListener('click', event => {
     event.preventDefault();
     let target = event.target;
@@ -21,6 +21,7 @@ function openModal() {
     }
   });
 }
+
 export const closeModal = function () {
   refs.modalWindow.addEventListener('click', event => {
     let target = event.target;
