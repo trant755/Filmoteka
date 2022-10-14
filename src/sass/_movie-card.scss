@@ -164,8 +164,9 @@
     text-align: center;
     text-transform: uppercase;
     border-radius: 5px;
-    padding: 14px 0;
+    padding: 0 14px;
     width: 136px;
+    height: 44px;
     background: inherit;
     border: 1px solid #000000;
     color: #000000;
@@ -184,6 +185,7 @@
     }
     @media screen and (max-width: 650px) {
       width: 110px;
+      padding: 0 4px;
     }
   }
 }
