@@ -217,14 +217,14 @@
 }
 
 .library--btn__queue {
-  padding: 13px 36px;
+  padding: 13px 44px;
   
   @media screen and (min-width: 768px) {
-    padding: 13px 57px;
+    padding: 13px 54px;
   }
 }
 
-.library--btn:nth-child(-n+2) {
+.library--btn:nth-child(-n+1) {
   margin-right: 20px;
 
   @media screen and (min-width: 768px) {
@@ -306,7 +306,13 @@
 }
 
 .label {
+  border: none;
+  transition: none;
   margin-right: 0px;
+
+  &:hover {
+      border: none;
+    }
 
   @media screen and (min-width: 768px) {
     margin-right: 63px;
