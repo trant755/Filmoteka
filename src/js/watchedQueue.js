@@ -18,7 +18,7 @@ export const paginationLib = new Pagination(
   refs.paginationLibContainer,
   options
 );
-let itemPerPage = 4;
+let itemPerPage = 6;
 
 refs.IPerPageInput.addEventListener('change', changeItemPerPage);
 
