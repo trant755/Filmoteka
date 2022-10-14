@@ -9,9 +9,6 @@ export const generateLibraryContainer = function (
   newPage,
   ItemPerPage
 ) {
-  // console.log(method);
-  console.log('asd', newPage);
-
   let RR = method();
   const watchF = refs.trandingContainer;
 

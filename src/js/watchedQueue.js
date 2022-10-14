@@ -16,15 +16,13 @@ export let currentPage = '';
 
 if (!refs.watched && !refs.queue) return;
 
-refs.IPerPageInput.addEventListener('change', changeItemPerPage);
-
-let itemPerPage = 4;
-options.itemsPerPage = itemPerPage;
-
 export const paginationLib = new Pagination(
   refs.paginationLibContainer,
   options
 );
+let itemPerPage = 4;
+
+refs.IPerPageInput.addEventListener('change', changeItemPerPage);
 
 export let currentPaginationPage = 1;
 
@@ -188,7 +186,7 @@ function refreshQueuePage() {
 }
 
 function hidePaginationForWatched() {
-  if (LS_API.getFilmsFromWatched().length < 3) {
+  if (LS_API.getFilmsFromWatched().length < itemPerPage) {
     refs.paginationLibContainer.style.display = 'none';
   } else if (refs.paginationLibContainer.style.display === 'none') {
     refs.paginationLibContainer.removeAttribute('style');
@@ -196,7 +194,7 @@ function hidePaginationForWatched() {
 }
 
 function hidePaginationForQueue() {
-  if (LS_API.getFilmsFromQueue().length < 3) {
+  if (LS_API.getFilmsFromQueue().length < itemPerPage) {
     refs.paginationLibContainer.style.display = 'none';
   } else if (refs.paginationLibContainer.style.display === 'none') {
     refs.paginationLibContainer.removeAttribute('style');
@@ -205,7 +203,8 @@ function hidePaginationForQueue() {
 
 function changeItemPerPage(e) {
   itemPerPage = e.target.value;
-
+  paginationLib.setItemsPerPage(itemPerPage);
+  paginationLib.reset();
   if (currentPage === 'watched') {
     refreshWatchedPage();
   } else if (currentPage === 'queue') {
