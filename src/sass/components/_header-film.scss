@@ -169,6 +169,10 @@
 
         color: var(--white-color);
     }
+
+    &:hover {
+        border-bottom: 0.5px solid #ff6b01;
+    }
 }
 
 .header-search-form__btn {

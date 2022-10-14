@@ -16,6 +16,10 @@
         top: 16px;
         right: 16px;
         cursor: pointer;
+        &:hover,
+        &:focus {
+            fill: #ff6b08;
+        }
     }
     &__wrapper{
         width: 100%;
