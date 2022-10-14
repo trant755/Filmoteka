@@ -9,6 +9,8 @@ export const refs = {
   movieContentBlock: document.querySelector('.movie__notification'),
   loader: document.querySelector('.loader-container'),
 
+  IPerPageInput: document.querySelector('[name="library-input"]'),
+
   // For add-to-library.js
   // addToQueue: document.querySelector('#btn-add-to-queue'),
   // addToWatched: document.querySelector('#btn-add-to-watched'),

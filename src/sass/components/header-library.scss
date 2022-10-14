@@ -1,6 +1,7 @@
 .library-header {
   padding-top: 40px;
-  padding-bottom: 62px;
+  padding-bottom: 56px;
+  
 
   background: rgba(0, 0, 0, 0.56);
   background-image: linear-gradient(
@@ -72,6 +73,7 @@
 }
 
 // NAV
+
 
 .library-header--nav__container {
   display: flex;
@@ -170,6 +172,9 @@
 .library--btn__container {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+
   margin-left: auto;
   margin-right: auto;
 
@@ -204,15 +209,23 @@
 }
 
 .library--btn__watched {
-  padding: 14px 36px;
+  padding: 13px 36px;
+
+  @media screen and (min-width: 768px) {
+    padding: 13px 46px;
+  }
 }
 
 .library--btn__queue {
-  padding: 14px 42px;
+  padding: 13px 44px;
+  
+  @media screen and (min-width: 768px) {
+    padding: 13px 54px;
+  }
 }
 
-.library--btn:first-child {
-  margin-right: 16px;
+.library--btn:nth-child(-n+1) {
+  margin-right: 20px;
 
   @media screen and (min-width: 768px) {
     margin-right: 32px;
@@ -271,4 +284,41 @@
 .library-header--list__link:hover::before {
   background: var(--white-color);
   top: 20px;
+}
+
+
+.library--btn.library-input {
+  color: var(--secondary-orange-color);
+  padding: 13px 13px;
+  margin-top: 20px;
+
+  position: inherit;
+  bottom: 5px;
+  right: auto;
+  left: auto;
+
+  @media screen and (min-width: 768px) {
+      margin-top: 0px;
+      bottom: 0px;
+      right: 0px;
+      position: absolute;
+}
+}
+
+.label {
+  border: none;
+  transition: none;
+  margin-right: 0px;
+
+  &:hover {
+      border: none;
+    }
+
+  @media screen and (min-width: 768px) {
+    margin-right: 63px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    margin-right: 63px;
+  }
 }
