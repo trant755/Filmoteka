@@ -1,10 +1,8 @@
 import localStorageApi from './local-storage-api/local-storage-api';
 import { generateLibraryContainer, logicLib } from './libraryCard';
 import { refs } from './refs';
-import { openModal } from './modalWindow';
 import Pagination from 'tui-pagination';
 import { options } from './pagination-lib-options';
-import 'tui-pagination/dist/tui-pagination.css';
 
 const LS_API = new localStorageApi();
 
@@ -43,12 +41,11 @@ function onClickWatched() {
 
     paginationLib.setTotalItems(LS_API.getFilmsFromWatched().length);
     paginationLib.reset();
-    refs.movieContentBlock.classList.add('none');
+    refs.movieContentBlock.style.display = 'none';
     generateLibraryContainer(LS_API.getFilmsFromWatched, 1, itemPerPage);
   } else {
-    refs.movieContentBlock.classList.remove('none');
+    refs.movieContentBlock.removeAttribute('style');
   }
-
   hidePaginationForWatched();
 }
 
@@ -64,15 +61,14 @@ function onClickQueue() {
 
     paginationLib.setTotalItems(LS_API.getFilmsFromQueue().length);
     paginationLib.reset();
-    refs.movieContentBlock.classList.add('none');
+    refs.movieContentBlock.style.display = 'none';
     generateLibraryContainer(LS_API.getFilmsFromQueue, 1, itemPerPage);
   } else {
-    refs.movieContentBlock.classList.remove('none');
+    refs.movieContentBlock.removeAttribute('style');
   }
 
   hidePaginationForQueue();
 }
-
 refs.paginationContainer.addEventListener('click', renderNewPageOfLibraryFilms);
 
 function renderNewPageOfLibraryFilms() {
@@ -95,39 +91,64 @@ function renderNewPageOfLibraryFilms() {
     );
     paginationLib.setTotalItems(LS_API.getFilmsFromQueue().length);
   }
-  // paginationLib.reset();
   paginationLib.movePageTo(paginationLib.getCurrentPage());
 }
 
 function clearMoviesContainer() {
   refs.trandingContainer.innerHTML = '';
 }
-
-const closeModalInLib = function () {
-  refs.modalWindow.addEventListener('click', event => {
+function openModalLib() {
+  refs.filmList.addEventListener('click', event => {
+    event.preventDefault();
     let target = event.target;
-    if (
-      target.closest('.modal-window__close') ||
-      target.matches('.modal-window')
-    ) {
-      refs.modalWindow.close();
-      refs.body.style.overflow = 'visible';
-      if (currentPage === 'watched') {
-        refreshWatchedPage();
-      } else if (currentPage === 'queue') {
-        refreshQueuePage();
-      }
+    if (target.closest('.movie__link')) {
+      document.addEventListener('keydown', listenerHandler);
     }
   });
-};
+}
 
+const closeModalInLib = function () {
+  refs.modalWindow.addEventListener('click', closeModalInLibCallBack);
+};
+function closeModalInLibCallBack(event) {
+  let target = event.target;
+  if (
+    target.closest('.modal-window__close') ||
+    target.matches('.modal-window')
+  ) {
+    refs.modalWindow.close();
+    refs.body.style.overflow = 'visible';
+    if (currentPage === 'watched') {
+      refreshWatchedPage();
+    } else if (currentPage === 'queue') {
+      refreshQueuePage();
+    }
+    document.removeEventListener('keydown', listenerHandler);
+  }
+}
+function listenerHandler(event) {
+  if (event.key === 'Escape') {
+    refs.body.style.overflow = 'visible';
+    if (currentPage === 'watched') {
+      refreshWatchedPage();
+    } else if (currentPage === 'queue') {
+      refreshQueuePage();
+    }
+    document.removeEventListener('keydown', listenerHandler);
+  }
+}
+
+openModalLib();
 closeModalInLib();
 
 function refreshWatchedPage() {
   clearMoviesContainer();
   if (
-    logicLib(LS_API.getFilmsFromWatched, paginationLib.getCurrentPage())
-      .length > 0
+    logicLib(
+      LS_API.getFilmsFromWatched,
+      paginationLib.getCurrentPage(),
+      itemPerPage
+    ).length > 0
   ) {
     generateLibraryContainer(
       LS_API.getFilmsFromWatched,
@@ -137,8 +158,11 @@ function refreshWatchedPage() {
   }
 
   if (
-    logicLib(LS_API.getFilmsFromWatched, paginationLib.getCurrentPage())
-      .length === 0
+    logicLib(
+      LS_API.getFilmsFromWatched,
+      paginationLib.getCurrentPage(),
+      itemPerPage
+    ).length === 0
   ) {
     paginationLib.setTotalItems(LS_API.getFilmsFromWatched().length);
 
@@ -151,14 +175,18 @@ function refreshWatchedPage() {
     );
   }
 
+  showEmptyWatchedNotify();
   hidePaginationForWatched();
 }
 
 function refreshQueuePage() {
   clearMoviesContainer();
   if (
-    logicLib(LS_API.getFilmsFromQueue, paginationLib.getCurrentPage()).length >
-    0
+    logicLib(
+      LS_API.getFilmsFromQueue,
+      paginationLib.getCurrentPage(),
+      itemPerPage
+    ).length > 0
   ) {
     generateLibraryContainer(
       LS_API.getFilmsFromQueue,
@@ -168,8 +196,11 @@ function refreshQueuePage() {
   }
 
   if (
-    logicLib(LS_API.getFilmsFromQueue, paginationLib.getCurrentPage())
-      .length === 0
+    logicLib(
+      LS_API.getFilmsFromQueue,
+      paginationLib.getCurrentPage(),
+      itemPerPage
+    ).length === 0
   ) {
     paginationLib.setTotalItems(LS_API.getFilmsFromQueue().length);
 
@@ -182,11 +213,12 @@ function refreshQueuePage() {
     );
   }
 
+  showEmptyQueueNotify();
   hidePaginationForQueue();
 }
 
 function hidePaginationForWatched() {
-  if (LS_API.getFilmsFromWatched().length < itemPerPage) {
+  if (LS_API.getFilmsFromWatched().length <= itemPerPage) {
     refs.paginationLibContainer.style.display = 'none';
   } else if (refs.paginationLibContainer.style.display === 'none') {
     refs.paginationLibContainer.removeAttribute('style');
@@ -194,7 +226,7 @@ function hidePaginationForWatched() {
 }
 
 function hidePaginationForQueue() {
-  if (LS_API.getFilmsFromQueue().length < itemPerPage) {
+  if (LS_API.getFilmsFromQueue().length <= itemPerPage) {
     refs.paginationLibContainer.style.display = 'none';
   } else if (refs.paginationLibContainer.style.display === 'none') {
     refs.paginationLibContainer.removeAttribute('style');
@@ -209,5 +241,21 @@ function changeItemPerPage(e) {
     refreshWatchedPage();
   } else if (currentPage === 'queue') {
     refreshQueuePage();
+  }
+}
+
+function showEmptyWatchedNotify() {
+  if (LS_API.getFilmsFromWatched().length === 0) {
+    refs.movieContentBlock.removeAttribute('style');
+  } else if (LS_API.getFilmsFromWatched().length !== 0) {
+    refs.movieContentBlock.style.display = 'none';
+  }
+}
+
+function showEmptyQueueNotify() {
+  if (LS_API.getFilmsFromQueue().length === 0) {
+    refs.movieContentBlock.removeAttribute('style');
+  } else if (LS_API.getFilmsFromWatched().length !== 0) {
+    refs.movieContentBlock.style.display = 'none';
   }
 }
