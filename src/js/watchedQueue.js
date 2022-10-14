@@ -1,7 +1,6 @@
 import localStorageApi from './local-storage-api/local-storage-api';
 import { generateLibraryContainer, logicLib } from './libraryCard';
 import { refs } from './refs';
-import { openModal } from './modalWindow';
 import Pagination from 'tui-pagination';
 import { options } from './pagination-lib-options';
 
@@ -70,7 +69,6 @@ function onClickQueue() {
 
   hidePaginationForQueue();
 }
-
 refs.paginationContainer.addEventListener('click', renderNewPageOfLibraryFilms);
 
 function renderNewPageOfLibraryFilms() {
@@ -93,12 +91,20 @@ function renderNewPageOfLibraryFilms() {
     );
     paginationLib.setTotalItems(LS_API.getFilmsFromQueue().length);
   }
-  // paginationLib.reset();
   paginationLib.movePageTo(paginationLib.getCurrentPage());
 }
 
 function clearMoviesContainer() {
   refs.trandingContainer.innerHTML = '';
+}
+function openModalLib() {
+  refs.filmList.addEventListener('click', event => {
+    event.preventDefault();
+    let target = event.target;
+    if (target.closest('.movie__link')) {
+      document.addEventListener('keydown', listenerHandler);
+    }
+  });
 }
 
 const closeModalInLib = function () {
@@ -118,9 +124,22 @@ function closeModalInLibCallBack(event) {
     } else if (currentPage === 'queue') {
       refreshQueuePage();
     }
+    document.removeEventListener('keydown', listenerHandler);
+  }
+}
+function listenerHandler(event) {
+  if (event.key === 'Escape') {
+    refs.body.style.overflow = 'visible';
+    if (currentPage === 'watched') {
+      refreshWatchedPage();
+    } else if (currentPage === 'queue') {
+      refreshQueuePage();
+    }
+    document.removeEventListener('keydown', listenerHandler);
   }
 }
 
+openModalLib();
 closeModalInLib();
 
 function refreshWatchedPage() {

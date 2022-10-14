@@ -18,4 +18,10 @@ export const refs = {
   modalWindow: document.querySelector('.modal-window'),
   modalWindowWrap: document.querySelector('.modal-window__wrapper'),
   body: document.querySelector('body'),
+
+  firstPagBtn: document.querySelector('.tui-first'),
+  prevPagBtn: document.querySelector('.tui-prev'),
+  nextPagBtn: document.querySelector('.tui-next'),
+  lastPagBtn: document.querySelector('.tui-last'),
+
 };
