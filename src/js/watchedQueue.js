@@ -16,6 +16,8 @@ export let currentPage = '';
 
 if (!refs.watched && !refs.queue) return;
 
+refs.IPerPageInput.addEventListener('change', changeItemPerPage);
+
 let itemPerPage = 4;
 options.itemsPerPage = itemPerPage;
 
@@ -198,5 +200,15 @@ function hidePaginationForQueue() {
     refs.paginationLibContainer.style.display = 'none';
   } else if (refs.paginationLibContainer.style.display === 'none') {
     refs.paginationLibContainer.removeAttribute('style');
+  }
+}
+
+function changeItemPerPage(e) {
+  itemPerPage = e.target.value;
+
+  if (currentPage === 'watched') {
+    refreshWatchedPage();
+  } else if (currentPage === 'queue') {
+    refreshQueuePage();
   }
 }

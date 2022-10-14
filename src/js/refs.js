@@ -8,7 +8,7 @@ export const refs = {
   queue: document.querySelector('.library--btn__queue'),
   movieContentBlock: document.querySelector('.no-movie'),
 
-  IPerPageInput: document.querySelector('.library-input'),
+  IPerPageInput: document.querySelector('[name="library-input"]'),
 
   // For add-to-library.js
   // addToQueue: document.querySelector('#btn-add-to-queue'),
