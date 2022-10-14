@@ -4,15 +4,12 @@ import { currentLibraryPageEL, currentPage } from './watchedQueue';
 import localStorageAPI from './local-storage-api/local-storage-api';
 import { refs } from './refs';
 
-console.log('refs.watched: ', refs.watched);
-console.log('refs.queue: ', refs.queue);
-
 const API = new localStorageAPI();
 
 export let watchedStorageInclude = false;
 export let queueStorageInclude = false;
 
-function openModal() {
+export const openModal = function () {
   refs.filmList.addEventListener('click', event => {
     event.preventDefault();
     let target = event.target;
@@ -24,7 +21,7 @@ function openModal() {
       escListener(true);
     }
   });
-}
+};
 function closeModal() {
   refs.modalWindow.addEventListener('click', event => {
     let target = event.target;
