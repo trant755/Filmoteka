@@ -1,6 +1,7 @@
 .library-header {
   padding-top: 40px;
   padding-bottom: 56px;
+  
 
   background: rgba(0, 0, 0, 0.56);
   background-image: linear-gradient(
@@ -72,6 +73,7 @@
 }
 
 // NAV
+
 
 .library-header--nav__container {
   display: flex;
@@ -171,6 +173,8 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  position: relative;
+
   margin-left: auto;
   margin-right: auto;
 
@@ -288,7 +292,27 @@
   padding: 13px 13px;
   margin-top: 20px;
 
+  position: inherit;
+  bottom: 5px;
+  right: auto;
+  left: auto;
+
   @media screen and (min-width: 768px) {
       margin-top: 0px;
+      bottom: 0px;
+      right: 0px;
+      position: absolute;
 }
+}
+
+.label {
+  margin-right: 0px;
+
+  @media screen and (min-width: 768px) {
+    margin-right: 63px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    margin-right: 63px;
+  }
 }
