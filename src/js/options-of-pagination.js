@@ -10,8 +10,8 @@ export const options = {
     page: 1,
     centerAlign: true,
     usageStatistics: false,
-    // firstItemClassName: 'tui-first-child',
-    // lastItemClassName: 'tui-last-child',
+    firstItemClassName: 'tui-first-child',
+    lastItemClassName: 'tui-next',
     template: {
       page: '<a href="#" class="tui-page-btn">{{page}}</a>',
       currentPage: '<strong class="tui-page-btn tui-is-selected">{{page}}p</strong>',
@@ -21,8 +21,8 @@ export const options = {
         `<svg class="tui-ico-{{type}}" width="16" height="16"><use href="${arrowIcon}-{{type}}"></use></svg>` +
         '</a>',
       disabledMoveButton:
-        '<span class="tui-page-btn tui-is-disabled tui-{{type}}">' +
-        '<span class="tui-ico-{{type}}">{{type}}</span>' +
+        '<span class="tui-page-btn tui-is-disabled tui-{{type}}" onclick="return false">' +
+        '<span class="tui-ico-{{type}}" onclick="return false">{{type}}</span>' +
         '</span>',
       moreButton:
         '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip change-{{type}}">' +
