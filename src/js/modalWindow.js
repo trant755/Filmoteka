@@ -35,7 +35,7 @@ function closeModal() {
       refs.modalWindow.close();
       scrollLock();
       escListener(false);
-3    }
+    }
   });
 }
 
@@ -48,19 +48,16 @@ function escListener(bool) {
   if (bool === true) {
     document.addEventListener('keydown', listenerHandler);
   }
-    if (bool === false) {
-      document.removeEventListener('keydown', listenerHandler);
-    }
+  if (bool === false) {
+    document.removeEventListener('keydown', listenerHandler);
   }
-  
-
+}
 
 function listenerHandler(event) {
-  console.log(1);
   if (event.key === 'Escape') {
-      refs.body.style.overflow = 'visible';
-      document.removeEventListener('keydown',  listenerHandler);
-    }
+    refs.body.style.overflow = 'visible';
+    document.removeEventListener('keydown', listenerHandler);
+  }
 }
 
 function getMovieID(element) {
