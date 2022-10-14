@@ -1,20 +1,19 @@
 
 // @import './common';
-@import './modal-window';
-@import './movie-card';
+@import './_modal-window';
+@import './_movie-card';
 
 @import './base/vars';
 @import './base/common';
 @import './base/container';
 @import './base/vh';
 
-@import './components/header-film.scss';
-@import './components/header-library.scss';
+@import './components/_header-film.scss';
+@import './components/_header-library.scss';
 
-@import './main-movie.scss';
-@import './button-to-top.scss';
-@import './footer';
-@import './footer-modal.scss';
-@import './components/pagination.scss';
-@import './components/loader.scss';
-// @import './components/pagination-default.scss';
+@import './_main-movie.scss';
+@import './_button-to-top.scss';
+@import './_footer.scss';
+@import './_footer-modal.scss';
+@import './components/_pagination.scss';
+@import './components/_loader.scss';
