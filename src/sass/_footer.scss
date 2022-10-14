@@ -130,5 +130,11 @@ font-family: 'Roboto';
     color: #545454;
     border-bottom: 1px solid #545454;
     padding-bottom: 1px;
+
+    &:hover,
+    &:focus {
+        color: #ff6b08;
+        border-bottom: 1px solid #ff6b08;
+    }
 }
 

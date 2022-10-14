@@ -1,4 +1,5 @@
 .movie {
+  position: relative;
   margin-top: 20px;
   padding-bottom: 20px;
 }
@@ -38,13 +39,13 @@
   color: #ff6b08;
 }
 
-.movie__raiting {
+.movie__rating {
   font-size: 12px;
   line-height: 14px;
   padding: 1px 6px;
   background: #ff6b01;
   border-radius: 5px;
-  color: #ffffff;
+  color: white;
 }
 
 .no-movie {
@@ -92,6 +93,12 @@
     flex-basis: calc(100% / 2 - 32px);
     margin-top: 32px;
     margin-left: 32px;
+
+    &:hover, &:focus {
+      box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12),
+      0px 4px 4px rgba(0, 0, 0, 0.06),
+      1px 4px 6px rgba(0, 0, 0, 0.16);
+      }
   }
 
   .movie__item:not(:last-child) {

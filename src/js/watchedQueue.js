@@ -110,6 +110,7 @@ function openModalLib() {
 const closeModalInLib = function () {
   refs.modalWindow.addEventListener('click', closeModalInLibCallBack);
 };
+
 function closeModalInLibCallBack(event) {
   let target = event.target;
   if (
