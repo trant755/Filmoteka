@@ -16,8 +16,13 @@ export const onMarkupCards = function (films, container, rating) {
       }
       obje.title = film.title;
       if (rating) {
-        obje.vote_average = film.vote_average;
+        if (String(film.vote_average).length > 3) {
+          obje.vote_average = String(film.vote_average).slice(0, 3);
+        } else {
+          obje.vote_average = film.vote_average;
+        }
       }
+
       let genres = film.genre_ids.map(id => {
         if (film.genre_ids?.length === 0) return;
         let genresArray = localStorageAPI
@@ -26,8 +31,10 @@ export const onMarkupCards = function (films, container, rating) {
 
         return genresArray.name;
       });
-      obje.genres =
-        genres.length > 3 ? genres.slice(0, 3).join(', ') : genres.join(', ');
+
+      genres.length > 3
+        ? (obje.genresAndMore = genres.slice(0, 3).join(', '))
+        : (obje.genres = genres.join(', '));
 
       return filmCards(obje);
     })
