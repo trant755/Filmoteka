@@ -4,7 +4,6 @@ import { refs } from './refs';
 import { openModal } from './modalWindow';
 import Pagination from 'tui-pagination';
 import { options } from './pagination-lib-options';
-import 'tui-pagination/dist/tui-pagination.css';
 
 const LS_API = new localStorageApi();
 
@@ -48,7 +47,6 @@ function onClickWatched() {
   } else {
     refs.movieContentBlock.classList.remove('none');
   }
-
   hidePaginationForWatched();
 }
 
@@ -157,6 +155,7 @@ function refreshWatchedPage() {
     );
   }
 
+  showEmptyWatchedNotify();
   hidePaginationForWatched();
 }
 
@@ -194,6 +193,7 @@ function refreshQueuePage() {
     );
   }
 
+  showEmptyQueueNotify();
   hidePaginationForQueue();
 }
 
@@ -210,5 +210,21 @@ function hidePaginationForQueue() {
     refs.paginationLibContainer.style.display = 'none';
   } else if (refs.paginationLibContainer.style.display === 'none') {
     refs.paginationLibContainer.removeAttribute('style');
+  }
+}
+
+function showEmptyWatchedNotify() {
+  if (LS_API.getFilmsFromWatched().length === 0) {
+    refs.movieContentBlock.classList.remove('none');
+  } else if (LS_API.getFilmsFromWatched().length !== 0) {
+    refs.movieContentBlock.classList.add('none');
+  }
+}
+
+function showEmptyQueueNotify() {
+  if (LS_API.getFilmsFromQueue().length === 0) {
+    refs.movieContentBlock.classList.remove('none');
+  } else if (LS_API.getFilmsFromWatched().length !== 0) {
+    refs.movieContentBlock.classList.add('none');
   }
 }
