@@ -16,8 +16,16 @@
         {{#if genres}}
           {{genres}}
         {{/if}}
+        {{#if genresAndMore}}
+          {{genresAndMore}} ...More
+        {{/if}}
 
         {{#if genres}}
+          {{#if release_date}}
+            <span class='movie__breacker'> | </span>
+          {{/if}}
+        {{/if}}
+        {{#if genresAndMore}}
           {{#if release_date}}
             <span class='movie__breacker'> | </span>
           {{/if}}
