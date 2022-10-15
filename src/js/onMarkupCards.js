@@ -33,7 +33,7 @@ export const onMarkupCards = function (films, container, rating) {
       });
 
       genres.length > 3
-        ? (obje.genresAndMore = genres.slice(0, 3).join(', '))
+        ? (obje.genresAndMore = genres.slice(0, 2).join(', '))
         : (obje.genres = genres.join(', '));
 
       return filmCards(obje);
