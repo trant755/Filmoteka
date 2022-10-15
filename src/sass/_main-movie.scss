@@ -1,6 +1,6 @@
 .movie {
   position: relative;
-  margin-top: 20px;
+  padding-top: 20px;
   padding-bottom: 20px;
 }
 
@@ -79,9 +79,10 @@
 
 @media (min-width: 768px) {
   .movie {
-    margin-top: 60px;
-    margin-bottom: 60px;
+    padding-top: 60px;
+    padding-bottom: 30px;
   }
+
   .movie__list {
     display: flex;
     flex-wrap: wrap;

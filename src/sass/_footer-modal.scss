@@ -8,6 +8,10 @@
   transition: opacity 250ms, visibility 250ms;
 }
 
+.modal-scroll {
+  overflow: hidden;
+}
+
 .modal {
   position: relative;
   width: 500px;

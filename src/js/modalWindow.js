@@ -41,6 +41,7 @@ function scrollLock() {
     ? (refs.body.style.overflow = 'hidden')
     : (refs.body.style.overflow = 'visible');
 }
+
 function escListener(bool) {
   if (bool === true) {
     document.addEventListener('keydown', listenerHandler);

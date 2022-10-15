@@ -11,9 +11,10 @@ export const refs = {
 
   IPerPageInput: document.querySelector('[name="library-input"]'),
 
-  // For add-to-library.js
-  // addToQueue: document.querySelector('#btn-add-to-queue'),
-  // addToWatched: document.querySelector('#btn-add-to-watched'),
+  //For footer-modal
+  openModalBtn: document.querySelector('.footer__btn'),
+  closeModalBtn: document.querySelector('.modal__close-btn'),
+  footerModal: document.querySelector('.backdrop-modal'),
 
   // For modalWindow.js
   filmList: document.querySelector('#movie-container'),
@@ -25,5 +26,4 @@ export const refs = {
   prevPagBtn: document.querySelector('.tui-prev'),
   nextPagBtn: document.querySelector('.tui-next'),
   lastPagBtn: document.querySelector('.tui-last'),
-
 };
