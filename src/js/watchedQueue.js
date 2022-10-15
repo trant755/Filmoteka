@@ -47,7 +47,7 @@ function onClickWatched() {
     generateLibraryContainer(LS_API.getFilmsFromWatched, 1, itemPerPage);
   } else {
     refs.movieContentBlock.removeAttribute('style');
-    refs.trandingContainer.closest('.movie').removeAttribute('style');
+    refs.trandingContainer.closest('.movie').style.display = 'none';
   }
   hidePaginationForWatched();
 }
