@@ -1,45 +1,45 @@
+.modal-window {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 280px;
+  //   height: 940px;
+  border: none;
+  padding: 0;
+  background: #ffffff;
+  overflow-y: auto;
 
-.modal-window{
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 806px;
-    height: 558px;
-    border:none;
-    padding: 0;
-    background: #FFFFFF;
-    overflow: hidden;
-    &__close{ 
-        position: absolute;
-        top: 16px;
-        right: 16px;
-        cursor: pointer;
-        &:hover,
-        &:focus {
-            fill: #ff6b08;
-        }
+  &__close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    cursor: pointer;
+    &:hover,
+    &:focus {
+      fill: #ff6b08;
     }
-    &__wrapper{
-        width: 100%;
-        height: 100%;
-        @media screen and (max-width: 850px) {
-            display: flex;
-            align-items:center;    
-        }
-    }
+  }
+  &__wrapper {
+    width: 100%;
+    height: 100%;
+
     @media screen and (max-width: 850px) {
-        width: 704px;
-        height: 552px;
-  
+      display: flex;
+      align-items: center;
     }
+  }
+  @media screen and (min-width: 768px) {
+    width: 704px;
+    // height: 552px;
+  }
 
-     @media screen and (max-width: 650px) {
-        width: 280px;
-        // height: auto;
-        height: 940px;
-        overflow-y: scroll;
-    }
-
+  @media screen and (min-width: 1280px) {
+    width: 806px;
+    // height: 558px;
+  }
+}
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.6);
 }
