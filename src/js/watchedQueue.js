@@ -219,7 +219,7 @@ function refreshQueuePage() {
 }
 
 function hidePaginationForWatched() {
-  if (LS_API.getFilmsFromWatched().length <= itemPerPage) {
+  if (LS_API.getFilmsFromWatched()?.length <= itemPerPage) {
     refs.paginationLibContainer.style.display = 'none';
   } else if (refs.paginationLibContainer.style.display === 'none') {
     refs.paginationLibContainer.removeAttribute('style');
@@ -227,7 +227,7 @@ function hidePaginationForWatched() {
 }
 
 function hidePaginationForQueue() {
-  if (LS_API.getFilmsFromQueue().length <= itemPerPage) {
+  if (LS_API.getFilmsFromQueue()?.length <= itemPerPage) {
     refs.paginationLibContainer.style.display = 'none';
   } else if (refs.paginationLibContainer.style.display === 'none') {
     refs.paginationLibContainer.removeAttribute('style');
@@ -246,17 +246,17 @@ function changeItemPerPage(e) {
 }
 
 function showEmptyWatchedNotify() {
-  if (LS_API.getFilmsFromWatched().length === 0) {
+  if (LS_API.getFilmsFromWatched()?.length === 0) {
     refs.movieContentBlock.removeAttribute('style');
-  } else if (LS_API.getFilmsFromWatched().length !== 0) {
+  } else if (LS_API.getFilmsFromWatched()?.length !== 0) {
     refs.movieContentBlock.style.display = 'none';
   }
 }
 
 function showEmptyQueueNotify() {
-  if (LS_API.getFilmsFromQueue().length === 0) {
+  if (LS_API.getFilmsFromQueue()?.length === 0) {
     refs.movieContentBlock.removeAttribute('style');
-  } else if (LS_API.getFilmsFromWatched().length !== 0) {
+  } else if (LS_API.getFilmsFromQueue()?.length !== 0) {
     refs.movieContentBlock.style.display = 'none';
   }
 }
