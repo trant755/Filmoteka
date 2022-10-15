@@ -1,46 +1,44 @@
 @import '~node_modules/modern-normalize/modern-normalize.css';
 
-
 html {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
-    font-size: 12px;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 p {
-    margin: 0;
+  margin: 0;
 }
 
-
 img {
-    display: block;
+  display: block;
 
-    height: auto;
+  height: auto;
 }
 
 a {
-    text-decoration: none;
-    transition: color var(--duration) var(--timing-function);
+  text-decoration: none;
+  transition: color var(--duration) var(--timing-function);
 }
 
 ul,
 ol {
-    list-style: none;
-    margin-top: 0;
-    margin-bottom: 0;
-    padding-left: 0;
+  list-style: none;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 0;
 }
 
 button {
-    border: none;
-    outline: none;
-    cursor: pointer;
+  border: none;
+  outline: none;
+  cursor: pointer;
 }
 
 h1,
@@ -50,6 +48,17 @@ h4,
 h5,
 h6,
 p {
-    margin-top: 0;
-    margin-bottom: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.main-min-height {
+  min-height: calc(100vh - 388px);
+  @media (min-width: 768px) {
+    min-height: calc(100vh - 298px);
+  }
+
+  @media (min-width: 1280px) {
+    min-height: calc(100vh - 293px);
+  }
 }
