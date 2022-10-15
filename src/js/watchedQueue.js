@@ -14,13 +14,13 @@ export let currentPage = '';
 
 if (!refs.watched && !refs.queue) return;
 
-let itemPerPage = 4;
-options.itemsPerPage = itemPerPage;
-
 export const paginationLib = new Pagination(
   refs.paginationLibContainer,
   options
 );
+let itemPerPage = 6;
+
+refs.IPerPageInput.addEventListener('change', changeItemPerPage);
 
 export let currentPaginationPage = 1;
 
@@ -110,6 +110,7 @@ function openModalLib() {
 const closeModalInLib = function () {
   refs.modalWindow.addEventListener('click', closeModalInLibCallBack);
 };
+
 function closeModalInLibCallBack(event) {
   let target = event.target;
   if (
@@ -230,6 +231,17 @@ function hidePaginationForQueue() {
     refs.paginationLibContainer.style.display = 'none';
   } else if (refs.paginationLibContainer.style.display === 'none') {
     refs.paginationLibContainer.removeAttribute('style');
+  }
+}
+
+function changeItemPerPage(e) {
+  itemPerPage = e.target.value;
+  paginationLib.setItemsPerPage(itemPerPage);
+  paginationLib.reset();
+  if (currentPage === 'watched') {
+    refreshWatchedPage();
+  } else if (currentPage === 'queue') {
+    refreshQueuePage();
   }
 }
 
