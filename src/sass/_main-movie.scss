@@ -86,7 +86,7 @@
   .movie__list {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
     margin-top: calc(-1 * 32px);
     margin-left: calc(-1 * 32px);
   }
