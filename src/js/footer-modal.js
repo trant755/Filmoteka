@@ -1,38 +1,29 @@
-// (() => {
-//   const refs = {
-//     openModalBtn: document.querySelector('[footer-modal-open]'),
-//     closeModalBtn: document.querySelector('[footer-modal-close]'),
-//     modal: document.querySelector('[footer-modal]'),
-//   };
+import { refs } from './refs';
 
-//   refs.openModalBtn.addEventListener('click', toggleModal);
-//   refs.closeModalBtn.addEventListener('click', toggleModal);
-//   window.addEventListener("keydown", onPressKeyESC);
+refs.openModalBtn.addEventListener('click', toggleModal);
+refs.closeModalBtn.addEventListener('click', toggleModal);
+refs.footerModal.addEventListener('click', onBackdropClick);
 
-//     function onPressKeyESC(evt) {
-//       if (evt.code === "Escape") {
-//         toggleModal();
-//       }
-//     }
+function toggleModal() {
+  refs.footerModal.classList.toggle('is-hidden');
 
-//   function toggleModal() {
-//     refs.modal.classList.toggle('is-hidden');
-//   }
-// })();
+  if(!refs.footerModal.classList.contains('is-hidden')) {
+    window.addEventListener("keydown", onPressKeyESC);
+    refs.body.classList.add('modal-scroll');
+  } else {
+    window.removeEventListener("keydown", onPressKeyESC);
+    refs.body.classList.remove('modal-scroll');
+  }
+}
 
-// ========================onPressKeyESC====================
+function onPressKeyESC(event) {
+  if (event.code === "Escape") {
+    toggleModal();
+  }
+}
 
-// const gallery = document.querySelector('[footer-modal]')
-
-// gallery.addEventListener('click', onGalleryClick);
-
-// function onGalleryClick(evt) {
-//    evt.preventDefault();
-
-//     window.addEventListener("keydown", onPressKeyESC, { once: true });
-//     function onPressKeyESC(evt) {
-//       if (evt.code === "Escape") {
-//         instanse.close();
-//       }
-//     }
-//   }
+function onBackdropClick(event) {
+  if(event.target === event.currentTarget) {
+    toggleModal();
+  }
+}

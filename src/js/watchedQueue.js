@@ -225,7 +225,7 @@ function refreshQueuePage() {
 }
 
 function hidePaginationForWatched() {
-  if (LS_API.getFilmsFromWatched()?.length <= itemPerPage) {
+  if (!LS_API.getFilmsFromWatched() || LS_API.getFilmsFromWatched().length <= itemPerPage) {
     refs.paginationLibContainer.style.display = 'none';
   } else if (refs.paginationLibContainer.style.display === 'none') {
     refs.paginationLibContainer.removeAttribute('style');
@@ -233,7 +233,7 @@ function hidePaginationForWatched() {
 }
 
 function hidePaginationForQueue() {
-  if (LS_API.getFilmsFromQueue()?.length <= itemPerPage) {
+  if (!LS_API.getFilmsFromQueue() || LS_API.getFilmsFromQueue().length <= itemPerPage) {
     refs.paginationLibContainer.style.display = 'none';
   } else if (refs.paginationLibContainer.style.display === 'none') {
     refs.paginationLibContainer.removeAttribute('style');

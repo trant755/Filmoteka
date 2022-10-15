@@ -1,10 +1,15 @@
 .backdrop {
   position: fixed;
   top: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
   background: rgba(0, 0, 0, 0.2);
   transition: opacity 250ms, visibility 250ms;
+}
+
+.modal-scroll {
+  overflow: hidden;
 }
 
 .modal {
@@ -28,7 +33,7 @@
   width: auto;
 }
 
-.modal__close {
+.modal__close-btn {
   position: absolute;
   width: 25px;
   height: 25px;
@@ -53,18 +58,18 @@
   visibility: hidden;
 }
 
-.modal-img {
+.team-list__img {
   min-width: 300px;
   min-height: 300px;
 }
 
-.team__list {
+.team-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-.team__card {
+.team-list__card {
   width: 300px;
   height: 400px;
   margin-bottom: 15px;
@@ -73,7 +78,7 @@
   border-radius: 0px 0px 4px 4px;
 }
 
-.team__info {
+.team-list__info {
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
@@ -83,7 +88,7 @@
   padding-left: 10px;
 }
 
-.modal__h1 {
+.modal__h2 {
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
@@ -101,7 +106,7 @@
         height: 800px;
     }
 
-  .team__card {
+  .team-list__card {
     width: 300px;
     height: 400px;
     &:not(:nth-child(2n + 2)) {
@@ -111,17 +116,18 @@
       margin-bottom: 30px;
     }
   }
-  .team__info {
+  .team-list__info {
       font-size: 20px;
   }
 }
 
 @media (min-width: 1280px) {
-    .modal {
-            width: 1280px;
-            height: 800px;
+  .modal {
+    width: 1280px;
+    height: 800px;
         }
-  .team__card {
+
+  .team-list__card {
     width: 300px;
     height: 400px;
     display: flex;
@@ -139,7 +145,7 @@
       margin-bottom: 30px;
     }
   }
-  .team__info {
+  .team-list__info {
     font-size: 25px;
   }
 }
