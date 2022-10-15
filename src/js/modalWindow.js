@@ -88,10 +88,7 @@ function getMovieById(id) {
     return genresArray.name;
   });
 
-  film.genres =
-    genres.length > 3
-      ? genres.slice(0, genres.length - 1).join(', ')
-      : genres.join(', ');
+  film.genres = genres.length > 0 ? genres.join(', ') : 'No info';
   let markup = modalFilmCard(film);
   refs.modalWindowWrap.innerHTML = markup;
 
