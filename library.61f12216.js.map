@@ -1,0 +1,1 @@
+{"mappings":"gfAAAA,EAAA,S","sources":["src/library.js"],"sourcesContent":["import './js/watchedQueue';\nimport './js/modalWindow';\nimport './js/footer-modal';\n"],"names":["parcelRequire"],"version":3,"file":"library.61f12216.js.map"}
