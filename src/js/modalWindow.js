@@ -151,7 +151,7 @@ async function getTrailer(id, trailerBtn) {
     refs.youtube.src =
       'https://www.youtube.com/embed/' +
       trailer.key +
-      '?origin=https%3A%2F%2Ftrant755.github.io&enablejsapi=1';
+      '?origin=https%3A%2F%2Ftrant755.github.io&amp;enablejsapi=1amp;widgetid=1';
     refs.trailerContainer.classList.remove('is-hidden');
     refs.trailerContainer.nextSibling.nextSibling.firstElementChild.style.fill =
       'white';
