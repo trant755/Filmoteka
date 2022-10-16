@@ -3,8 +3,10 @@ import { currentLibraryPageEL, currentPage } from './watchedQueue';
 // import generateLibraryContainer from './libraryCard';
 import localStorageAPI from './local-storage-api/local-storage-api';
 import { refs } from './refs';
+import MovieApiService from './fetchModule';
 
 const API = new localStorageAPI();
+const FetchAPI = new MovieApiService();
 
 export let watchedStorageInclude = false;
 export let queueStorageInclude = false;
@@ -15,6 +17,9 @@ export const openModal = function () {
     let target = event.target;
     if (target.closest('.movie__link')) {
       refs.modalWindow.showModal();
+      if (!refs.trailerContainer.classList.contains('is-hidden')) {
+        refs.trailerContainer.classList.add('is-hidden');
+      }
 
       getMovieID(target);
       scrollLock();
@@ -34,6 +39,7 @@ function closeModal() {
         refs.trailerContainer.nextSibling.nextSibling.firstElementChild.removeAttribute(
           'style'
         );
+        refs.youtube.src = '';
         return;
       }
     }
@@ -109,7 +115,6 @@ function getMovieById(id) {
   const trailerBtn = document.querySelector('.trailer-btn');
 
   includeTest(id);
-
   addToWatched.textContent = watchedStorageInclude
     ? 'Remove from watched'
     : 'Add to watched';
@@ -128,13 +133,24 @@ function getMovieById(id) {
   }
   onBtnClickFunction(addToWatched, addToQueue, id, film);
 
-  trailerBtn.addEventListener('click', () => {
-    refs.trailerContainer.classList.remove('is-hidden');
+  trailerBtn.addEventListener('click', async () => {
+    await getTrailer(id, trailerBtn);
+  });
+}
 
+async function getTrailer(id, trailerBtn) {
+  await FetchAPI.fetchTrailer(id).then(res => {
+    if (res.results.length === 0) {
+      console.log(1);
+      trailerBtn.textContent = 'No trailer';
+      trailerBtn.classList.remove('trailer-btn--active');
+      return;
+    }
+    let trailer = res.results.find(tr => tr.name === 'Official Trailer');
+    refs.youtube.src = 'https://www.youtube.com/embed/' + trailer.key;
+    refs.trailerContainer.classList.remove('is-hidden');
     refs.trailerContainer.nextSibling.nextSibling.firstElementChild.style.fill =
       'white';
-
-    console.dir(refs.youtube);
   });
 }
 

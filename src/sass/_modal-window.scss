@@ -57,14 +57,22 @@ dialog::backdrop {
   font-size: 12px;
   line-height: 16px;
   text-transform: uppercase;
-  border: 1px solid #ff6b01;
-  background-color: #ff6b01;
-  color: white;
+  background: inherit;
+  border: 1px solid #000000;
+  color: #000000;
   border-radius: 5px;
   margin-bottom: 8px;
+  pointer-events: none;
 
-  &:hover {
-    background-color: #ff6a00cf;
+  &--active {
+    border: 1px solid #ff6b01;
+    background-color: #ff6b01;
+    color: white;
+    pointer-events: all;
+
+    &:hover {
+      background-color: #ff6a00cf;
+    }
   }
 }
 

@@ -57,9 +57,7 @@ export default class MovieApiService {
   }
 
   fetchTrailer(id) {
-    console.log(id);
     this.id = id;
-    console.log(this.id);
 
     const response = fetch(
       `${API_WEB}/movie/${this.id}/videos?${API_KEY}&language=en-US`
