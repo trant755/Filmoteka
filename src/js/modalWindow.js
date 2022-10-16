@@ -146,8 +146,12 @@ async function getTrailer(id, trailerBtn) {
       trailerBtn.classList.remove('trailer-btn--active');
       return;
     }
-    let trailer = res.results.find(tr => tr.name === 'Official Trailer');
-    refs.youtube.src = 'https://www.youtube.com/embed/' + trailer.key;
+    let trailer = res.results.find(tr => tr.name.includes('Official Trailer'));
+    console.log(trailer);
+    refs.youtube.src =
+      'https://www.youtube.com/embed/' +
+      trailer.key +
+      '?origin=https://trant755.github.io';
     refs.trailerContainer.classList.remove('is-hidden');
     refs.trailerContainer.nextSibling.nextSibling.firstElementChild.style.fill =
       'white';
