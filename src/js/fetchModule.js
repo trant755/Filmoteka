@@ -5,6 +5,7 @@ export default class MovieApiService {
   constructor() {
     this.needToFind = '';
     this.page = 1;
+    this.id = 1;
   }
 
   fetchGenres() {
@@ -42,6 +43,24 @@ export default class MovieApiService {
   fetchMovies() {
     const response = fetch(
       `${API_WEB}/search/movie?${API_KEY}&query=${this.needToFind}&page=${this.page}`
+    )
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(response.status);
+        }
+        return response.json();
+      })
+      .catch(error => {
+        console.log('Error on try...catch', error);
+      });
+    return response;
+  }
+
+  fetchTrailer(id) {
+    this.id = id;
+
+    const response = fetch(
+      `${API_WEB}/movie/${this.id}/videos?${API_KEY}&language=en-US`
     )
       .then(response => {
         if (!response.ok) {

@@ -3,8 +3,10 @@ import { currentLibraryPageEL, currentPage } from './watchedQueue';
 // import generateLibraryContainer from './libraryCard';
 import localStorageAPI from './local-storage-api/local-storage-api';
 import { refs } from './refs';
+import MovieApiService from './fetchModule';
 
 const API = new localStorageAPI();
+const FetchAPI = new MovieApiService();
 
 export let watchedStorageInclude = false;
 export let queueStorageInclude = false;
@@ -15,6 +17,9 @@ export const openModal = function () {
     let target = event.target;
     if (target.closest('.movie__link')) {
       refs.modalWindow.showModal();
+      if (!refs.trailerContainer.classList.contains('is-hidden')) {
+        refs.trailerContainer.classList.add('is-hidden');
+      }
 
       getMovieID(target);
       scrollLock();
@@ -25,6 +30,19 @@ export const openModal = function () {
 function closeModal() {
   refs.modalWindow.addEventListener('click', event => {
     let target = event.target;
+    if (
+      target.classList.contains('close-btn') ||
+      target.parentNode.classList.contains('close-btn')
+    ) {
+      if (!refs.trailerContainer.classList.contains('is-hidden')) {
+        refs.trailerContainer.classList.add('is-hidden');
+        refs.trailerContainer.nextSibling.nextSibling.firstElementChild.removeAttribute(
+          'style'
+        );
+        refs.youtube.src = '';
+        return;
+      }
+    }
     if (
       target.closest('.modal-window__close') ||
       target.matches('.modal-window')
@@ -94,9 +112,9 @@ function getMovieById(id) {
 
   const addToWatched = document.querySelector('#btn-add-to-watched');
   const addToQueue = document.querySelector('#btn-add-to-queue');
+  const trailerBtn = document.querySelector('.trailer-btn');
 
   includeTest(id);
-
   addToWatched.textContent = watchedStorageInclude
     ? 'Remove from watched'
     : 'Add to watched';
@@ -114,6 +132,26 @@ function getMovieById(id) {
     addToQueue.classList.add('movie-card__btn--active');
   }
   onBtnClickFunction(addToWatched, addToQueue, id, film);
+
+  trailerBtn.addEventListener('click', async () => {
+    await getTrailer(id, trailerBtn);
+  });
+}
+
+async function getTrailer(id, trailerBtn) {
+  await FetchAPI.fetchTrailer(id).then(res => {
+    if (res.results.length === 0) {
+      console.log(1);
+      trailerBtn.textContent = 'No trailer';
+      trailerBtn.classList.remove('trailer-btn--active');
+      return;
+    }
+    let trailer = res.results.find(tr => tr.name === 'Official Trailer');
+    refs.youtube.src = 'https://www.youtube.com/embed/' + trailer.key;
+    refs.trailerContainer.classList.remove('is-hidden');
+    refs.trailerContainer.nextSibling.nextSibling.firstElementChild.style.fill =
+      'white';
+  });
 }
 
 function includeTest(id) {
