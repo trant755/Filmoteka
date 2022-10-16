@@ -32,7 +32,8 @@ function closeModal() {
     let target = event.target;
     if (
       target.classList.contains('close-btn') ||
-      target.parentNode.classList.contains('close-btn')
+      target.parentNode.classList.contains('close-btn') ||
+      target.classList.contains('modal-window')
     ) {
       if (!refs.trailerContainer.classList.contains('is-hidden')) {
         refs.trailerContainer.classList.add('is-hidden');
@@ -141,7 +142,6 @@ function getMovieById(id) {
 async function getTrailer(id, trailerBtn) {
   await FetchAPI.fetchTrailer(id).then(res => {
     if (res.results.length === 0) {
-      console.log(1);
       trailerBtn.textContent = 'No trailer';
       trailerBtn.classList.remove('trailer-btn--active');
       return;

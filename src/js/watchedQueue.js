@@ -121,7 +121,8 @@ function closeModalInLibCallBack(event) {
   let target = event.target;
   if (
     target.classList.contains('close-btn') ||
-    target.parentNode.classList.contains('close-btn')
+    target.parentNode.classList.contains('close-btn') ||
+    target.classList.contains('modal-window')
   ) {
     if (!refs.trailerContainer.classList.contains('is-hidden')) {
       return;
@@ -176,6 +177,16 @@ function refreshWatchedPage() {
   if (
     logicLib(
       LS_API.getFilmsFromWatched,
+      paginationLib.getCurrentPage() + 1,
+      itemPerPage
+    ).length === 0
+  ) {
+    paginationLib.setTotalItems(LS_API.getFilmsFromWatched().length);
+    paginationLib.movePageTo(paginationLib.getCurrentPage());
+  }
+  if (
+    logicLib(
+      LS_API.getFilmsFromWatched,
       paginationLib.getCurrentPage(),
       itemPerPage
     ).length === 0
@@ -209,6 +220,17 @@ function refreshQueuePage() {
       paginationLib.getCurrentPage(),
       itemPerPage
     );
+  }
+
+  if (
+    logicLib(
+      LS_API.getFilmsFromQueue,
+      paginationLib.getCurrentPage() + 1,
+      itemPerPage
+    ).length === 0
+  ) {
+    paginationLib.setTotalItems(LS_API.getFilmsFromQueue().length);
+    paginationLib.movePageTo(paginationLib.getCurrentPage());
   }
 
   if (
