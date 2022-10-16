@@ -11,6 +11,9 @@ export const refs = {
 
   IPerPageInput: document.querySelector('[name="library-input"]'),
 
+  toTopBtn: document.querySelector('.button-to-top'),
+  svgIcon: document.querySelector('.to-top-icon'),
+
   //For footer-modal
   openModalBtn: document.querySelector('.footer__btn'),
   closeModalBtn: document.querySelector('.modal__close-btn'),

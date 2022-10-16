@@ -19,14 +19,15 @@
 }
 
 .footer__container {
-    // display: flex;
+    display: flex;
     flex-wrap: wrap;
-    // justify-content: center;
-    // text-align: center;
+    justify-content: center;
+    text-align: center;
     margin-left: auto;
     margin-right: auto;
     padding-top: 29px;
     padding-bottom: 30px;
+    background-color: #F7F7F7;
 
     @media screen and (min-width: 768px) {
         display: flex;
@@ -43,7 +44,9 @@
 }
 
 .footer__title {
-font-family: 'Roboto';
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -51,6 +54,8 @@ font-family: 'Roboto';
     color: #545454;
 
     @media screen and (min-width: 768px) {
+        margin-left: 0;
+        margin-right: 0;
         padding-top: 0px;
         padding-bottom: 0px;
         margin-top: 0;

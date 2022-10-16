@@ -10,9 +10,13 @@ function toggleModal() {
   if(!refs.footerModal.classList.contains('is-hidden')) {
     window.addEventListener("keydown", onPressKeyESC);
     refs.body.classList.add('modal-scroll');
+    refs.toTopBtn.classList.add('is-hidden');
+    refs.body.style.overflow = 'hidden';
   } else {
     window.removeEventListener("keydown", onPressKeyESC);
     refs.body.classList.remove('modal-scroll');
+    refs.toTopBtn.classList.remove('is-hidden');
+    refs.body.style.overflow = 'visible';
   }
 }
 
