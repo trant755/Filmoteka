@@ -11,8 +11,17 @@ export const refs = {
 
   IPerPageInput: document.querySelector('[name="library-input"]'),
 
+  //For button to top
   toTopBtn: document.querySelector('.button-to-top'),
   svgIcon: document.querySelector('.to-top-icon'),
+
+  //For theme-switcher
+  body: document.querySelector('body'),
+  switcher: document.querySelector('.switcher'),
+  switcherMain: document.querySelector('.switcher-main'),
+  roller: document.querySelector('.switcher-roller'),
+  sunSvg: document.querySelector('.sun-svg'),
+  moonSvg: document.querySelector('.moon-svg'),
 
   //For footer-modal
   openModalBtn: document.querySelector('.footer__btn'),

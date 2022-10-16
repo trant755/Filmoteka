@@ -1,10 +1,23 @@
+@keyframes light-footer {
+    0%   {background-color:black; }
+    25%  {background-color:#373737; }
+    50%  {background-color:#797979; }
+    75%  {background-color:#c8c8c8; }
+    100% {background-color:#E5E5E5; }
+}
+
 .footer {
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
     text-align: center;
-
     height: 100px;
+
+    animation-name: light-footer;
+    animation-duration: 500ms;
+    animation-delay: 0;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
 
         @media screen and (min-width: 768px) {
         display: flex;

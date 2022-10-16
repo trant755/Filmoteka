@@ -6,6 +6,7 @@
 
 .movie__item {
   max-width: 280px;
+  border-radius: 5px;
 }
 
 .movie__item:not(:last-child) {

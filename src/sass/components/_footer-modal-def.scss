@@ -219,7 +219,7 @@
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
     &:hover, &:focus {
-        box-shadow: 0 1px 15px rgba(255,255,255,0.8);
+        box-shadow: 0 5px 30px rgba(0, 0, 0, 1);
 
         .team-list__name {
             color: #ff6b08;
@@ -244,18 +244,6 @@
         height: 210px;
     }
 }
-
-// .team-list__link {
-//     // opacity: 0;
-
-//     @media (min-width: 768px) {
-//         opacity: 1;
-
-//         &:hover, &:focus {
-//             fill: #ff6b08;
-//         }
-//     }
-// }
 
 .team-list__icon {
     position: absolute;
@@ -289,7 +277,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    // padding-left: 5px;
 
     @media (min-width: 768px) {
         justify-content: start;
@@ -330,10 +317,6 @@
     line-height: 1.33;
     color: white;
 
-    // @media (min-width: 768px) {
-    //     font-size: 9px;
-    // }
-
     @media (min-width: 1280px) {
         font-weight: 500;
         font-size: 14px;
@@ -352,10 +335,6 @@
 
     color: white;
 
-    // @media (min-width: 768px) {
-    //     font-size: 9px;
-    // }
-
     @media (min-width: 1280px) {
         font-weight: 500;
         font-size: 14px;
@@ -369,10 +348,6 @@
     line-height: 1.33;
     font-size: 9px;
     color: white;
-
-    // @media (min-width: 768px) {
-    //     font-size: 9px;
-    // }
 
     @media (min-width: 1280px) {
         font-weight: 500;

@@ -89,6 +89,16 @@
 .library-header--logo__img {
   width: 24px;
   height: 24px;
+
+  &:hover, &:focus {
+    @media screen and (max-width: 767px) {
+      transform: perspective(1em) rotateX(40deg) scale(1, 0.35);
+      filter: blur(8px);
+      transition: 500ms ease;
+    }
+  }
+
+
 }
 
 .library-header--logo a {
