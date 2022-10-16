@@ -18,6 +18,11 @@ refs.loader.classList.remove('is-hidden');
 
 generateHomePage();
 
+API.fetchTrailer(361743).then(res => {
+  let trailer = res.results.find(tr => tr.name === 'Official Trailer');
+  console.log(trailer);
+});
+
 function generateHomePage() {
   if (!LS_API.getGeneresLS()) {
     API.fetchGenres().then(LS_API.saveGenersLS);
