@@ -37,10 +37,10 @@ function closeModal() {
     ) {
       if (!refs.trailerContainer.classList.contains('is-hidden')) {
         refs.trailerContainer.classList.add('is-hidden');
-        refs.trailerContainer.nextSibling.nextSibling.firstElementChild.removeAttribute(
+        refs.trailerContainer.nextSibling.nextSibling.nextSibling.nextSibling.firstElementChild.removeAttribute(
           'style'
         );
-        refs.youtube.src = '';
+        player.stopVideo();
         return;
       }
     }
