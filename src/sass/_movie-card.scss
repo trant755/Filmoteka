@@ -7,7 +7,22 @@
   padding-right: 20px;
   padding-bottom: 40px;
   // border: none;
-
+  background: linear-gradient(56deg,#000000,#323232,#656363,#0f0c0c);
+  background-size: 300% 300%;
+  animation: gradient-animation 15s ease infinite;
+    
+  @keyframes gradient-animation {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+  }
+  
   @media screen and (min-width: 768px) {
     flex-direction: row;
     justify-content: space-between;

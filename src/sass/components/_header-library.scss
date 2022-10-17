@@ -89,16 +89,6 @@
 .library-header--logo__img {
   width: 24px;
   height: 24px;
-
-  &:hover, &:focus {
-    @media screen and (max-width: 767px) {
-      transform: perspective(1em) rotateX(40deg) scale(1, 0.35);
-      filter: blur(8px);
-      transition: 500ms ease;
-    }
-  }
-
-
 }
 
 .library-header--logo a {
@@ -181,7 +171,7 @@
 
 .library--btn__container {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   flex-wrap: wrap;
   position: relative;
 
@@ -191,6 +181,7 @@
   margin-top: 60px;
 
   @media screen and (min-width: 768px) {
+    justify-content: center;
     margin-top: 40px;
   }
 }
@@ -223,6 +214,7 @@
 
   @media screen and (min-width: 768px) {
     padding: 13px 46px;
+    margin-right: 32px;
   }
 }
 
@@ -299,36 +291,56 @@
 
 .library--btn.library-input {
   color: var(--secondary-orange-color);
-  padding: 13px 13px;
-  margin-top: 20px;
+  padding: 5px;
+  margin-top: 10px;
+  // width: 50px;
+  height: 30px;
+  font-size: 8px;
 
-  position: inherit;
-  bottom: 5px;
-  right: auto;
-  left: auto;
+  position: absolute;
+  top: 45px;
+  right: 20px;
+  // right: auto;
+  // left: auto;
 
   @media screen and (min-width: 768px) {
-      margin-top: 0px;
-      bottom: 0;
-      right: 0;
-      position: absolute;
-}
+    right: 90px;
+    // width: 20px;
+  }
 }
 
 .label {
   border: none;
   transition: none;
   margin-right: 0px;
+  display: contents;
+  // font-size: 5px;
+  top: 10px;
 
   &:hover {
       border: none;
     }
 
   @media screen and (min-width: 768px) {
-    margin-right: 63px;
+    // margin-right: 63px;
   }
 
   @media screen and (min-width: 1280px) {
     margin-right: 63px;
+  }
+}
+
+.library--btn.library-input.label {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  // width: 45px;
+  // height: 30px;
+  margin-top: 15px;
+  margin-right: 50px;
+
+  @media screen and (min-width: 768px) {
+    // margin-right: 35px;
+    // margin-top: 4px;
   }
 }
