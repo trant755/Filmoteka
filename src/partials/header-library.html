@@ -25,29 +25,36 @@
             class="library-header--list__link library-header--list__link--active"
             data-page="library"
             href="/src/library.html"
-            >MY LIBRARY</a
-          >
+            >MY LIBRARY
+          </a>
         </li>
       </ul>
     </div>
-    <div class="library--btn__container">
+  </div>
+  <div class="library--btn__container container">
+    <div class="switcher">
+      <img src="./images/icons/sun.svg" width="20" height="20" class="sun-svg" alt="sun">
+      <div class="switcher-roller"></div>
+      <img src="./images/icons/moon.svg" width="20" height="20" class="moon-svg" alt="moon">
+    </div>  
       <button
         type="button"
         class="library--btn library--btn__watched library--btn--active"
-      >
-        WATCHED
+        >
+          WATCHED
       </button>
       <button type="button" class="library--btn library--btn__queue">
         QUEUE
-      </button>
+      </button>  
       <label for="library-input" class="library--btn library-input label"
-        >FILMS PER PAGE</label
-      >
-      <select
-        id="library-input"
-        name="library-input"
-        class="library--btn library-input"
-      >
+        >
+          FILMS PER PAGE</label
+        >
+        <select
+          id="library-input"
+          name="library-input"
+          class="library--btn library-input"
+        >
         <!-- <option selected disabled>FILMS PER PAGE</option> -->
         <option value="2" style="font-size: 12pt">2</option>
         <option selected value="6" style="font-size: 12pt">6</option>

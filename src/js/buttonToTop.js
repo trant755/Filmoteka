@@ -1,7 +1,9 @@
-const toTopBtn = document.querySelector('.button-to-top');
-const svgIcon = document.querySelector('.to-top-icon');
+// const toTopBtn = document.querySelector('.button-to-top');
+// const svgIcon = document.querySelector('.to-top-icon');
 
-toTopBtn.addEventListener('click', onButtonClick);
+import { refs } from './refs';
+
+refs.toTopBtn.addEventListener('click', onButtonClick);
 
 function onButtonClick() {
   window.scrollTo(0, 0);
@@ -16,12 +18,12 @@ function scrollFunction() {
     document.body.scrollTop > 700 ||
     document.documentElement.scrollTop > 700
   ) {
-    toTopBtn.style.visibility = 'visible';
-    svgIcon.style.opacity = 1;
-    toTopBtn.style.opacity = 1;
+    refs.toTopBtn.style.visibility = 'visible';
+    refs.svgIcon.style.opacity = 1;
+    refs.toTopBtn.style.opacity = 1;
   } else {
-    toTopBtn.style.visibility = 'hiden';
-    svgIcon.style.opacity = 0;
-    toTopBtn.style.opacity = 0;
+    refs.toTopBtn.style.visibility = 'hiden';
+    refs.svgIcon.style.opacity = 0;
+    refs.toTopBtn.style.opacity = 0;
   }
 }
