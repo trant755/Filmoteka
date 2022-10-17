@@ -1,7 +1,6 @@
 .library-header {
   padding-top: 40px;
   padding-bottom: 56px;
-  
 
   background: rgba(0, 0, 0, 0.56);
   background-image: linear-gradient(
@@ -73,7 +72,6 @@
 }
 
 // NAV
-
 
 .library-header--nav__container {
   display: flex;
@@ -220,13 +218,13 @@
 
 .library--btn__queue {
   padding: 13px 44px;
-  
+
   @media screen and (min-width: 768px) {
     padding: 13px 54px;
   }
 }
 
-.library--btn:nth-child(-n+1) {
+.library--btn:nth-child(-n + 1) {
   margin-right: 20px;
 
   @media screen and (min-width: 768px) {
@@ -288,14 +286,13 @@
   top: 20px;
 }
 
-
 .library--btn.library-input {
   color: var(--secondary-orange-color);
   padding: 5px;
   margin-top: 10px;
   // width: 50px;
   height: 30px;
-  font-size: 8px;
+  font-size: 13px;
 
   position: absolute;
   top: 45px;
@@ -304,7 +301,8 @@
   // left: auto;
 
   @media screen and (min-width: 768px) {
-    right: 90px;
+    right: 31px;
+    top: 0;
     // width: 20px;
   }
 }
@@ -318,8 +316,8 @@
   top: 10px;
 
   &:hover {
-      border: none;
-    }
+    border: none;
+  }
 
   @media screen and (min-width: 768px) {
     // margin-right: 63px;
@@ -336,7 +334,7 @@
   align-items: start;
   // width: 45px;
   // height: 30px;
-  margin-top: 15px;
+  margin-top: 12px;
   margin-right: 50px;
 
   @media screen and (min-width: 768px) {
