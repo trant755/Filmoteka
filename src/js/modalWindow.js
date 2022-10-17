@@ -37,10 +37,12 @@ function closeModal() {
     ) {
       if (!refs.trailerContainer.classList.contains('is-hidden')) {
         refs.trailerContainer.classList.add('is-hidden');
-        refs.trailerContainer.nextSibling.nextSibling.firstElementChild.removeAttribute(
+        refs.modalWindow.removeAttribute('style');
+
+        refs.trailerContainer.nextSibling.nextSibling.nextSibling.nextSibling.firstElementChild.removeAttribute(
           'style'
         );
-        refs.youtube.src = '';
+        player.stopVideo();
         return;
       }
     }
@@ -146,14 +148,16 @@ async function getTrailer(id, trailerBtn) {
       trailerBtn.classList.remove('trailer-btn--active');
       return;
     }
+
     let trailer = res.results.find(tr => tr.name.includes('Official Trailer'));
-    console.log(trailer);
-    refs.youtube.src =
-      'https://www.youtube.com/embed/' +
-      trailer.key +
-      '?origin=https%3A%2F%2Ftrant755.github.io&amp;enablejsapi=1amp;widgetid=1';
+
+    player.loadVideoById(`${trailer.key}`);
+    player.stopVideo();
+
     refs.trailerContainer.classList.remove('is-hidden');
-    refs.trailerContainer.nextSibling.nextSibling.firstElementChild.style.fill =
+    refs.modalWindow.scrollTo(0, 0);
+    refs.modalWindow.style.overflowY = 'hidden';
+    refs.trailerContainer.nextSibling.nextSibling.nextSibling.nextSibling.firstElementChild.style.fill =
       'white';
   });
 }

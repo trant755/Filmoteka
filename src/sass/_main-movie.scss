@@ -8,7 +8,8 @@
   max-width: 280px;
   border-radius: 5px;
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     box-shadow: 0 5px 10px black;
   }
 }
@@ -19,7 +20,6 @@
 
 .movie__link {
   cursor: pointer;
-
 }
 
 .movie__image {
@@ -71,7 +71,8 @@
   border-radius: 5px;
 
   text-align: center;
-  font-size: 14px;
+
+  font-size: 27px;
   line-height: 1.2;
 
   background-color: var(--secondary-orange-color);
@@ -145,7 +146,7 @@
     height: 120px;
     // height: 170px;
 
-    font-size: 24px;
+    font-size: 27px;
     line-height: 1.4;
   }
 
@@ -196,8 +197,5 @@
     width: 250px;
     height: 140px;
     // height: 170px;
-
-    font-size: 30px;
-    line-height: 1.4;
   }
 }
