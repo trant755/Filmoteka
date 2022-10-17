@@ -66,7 +66,7 @@ p {
   margin-bottom: 0;
 }
 
-.main-min-height {
+.default-height {
   min-height: calc(100vh - 388px);
   @media (min-width: 768px) {
     min-height: calc(100vh - 298px);
