@@ -33,6 +33,8 @@ export const refs = {
   modalWindow: document.querySelector('.modal-window'),
   modalWindowWrap: document.querySelector('.modal-window__wrapper'),
   body: document.querySelector('body'),
+  trailerContainer: document.querySelector('.modal-trailer-container'),
+  youtube: document.querySelector('.youtube'),
 
   firstPagBtn: document.querySelector('.tui-first'),
   prevPagBtn: document.querySelector('.tui-prev'),

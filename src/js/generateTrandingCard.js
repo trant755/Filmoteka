@@ -55,7 +55,7 @@ function renderNewPageOfTrendingFilms(e) {
     return;
 
   clearGallery();
-  
+
   const newCurrentPage = pagination.getCurrentPage();
 
   API.addMoviesPage(newCurrentPage);
@@ -95,6 +95,7 @@ async function fetchSearchFilms() {
 
   if (data.results.length === 0) {
     refs.SearchErrMessage.classList.remove('is-hidden');
+    setTimeout(() => refs.SearchErrMessage.classList.add('is-hidden'), 4000);
 
     API.query = oldQuery;
     return;
@@ -118,5 +119,3 @@ function hidePaginationForSearch(data) {
     refs.paginationContainer.removeAttribute('style');
   }
 }
-
-

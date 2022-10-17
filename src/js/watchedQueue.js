@@ -123,6 +123,16 @@ const closeModalInLib = function () {
 function closeModalInLibCallBack(event) {
   let target = event.target;
   if (
+    target.classList.contains('close-btn') ||
+    target.parentNode.classList.contains('close-btn') ||
+    target.classList.contains('modal-window')
+  ) {
+    if (!refs.trailerContainer.classList.contains('is-hidden')) {
+      return;
+    }
+  }
+
+  if (
     target.closest('.modal-window__close') ||
     target.matches('.modal-window')
   ) {
@@ -170,6 +180,16 @@ function refreshWatchedPage() {
   if (
     logicLib(
       LS_API.getFilmsFromWatched,
+      paginationLib.getCurrentPage() + 1,
+      itemPerPage
+    ).length === 0
+  ) {
+    paginationLib.setTotalItems(LS_API.getFilmsFromWatched().length);
+    paginationLib.movePageTo(paginationLib.getCurrentPage());
+  }
+  if (
+    logicLib(
+      LS_API.getFilmsFromWatched,
       paginationLib.getCurrentPage(),
       itemPerPage
     ).length === 0
@@ -208,6 +228,17 @@ function refreshQueuePage() {
   if (
     logicLib(
       LS_API.getFilmsFromQueue,
+      paginationLib.getCurrentPage() + 1,
+      itemPerPage
+    ).length === 0
+  ) {
+    paginationLib.setTotalItems(LS_API.getFilmsFromQueue().length);
+    paginationLib.movePageTo(paginationLib.getCurrentPage());
+  }
+
+  if (
+    logicLib(
+      LS_API.getFilmsFromQueue,
       paginationLib.getCurrentPage(),
       itemPerPage
     ).length === 0
@@ -228,7 +259,10 @@ function refreshQueuePage() {
 }
 
 function hidePaginationForWatched() {
-  if (!LS_API.getFilmsFromWatched() || LS_API.getFilmsFromWatched().length <= itemPerPage) {
+  if (
+    !LS_API.getFilmsFromWatched() ||
+    LS_API.getFilmsFromWatched().length <= itemPerPage
+  ) {
     refs.paginationLibContainer.style.display = 'none';
   } else if (refs.paginationLibContainer.style.display === 'none') {
     refs.paginationLibContainer.removeAttribute('style');
@@ -236,7 +270,10 @@ function hidePaginationForWatched() {
 }
 
 function hidePaginationForQueue() {
-  if (!LS_API.getFilmsFromQueue() || LS_API.getFilmsFromQueue().length <= itemPerPage) {
+  if (
+    !LS_API.getFilmsFromQueue() ||
+    LS_API.getFilmsFromQueue().length <= itemPerPage
+  ) {
     refs.paginationLibContainer.style.display = 'none';
   } else if (refs.paginationLibContainer.style.display === 'none') {
     refs.paginationLibContainer.removeAttribute('style');
