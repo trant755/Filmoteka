@@ -37,6 +37,8 @@ function closeModal() {
     ) {
       if (!refs.trailerContainer.classList.contains('is-hidden')) {
         refs.trailerContainer.classList.add('is-hidden');
+        refs.modalWindow.removeAttribute('style');
+
         refs.trailerContainer.nextSibling.nextSibling.nextSibling.nextSibling.firstElementChild.removeAttribute(
           'style'
         );
@@ -151,7 +153,10 @@ async function getTrailer(id, trailerBtn) {
 
     player.loadVideoById(`${trailer.key}`);
     player.stopVideo();
+
     refs.trailerContainer.classList.remove('is-hidden');
+    refs.modalWindow.scrollTo(0, 0);
+    refs.modalWindow.style.overflowY = 'hidden';
     refs.trailerContainer.nextSibling.nextSibling.nextSibling.nextSibling.firstElementChild.style.fill =
       'white';
   });
