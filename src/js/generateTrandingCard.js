@@ -19,7 +19,7 @@ const pagination = new Pagination(refs.paginationContainer, options);
 refs.loader.classList.remove('is-hidden');
 
 generateHomePage();
-initChangeOfThemeOnMain();
+// initChangeOfThemeOnMain();
 
 function generateHomePage() {
   if (!LS_API.getGeneresLS()) {

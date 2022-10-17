@@ -7,13 +7,13 @@ const SWITCHER_POSITION = 'switcherPosition';
 // initChangeOfThemeOnMain();
 
 export function initChangeOfThemeOnMain() {
-  if (!localStorage.getItem(THEME_KEY)) return;
+  //   if (!localStorage.getItem(THEME_KEY)) return;
   refs.switcherMain.addEventListener('click', onSwitcherClick);
   getSiteTheme();
 }
 
 export function initChangeOfThemeOnLib() {
-  if (!localStorage.getItem(THEME_KEY)) return;
+  //   if (!localStorage.getItem(THEME_KEY)) return;
 
   refs.switcher.addEventListener('click', onSwitcherClick);
   getSiteTheme();
