@@ -8,14 +8,18 @@
     background-color: transparent;
     border: 1px solid white;
     border-radius: 5px;
+
+    &:hover, &:focus {
+        border: 1px solid var(--secondary-orange-color);
+    }
 }
 
 .sun-svg {
     position: absolute;
     left: 8%;
     top: 16%;
-    height: 30px;
-    width: 30px;
+    height: 28px;
+    width: 28px;
     opacity: 1;
 }
 
@@ -32,9 +36,7 @@
     width: 50px;
     background-color: var(--secondary-orange-color);
     border-radius: 5px;
-}
 
-.switcher-roller--light {
     position: absolute;
     top: 0;
     left: 0;
@@ -72,28 +74,12 @@
     100% {background-color:black; }
 }
 
-@keyframes light-body {
-    0%   {background-color:black; }
-    25%  {background-color:#373737; }
-    50%  {background-color:#797979; }
-    75%  {background-color:#c8c8c8; }
-    100% {background-color:#E5E5E5; }
-}
-
 @keyframes dark-footer {
     0%   {background-color:#E5E5E5; }
     25%  {background-color:#c8c8c8; }
     50%  {background-color:#797979; }
     75%  {background-color:#373737; }
     100% {background-color:black; }
-}
-
- .light-theme {
-    animation-name: light-body;
-    animation-duration: 500ms;
-    animation-delay: 0;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
 }
 
 .dark-theme {
@@ -118,8 +104,9 @@
     }
     
     & .movie__item {
-        // box-shadow: 0 5px 10px rgba(255, 255, 255, 1);
-        box-shadow: 0 5px 10px lightSlateGray;
+        &:hover, &:focus {
+            box-shadow: 0 5px 10px lightSlateGray;
+        }
     }
 
     & .movie-card {

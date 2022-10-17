@@ -3,6 +3,7 @@ import { generateLibraryContainer, logicLib } from './libraryCard';
 import { refs } from './refs';
 import Pagination from 'tui-pagination';
 import { options } from './pagination-lib-options';
+import {getSiteTheme} from './dark-theme';
 
 const LS_API = new localStorageApi();
 
@@ -26,6 +27,8 @@ export let currentPaginationPage = 1;
 
 refs.watched.addEventListener('click', onClickWatched);
 refs.queue.addEventListener('click', onClickQueue);
+
+getSiteTheme();
 
 onClickWatched();
 

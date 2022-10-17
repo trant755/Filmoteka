@@ -4,12 +4,26 @@ html {
   box-sizing: border-box;
 }
 
+@keyframes light-body {
+  0%   {background-color:black; }
+  25%  {background-color:#373737; }
+  50%  {background-color:#797979; }
+  75%  {background-color:#c8c8c8; }
+  100% {background-color:#E5E5E5; }
+}
+
 body {
   font-family: 'Roboto', sans-serif;
   font-size: 12px;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+
+  animation-name: light-body;
+  animation-duration: 500ms;
+  animation-delay: 0;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
 }
 
 p {

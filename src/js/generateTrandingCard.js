@@ -4,6 +4,7 @@ import localStorageAPI from './local-storage-api/local-storage-api';
 import { onMarkupCards } from './onMarkupCards';
 import Pagination from 'tui-pagination';
 import { options } from './options-of-pagination';
+import {getSiteTheme} from './dark-theme';
 // import openModal from'./modalWindow';
 
 const API = new MovieApiService();
@@ -17,12 +18,15 @@ const pagination = new Pagination(refs.paginationContainer, options);
 
 refs.loader.classList.remove('is-hidden');
 
+getSiteTheme();
 generateHomePage();
 
 function generateHomePage() {
   if (!LS_API.getGeneresLS()) {
     API.fetchGenres().then(LS_API.saveGenersLS);
   }
+
+  // getSiteTheme();
   generateTrendingFilms();
 }
 
