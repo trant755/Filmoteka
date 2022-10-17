@@ -1,18 +1,16 @@
 // @import './common';
 @import './_modal-window';
 @import './_movie-card';
-
 @import './base/vars';
 @import './base/common';
 @import './base/container';
 @import './base/vh';
-
 @import './components/_header-film.scss';
 @import './components/_header-library.scss';
-
 @import './_main-movie.scss';
 @import './_button-to-top.scss';
 @import './_footer.scss';
-@import './_footer-modal.scss';
+@import './components/_footer-modal-def.scss';
 @import './components/_pagination.scss';
 @import './components/_loader.scss';
+@import './_theme-switcher.scss';
