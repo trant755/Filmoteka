@@ -4,7 +4,7 @@ import localStorageAPI from './local-storage-api/local-storage-api';
 import { onMarkupCards } from './onMarkupCards';
 import Pagination from 'tui-pagination';
 import { options } from './options-of-pagination';
-import {initChangeOfThemeOnMain} from './dark-theme';
+import { initChangeOfThemeOnMain } from './dark-theme';
 // import openModal from'./modalWindow';
 
 const API = new MovieApiService();
@@ -18,8 +18,8 @@ const pagination = new Pagination(refs.paginationContainer, options);
 
 refs.loader.classList.remove('is-hidden');
 
-initChangeOfThemeOnMain();
 generateHomePage();
+initChangeOfThemeOnMain();
 
 function generateHomePage() {
   if (!LS_API.getGeneresLS()) {
