@@ -33,7 +33,7 @@
   }
 }
 
-.switcher-main {
+.switcher-home {
   position: absolute;
   top: 130px;
   left: 22px;
@@ -105,7 +105,7 @@
   }
 }
 
-.switcher-roller {
+.roller {
   height: 28px;
   width: 25px;
   background-color: var(--secondary-orange-color);
@@ -195,7 +195,7 @@
   }
 }
 
-.dark-theme {
+body.dark-theme {
   background-color: #000000;
 
   animation-name: dark-body;

@@ -18,15 +18,14 @@ const pagination = new Pagination(refs.paginationContainer, options);
 
 refs.loader.classList.remove('is-hidden');
 
+initChangeOfThemeOnMain();
 generateHomePage();
-// initChangeOfThemeOnMain();
 
 function generateHomePage() {
   if (!LS_API.getGeneresLS()) {
     API.fetchGenres().then(LS_API.saveGenersLS);
   }
 
-  // getSiteTheme();
   generateTrendingFilms();
 }
 

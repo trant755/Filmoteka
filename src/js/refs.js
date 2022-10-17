@@ -18,8 +18,8 @@ export const refs = {
   //For theme-switcher
   body: document.querySelector('body'),
   switcher: document.querySelector('.switcher'),
-  switcherMain: document.querySelector('.switcher-main'),
-  roller: document.querySelector('.switcher-roller'),
+  switcherHome: document.querySelector('.switcher-home'),
+  roller: document.querySelector('.roller'),
   sunSvg: document.querySelector('.sun-svg'),
   moonSvg: document.querySelector('.moon-svg'),
 
