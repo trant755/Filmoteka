@@ -149,8 +149,8 @@ async function getTrailer(id, trailerBtn) {
 
     let trailer = res.results.find(tr => tr.name.includes('Official Trailer'));
 
-    // player.loadVideoById(`${trailer.key}`);
-    // player.stopVideo();
+    player.loadVideoById(`${trailer.key}`);
+    player.stopVideo();
     refs.trailerContainer.classList.remove('is-hidden');
     refs.trailerContainer.nextSibling.nextSibling.nextSibling.nextSibling.firstElementChild.style.fill =
       'white';
