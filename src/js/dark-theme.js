@@ -4,7 +4,17 @@ const THEME_KEY = 'siteCurrentTheme';
 const SWITCHER_POSITION = 'switcherPosition';
 
 // Theme switcher button script
-refs.switcher.addEventListener('click', onSwitcherClick);
+// initChangeOfThemeOnMain();
+
+export function initChangeOfThemeOnMain() {
+    refs.switcherMain.addEventListener('click', onSwitcherClick);
+    getSiteTheme();
+}
+
+export function initChangeOfThemeOnLib() {
+    refs.switcher.addEventListener('click', onSwitcherClick);
+    getSiteTheme();
+}
 
 function onSwitcherClick() {
     // refs.roller.classList.toggle('switcher-roller--light');
@@ -22,7 +32,7 @@ function saveSiteTheme(data, position) {
     localStorage.setItem(SWITCHER_POSITION, JSON.stringify(position));
 }
 
-export function getSiteTheme() {
+function getSiteTheme() {
     newCurrentSiteTheme = JSON.parse(localStorage.getItem(THEME_KEY));
     newCurrentSwitcherPosition = JSON.parse(localStorage.getItem(SWITCHER_POSITION));
     refs.body.classList.value = newCurrentSiteTheme;

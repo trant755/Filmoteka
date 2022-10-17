@@ -14,6 +14,21 @@
     }
 }
 
+.switcher-main {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 45px;
+    width: 100px;
+    background-color: transparent;
+    border: 1px solid white;
+    border-radius: 5px;
+
+    &:hover, &:focus {
+        border: 1px solid var(--secondary-orange-color);
+    }
+}
+
 .sun-svg {
     position: absolute;
     left: 8%;
