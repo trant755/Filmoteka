@@ -12,7 +12,7 @@
     background-color: #c8c8c8;
   }
   100% {
-    background-color: #e5e5e5;
+    background-color: #f7f7f7;
   }
 }
 
@@ -24,11 +24,11 @@
   height: 100px;
   background-color: #f7f7f7;
 
-  //   animation-name: light-footer;
-  //   animation-duration: 500ms;
-  //   animation-delay: 0;
-  //   animation-iteration-count: 1;
-  //   animation-fill-mode: forwards;
+    animation-name: light-footer;
+    animation-duration: 500ms;
+    animation-delay: 0;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
 
   @media screen and (min-width: 768px) {
     display: flex;
@@ -56,8 +56,6 @@
     display: flex;
     justify-content: center;
     text-align: center;
-    // padding-top: 30px;
-    // padding-bottom: 30px;
   }
 
   @media screen and (min-width: 1280px) {
@@ -107,12 +105,9 @@
   font-size: 14px;
   line-height: 1.2;
   color: #545454;
-  // margin-top: 10px;
 
   @media screen and (min-width: 768px) {
-    // padding-top: 30px;
-    // padding-bottom: 30px;
-    // margin-top: 0;
+
     margin-left: 4px;
     font-size: 16px;
     line-height: 1.17;
@@ -120,9 +115,7 @@
 }
 
 .footer__heart-icon {
-  // margin-top: 10px;
   margin-left: 10px;
-  // margin-right: 10px;
 }
 
 .footer__btn {
@@ -132,7 +125,6 @@
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
-  // line-height: 1.2;
   background-color: transparent;
   &:hover,
   &:focus {
@@ -141,14 +133,10 @@
   }
 
   @media screen and (min-width: 768px) {
-    // padding-top: 30px;
-    // padding-bottom: 30px;
-    // margin-top: 0;
     padding: 0;
     font-size: 16px;
     line-height: 1.17;
   }
-  // margin-top: 8px;
 }
 
 .footer__modal-team {

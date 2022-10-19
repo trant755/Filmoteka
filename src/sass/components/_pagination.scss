@@ -76,7 +76,6 @@
 
 .tui-pagination .hide-first,
 .tui-pagination .hide-last {
-  // background: var(--footer-bg-color);
   background: rgba(247, 247, 247, 0.5);
 }
 
@@ -122,7 +121,3 @@
   fill: #000000;
   transition: all 250ms ease-in-out;
 }
-
-// .tui-pagination .tui-last-child.tui-is-selected {
-//   border-right: 1px solid #ff6b08;
-// }

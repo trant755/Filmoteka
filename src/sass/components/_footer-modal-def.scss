@@ -18,7 +18,6 @@
     margin-right: auto;
     padding: 25px 5px 10px 5px;
     position: relative;
-    // max-height: 650px;
     max-height: calc(100% - 40px);
     background: #ffffff;
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
@@ -29,7 +28,6 @@
     left: 50%;
     transform: translate(-50%, -50%);
 
-    // background: radial-gradient(circle at 50% 30%, #c8c8c8, #c3c3c3, #b5b5b5, #a0a0a0, #878787, #6c6c6c, #525252, #3a3a3a, #252525, #161616, #070707, #000000);
     background: linear-gradient(56deg,#000000,#323232,#656363,#e3e1e1,#0f0c0c);
     background-size: 300% 300%;
     animation: gradient-animation 15s ease infinite;
@@ -97,7 +95,6 @@
     margin-bottom: 10px;
     padding-left: 5px;
     height: 30px;
-    // background-color: rgba(255,255,255,0.3);
     border-radius: 5px;
 
     @media screen and (min-width: 320px) and (max-width: 767px) {

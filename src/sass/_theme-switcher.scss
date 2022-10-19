@@ -8,7 +8,6 @@
   background-color: transparent;
   border: 1px solid white;
   border-radius: 5px;
-  // margin-top: 20px;
 
   &:hover,
   &:focus {
@@ -19,17 +18,11 @@
     left: 687px;
     top: 55px;
     height: 30px;
-    // width: 20px;
-    // height: 44px;
-    // top: 0;
   }
 
   @media screen and (min-width: 1280px) {
     left: 1198px;
     height: 30px;
-    // width: 20px;
-    // height: 44px;
-    // top: 0;
   }
 }
 
@@ -42,7 +35,6 @@
   background-color: transparent;
   border: 1px solid white;
   border-radius: 5px;
-  // margin-top: 20px;
 
   &:hover,
   &:focus {
@@ -52,17 +44,11 @@
   @media screen and (min-width: 768px) {
     left: 687px;
     height: 30px;
-    // width: 20px;
-    // height: 44px;
-    // top: 0;
   }
 
   @media screen and (min-width: 1280px) {
     left: 1198px;
     height: 30px;
-    // width: 20px;
-    // height: 44px;
-    // top: 0;
   }
 }
 
@@ -92,14 +78,12 @@
   fill: lightSlateGray;
 
   @media screen and (min-width: 768px) {
-    // top: 26px;
-    // right: 2px;
+
     height: 10px;
   }
 
   @media screen and (min-width: 768px) {
     top: 8px;
-    // right: 2px;
     height: 12px;
     width: 15px;
   }
@@ -124,14 +108,7 @@
   }
 
   @media screen and (min-width: 768px) {
-    // width: 18px;
     height: 28px;
-    // top: 0;
-    // border-radius: 4px;
-
-    // transition-property: top;
-    // transition-duration: 250ms;
-    // transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   }
 }
 
@@ -149,12 +126,6 @@
   }
 
   @media screen and (min-width: 768px) {
-    // left: 0;
-    // top: 21px;
-
-    // transition-property: top;
-    // transition-duration: 250ms;
-    // transition-timing-function: cubic-bezier(0.8, 0, 0.6, 1);
   }
 }
 
@@ -275,13 +246,11 @@
   .trailer-btn:hover,
   .trailer-btn:focus {
     color: black;
-    // background-color: #ff6a00cf;
     border-color: var(--secondary-orange-color);
   }
 
   & .modal {
     background-image: none;
-    // background: radial-gradient(circle at 50% 30%, #c8c8c8, #c3c3c3, #b5b5b5, #a0a0a0, #878787, #6c6c6c, #525252, #3a3a3a, #252525, #161616, #070707, #000000);
 
     background: linear-gradient(
       56deg,
@@ -315,7 +284,6 @@
   .tui-first-child,
   .tui-last-child,
   .tui-page-btn {
-    // background-color: white;
     background: radial-gradient(
       circle at 50% 80%,
       #c8c8c8,
@@ -337,7 +305,6 @@
   & .tui-ico-ellip,
   .tui-ico-last,
   .tui-ico-first {
-    // fill: var(--secondary-orange-color);
     fill: black;
   }
 
@@ -399,7 +366,7 @@
     );
   }
 
-  & .footer__container {
+  & .footer {
     background-color: black;
     border-top: 1px solid white;
 
@@ -427,7 +394,6 @@
   }
 
   & .button-to-top {
-    // background-color: white;
     background: radial-gradient(
       circle at 50% 80%,
       #c8c8c8,
@@ -454,36 +420,3 @@
     }
   }
 }
-
-// @keyframes dark-footer {
-//     0%   {background-color:white; }
-//     25%  {background-color:#c8c8c8; }
-//     50%  {background-color:#797979; }
-//     75%  {background-color:#373737; }
-//     100% {background-color:black; }
-// }
-
-// @keyframes light-footer {
-//     0%   {background-color:black; }
-//     25%  {background-color:#373737; }
-//     50%  {background-color:#797979; }
-//     75%  {background-color:#c8c8c8; }
-//     100% {background-color:white; }
-// }
-
-// .footer.light {
-//     animation-name: light-footer;
-//     animation-duration: 500ms;
-//     animation-delay: 0;
-//     animation-iteration-count: 1;
-//     animation-fill-mode: forwards;
-// }
-
-// .footer.dark {
-//     border-top: 1px solid #fff;
-//     animation-name: dark-footer;
-//     animation-duration: 500ms;
-//     animation-delay: 0;
-//     animation-iteration-count: 1;
-//     animation-fill-mode: forwards;
-// }

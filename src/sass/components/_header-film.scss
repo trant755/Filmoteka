@@ -15,8 +15,6 @@
   background-position: top;
   background-size: cover;
 
-  // flex-grow: 1;
-
   @media (min-device-pixel-ratio: 2),
     (-webkit-min-device-pixel-ratio: 2),
     (min-resolution: 192dpi),
@@ -225,8 +223,6 @@
     margin-left: -225px;
   }
 }
-
-// header shadow animation
 
 .header-logo__name {
   position: relative;
