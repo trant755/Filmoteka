@@ -2,7 +2,6 @@ import { refs } from './helpers/refs';
 
 const THEME_KEY = 'siteCurrentTheme';
 const SWITCHER_POSITION = 'switcherPosition';
-console.log(refs.switcherMain);
 // Theme switcher button script
 initChangeOfThemeOnMain();
 initChangeOfThemeOnLib();
@@ -45,6 +44,7 @@ function getSiteTheme() {
   newCurrentSwitcherPosition = JSON.parse(
     localStorage.getItem(SWITCHER_POSITION)
   );
+  console.log(newCurrentSiteTheme);
   refs.body.classList.value = newCurrentSiteTheme;
   refs.roller.classList.value = newCurrentSwitcherPosition;
 }
