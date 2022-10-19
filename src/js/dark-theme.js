@@ -5,20 +5,23 @@ const SWITCHER_POSITION = 'switcherPosition';
 console.log(refs.switcherMain);
 // Theme switcher button script
 initChangeOfThemeOnMain();
+initChangeOfThemeOnLib();
 
 function initChangeOfThemeOnMain() {
   if (!localStorage.getItem(THEME_KEY)) {
     saveSiteTheme(refs.body.classList.value, refs.roller.classList.value);
   }
-  refs.switcherMain.addEventListener('click', onSwitcherClick);
-  getSiteTheme();
+  if (refs.switcherMain) {
+    refs.switcherMain.addEventListener('click', onSwitcherClick);
+    getSiteTheme();
+  }
 }
 
 function initChangeOfThemeOnLib() {
-  //   if (!localStorage.getItem(THEME_KEY)) return;
-
-  refs.switcher.addEventListener('click', onSwitcherClick);
-  getSiteTheme();
+  if (refs.switcher) {
+    refs.switcher.addEventListener('click', onSwitcherClick);
+    getSiteTheme();
+  }
 }
 
 function onSwitcherClick() {
