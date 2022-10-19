@@ -40,11 +40,10 @@ function saveSiteTheme(data, position) {
 }
 
 function getSiteTheme() {
-  newCurrentSiteTheme = JSON.parse(localStorage.getItem(THEME_KEY));
-  newCurrentSwitcherPosition = JSON.parse(
+  let newCurrentSiteTheme = JSON.parse(localStorage.getItem(THEME_KEY));
+  let newCurrentSwitcherPosition = JSON.parse(
     localStorage.getItem(SWITCHER_POSITION)
   );
-  console.log(newCurrentSiteTheme);
   refs.body.classList.value = newCurrentSiteTheme;
   refs.roller.classList.value = newCurrentSwitcherPosition;
 }
