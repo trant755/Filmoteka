@@ -1,8 +1,5 @@
-// import localStorageAPI from './local-storage-api/local-storage-api';
 import { onMarkupCards } from '../helpers/onMarkupCards';
 import { refs } from '../helpers/refs';
-
-// const LS_API = new localStorageAPI();
 
 export const generateLibraryContainer = function (
   method,

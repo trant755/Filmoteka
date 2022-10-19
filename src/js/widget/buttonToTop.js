@@ -1,6 +1,3 @@
-// const toTopBtn = document.querySelector('.button-to-top');
-// const svgIcon = document.querySelector('.to-top-icon');
-
 import { refs } from '../helpers/refs';
 
 refs.toTopBtn.addEventListener('click', onButtonClick);

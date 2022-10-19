@@ -14,8 +14,6 @@
   background-position: center;
   background-size: cover;
 
-  // flex-grow: 1;
-
   @media (min-device-pixel-ratio: 2),
     (-webkit-min-device-pixel-ratio: 2),
     (min-resolution: 192dpi),
@@ -241,7 +239,6 @@
   }
 }
 
-// header shadow anima
 .library-header--logo__name {
   position: relative;
 }
@@ -290,20 +287,16 @@
   color: var(--secondary-orange-color);
   padding: 5px;
   margin-top: 10px;
-  // width: 50px;
   height: 30px;
   font-size: 13px;
 
   position: absolute;
   top: 45px;
   right: 20px;
-  // right: auto;
-  // left: auto;
 
   @media screen and (min-width: 768px) {
     right: 31px;
     top: 0;
-    // width: 20px;
   }
 }
 
@@ -312,15 +305,10 @@
   transition: none;
   margin-right: 0px;
   display: contents;
-  // font-size: 5px;
   top: 10px;
 
   &:hover {
     border: none;
-  }
-
-  @media screen and (min-width: 768px) {
-    // margin-right: 63px;
   }
 
   @media screen and (min-width: 1280px) {
@@ -332,13 +320,7 @@
   display: flex;
   flex-direction: column;
   align-items: start;
-  // width: 45px;
-  // height: 30px;
+
   margin-top: 12px;
   margin-right: 50px;
-
-  @media screen and (min-width: 768px) {
-    // margin-right: 35px;
-    // margin-top: 4px;
-  }
 }
