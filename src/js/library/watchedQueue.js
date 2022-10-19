@@ -1,9 +1,9 @@
-import localStorageApi from './local-storage-api/local-storage-api';
+import localStorageApi from '../all-api/local-storage-api';
 import { generateLibraryContainer, logicLib } from './libraryCard';
-import { refs } from './refs';
+import { refs } from '../helpers/refs';
 import Pagination from 'tui-pagination';
-import { options } from './pagination-lib-options';
-import { initChangeOfThemeOnLib } from './dark-theme';
+import { options } from '../helpers/pagination/pagination-lib-options';
+import { initChangeOfThemeOnLib } from '../dark-theme';
 
 const LS_API = new localStorageApi();
 

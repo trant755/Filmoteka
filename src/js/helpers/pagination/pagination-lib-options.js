@@ -1,4 +1,4 @@
-import sprite from '../images/icons/arrowssprite.svg';
+import sprite from '../../../images/icons/arrowssprite.svg';
 
 const arrowIcon = `${sprite}#icon-arrow`;
 const dotsIcon = `${sprite}#icon-dots`;

@@ -1,10 +1,10 @@
-import { refs } from './refs';
-import MovieApiService from './fetchModule';
-import localStorageAPI from './local-storage-api/local-storage-api';
-import { onMarkupCards } from './onMarkupCards';
+import { refs } from '../helpers/refs';
+import MovieApiService from '../all-api/fetchModule';
+import localStorageAPI from '../all-api/local-storage-api';
+import { onMarkupCards } from '../helpers/onMarkupCards';
 import Pagination from 'tui-pagination';
-import { options } from './options-of-pagination';
-import { initChangeOfThemeOnMain } from './dark-theme';
+import { options } from '../helpers/pagination/options-of-pagination';
+import { initChangeOfThemeOnMain } from '../dark-theme';
 // import openModal from'./modalWindow';
 
 const API = new MovieApiService();
@@ -34,6 +34,9 @@ function generateTrendingFilms() {
   API.fetchTrending().then(({ results, total_results }) => {
     pagination.setTotalItems(total_results);
     onMarkupCards(results, refs.trandingContainer);
+    if (refs.paginationContainer.style.display === 'none') {
+      refs.paginationContainer.removeAttribute('style');
+    }
     LS_API.saveTrendingCurentPage(results);
 
     refs.loader.classList.add('is-hidden');

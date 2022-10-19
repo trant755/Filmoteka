@@ -1,6 +1,6 @@
-import './js/generateTrandingCard';
-import './js/buttonToTop';
-import './js/local-storage-api/local-storage-api';
+import './js/home-page/homePage';
+import './js/widget/buttonToTop';
+import './js/all-api/local-storage-api';
 import './js/footer-modal';
-import './js/modalWindow';
+import './js/modal-film/modalWindow';
 // import './js/dark-theme';

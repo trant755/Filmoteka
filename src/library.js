@@ -1,4 +1,4 @@
-import './js/watchedQueue';
-import './js/modalWindow';
+import './js/library/watchedQueue';
+import './js/modal-film/modalWindow';
 // import './js/dark-theme';
 import './js/footer-modal';

@@ -1,5 +1,5 @@
-import filmCards from '../templates/filmCards.hbs';
-import LocalStorageAPI from './local-storage-api/local-storage-api';
+import filmCards from '../../templates/filmCards.hbs';
+import LocalStorageAPI from '../all-api/local-storage-api';
 
 const localStorageAPI = new LocalStorageAPI();
 
