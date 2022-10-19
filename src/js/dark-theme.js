@@ -1,4 +1,4 @@
-import { refs } from './refs';
+import { refs } from './helpers/refs';
 
 const THEME_KEY = 'siteCurrentTheme';
 const SWITCHER_POSITION = 'switcherPosition';

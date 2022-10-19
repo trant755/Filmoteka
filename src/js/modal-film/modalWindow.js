@@ -1,9 +1,9 @@
-import modalFilmCard from '../templates/movie-card.hbs';
-import { currentLibraryPageEL, currentPage } from './watchedQueue';
+import modalFilmCard from '../../templates/movie-card.hbs';
+import { currentLibraryPageEL, currentPage } from '../library/watchedQueue';
 // import generateLibraryContainer from './libraryCard';
-import localStorageAPI from './local-storage-api/local-storage-api';
-import { refs } from './refs';
-import MovieApiService from './fetchModule';
+import localStorageAPI from '../all-api/local-storage-api';
+import { refs } from '../helpers/refs';
+import MovieApiService from '../all-api/fetchModule';
 
 const API = new localStorageAPI();
 const FetchAPI = new MovieApiService();

@@ -1,6 +1,6 @@
 // import localStorageAPI from './local-storage-api/local-storage-api';
-import { onMarkupCards } from './onMarkupCards';
-import { refs } from './refs';
+import { onMarkupCards } from '../helpers/onMarkupCards';
+import { refs } from '../helpers/refs';
 
 // const LS_API = new localStorageAPI();
 
