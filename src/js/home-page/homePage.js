@@ -5,7 +5,6 @@ import { onMarkupCards } from '../helpers/onMarkupCards';
 import Pagination from 'tui-pagination';
 import { options } from '../helpers/pagination/options-of-pagination';
 import { initChangeOfThemeOnMain } from '../dark-theme';
-// import openModal from'./modalWindow';
 
 const API = new MovieApiService();
 const LS_API = new localStorageAPI();
@@ -19,14 +18,12 @@ const pagination = new Pagination(refs.paginationContainer, options);
 refs.loader.classList.remove('is-hidden');
 
 generateHomePage();
-// initChangeOfThemeOnMain();
 
 function generateHomePage() {
   if (!LS_API.getGeneresLS()) {
     API.fetchGenres().then(LS_API.saveGenersLS);
   }
 
-  // getSiteTheme();
   generateTrendingFilms();
 }
 
@@ -49,12 +46,7 @@ refs.paginationContainer.addEventListener(
 );
 
 function renderNewPageOfTrendingFilms(e) {
-  if (
-    // !e.target.classList.contains('tui-page-btn') ||
-    // e.target.classList.contains('tui-is-selected') ||
-    // e.target.classList.contains('tui-is-disabled')
-    e.target.classList.contains('tui-pagination')
-  )
+  if (e.target.classList.contains('tui-pagination'))
     return;
 
   clearGallery();

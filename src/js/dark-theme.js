@@ -2,6 +2,8 @@ import { refs } from './helpers/refs';
 
 const THEME_KEY = 'siteCurrentTheme';
 const SWITCHER_POSITION = 'switcherPosition';
+
+
 // Theme switcher button script
 initChangeOfThemeOnMain();
 initChangeOfThemeOnLib();
@@ -24,9 +26,7 @@ function initChangeOfThemeOnLib() {
 }
 
 function onSwitcherClick() {
-  // refs.roller.classList.toggle('switcher-roller--light');
   refs.roller.classList.toggle('switcher-roller--dark');
-  // refs.body.classList.toggle('light-theme');
   refs.body.classList.toggle('dark-theme');
   let currentSiteTheme = refs.body.classList.value;
   let currentSwitcherPosition = refs.roller.classList.value;
