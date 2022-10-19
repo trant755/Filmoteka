@@ -1,6 +1,5 @@
 import modalFilmCard from '../../templates/movie-card.hbs';
 import { currentLibraryPageEL, currentPage } from '../library/watchedQueue';
-// import generateLibraryContainer from './libraryCard';
 import localStorageAPI from '../all-api/local-storage-api';
 import { refs } from '../helpers/refs';
 import MovieApiService from '../all-api/fetchModule';
@@ -101,6 +100,8 @@ function getMovieById(id) {
   if (String(film.vote_average).length > 3) {
     film.vote_average = String(film.vote_average).slice(0, 3);
   }
+
+  film.popularity = Number(film.popularity).toFixed(2);
 
   let genres = film.genre_ids.map(id => {
     if (film.genre_ids?.length === 0) return;
