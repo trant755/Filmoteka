@@ -2,21 +2,26 @@ import { refs } from './helpers/refs';
 
 const THEME_KEY = 'siteCurrentTheme';
 const SWITCHER_POSITION = 'switcherPosition';
-
+console.log(refs.switcherMain);
 // Theme switcher button script
-// initChangeOfThemeOnMain();
+initChangeOfThemeOnMain();
+initChangeOfThemeOnLib();
 
-export function initChangeOfThemeOnMain() {
-  //   if (!localStorage.getItem(THEME_KEY)) return;
-  refs.switcherMain.addEventListener('click', onSwitcherClick);
-  getSiteTheme();
+function initChangeOfThemeOnMain() {
+  if (!localStorage.getItem(THEME_KEY)) {
+    saveSiteTheme(refs.body.classList.value, refs.roller.classList.value);
+  }
+  if (refs.switcherMain) {
+    refs.switcherMain.addEventListener('click', onSwitcherClick);
+    getSiteTheme();
+  }
 }
 
-export function initChangeOfThemeOnLib() {
-  //   if (!localStorage.getItem(THEME_KEY)) return;
-
-  refs.switcher.addEventListener('click', onSwitcherClick);
-  getSiteTheme();
+function initChangeOfThemeOnLib() {
+  if (refs.switcher) {
+    refs.switcher.addEventListener('click', onSwitcherClick);
+    getSiteTheme();
+  }
 }
 
 function onSwitcherClick() {

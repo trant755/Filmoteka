@@ -28,8 +28,6 @@ export let currentPaginationPage = 1;
 refs.watched.addEventListener('click', onClickWatched);
 refs.queue.addEventListener('click', onClickQueue);
 
-// initChangeOfThemeOnLib();
-
 onClickWatched();
 
 function onClickWatched() {
